@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test del Ritual Matutino — AppFlex</title>
+  <meta name="description" content="Test corto de 90 segundos para descubrir qué combinación de ingredientes ancestrales encaja mejor con tu rutina.">
+  <meta name="robots" content="noindex">
+
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+  <link rel="dns-prefetch" href="https://load.zurf.laappflex.shop">
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src="https://load.zurf.laappflex.shop/73gxeayutss.js?"+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','8z=GhdJMi0sSCw4OEwjPysuXgVORltIRwEWTh8VFAkRAxQWC1oGEQ4V');</script>
+  <!-- End Google Tag Manager -->
+
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+    :root{
+      --cream:#FBF7EE;--cream-deep:#F2EBDB;--paper:#FFFDF7;
+      --ink:#252E27;--ink-soft:#4A5648;--ink-mute:#82907F;
+      --line:#DDE5DA;
+      --sage:#A8C9B8;--sage-soft:#C9DDD0;--sage-deep:#6B9580;--sage-darker:#3F5C4F;
+      --warm:#B89858;--warm-deep:#9A7E40;
+      --shadow:0 1px 2px rgba(40,60,45,.05), 0 8px 28px rgba(40,60,45,.07);
+      --shadow-cta:0 4px 14px rgba(154,126,64,.28), 0 1px 2px rgba(40,60,45,.08);
+    }
+
+    html{scroll-behavior:smooth}
+    body{
+      background:var(--cream);color:var(--ink);
+      font-family:'Lora', Georgia, serif;font-size:18px;line-height:1.65;
+      -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+      overflow-x:hidden;min-height:100vh;
+    }
+
+    .topbar{
+      position:sticky;top:0;z-index:50;
+      background:rgba(251,247,238,.96);
+      backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .topbar-inner{max-width:680px;margin:0 auto;padding:14px 20px 0}
+    .topbar-row{
+      display:flex;align-items:center;justify-content:space-between;
+      font-family:'Inter',sans-serif;margin-bottom:10px;
+    }
+    .brand{
+      font-weight:700;font-size:13px;letter-spacing:.04em;
+      color:var(--sage-darker);text-decoration:none;
+      display:flex;align-items:center;gap:9px;text-transform:uppercase;
+    }
+    .brand-mark{
+      width:22px;height:22px;border-radius:50%;background:var(--sage);
+      display:flex;align-items:center;justify-content:center;
+      color:#fff;font-weight:800;font-size:12px;
+    }
+    .quiz-meta{font-family:'Inter',sans-serif;font-size:12px;color:var(--ink-mute);letter-spacing:.04em}
+    .quiz-meta strong{color:var(--sage-darker);font-weight:700}
+    .progress-track{height:4px;background:var(--cream-deep);overflow:hidden}
+    .progress-bar{
+      height:100%;width:0%;
+      background:linear-gradient(90deg, var(--sage-deep) 0%, var(--sage) 100%);
+      transition:width .35s cubic-bezier(.4,0,.2,1);
+    }
+
+    .container{max-width:680px;margin:0 auto;padding:48px 20px 60px}
+
+    .screen{display:none;animation:fadeIn .3s ease-out}
+    .screen.active{display:block}
+    @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+    .lead-in{
+      font-family:'Inter',sans-serif;font-size:13px;font-weight:600;
+      letter-spacing:.18em;text-transform:uppercase;color:var(--sage-deep);
+      margin-bottom:18px;display:flex;align-items:center;gap:12px;
+    }
+    .lead-in::before{content:"";width:24px;height:1px;background:var(--sage-deep)}
+    .question{
+      font-family:'Lora',serif;font-weight:600;
+      font-size:clamp(24px, 4vw, 32px);line-height:1.25;letter-spacing:-.008em;
+      color:var(--ink);margin-bottom:14px;
+    }
+    .question em{font-style:italic;color:var(--sage-darker);font-weight:500}
+    .pre-text{color:var(--ink-soft);font-size:17px;margin-bottom:18px}
+    .post-text{
+      font-family:'Inter',sans-serif;font-size:14px;color:var(--ink-mute);
+      font-style:italic;margin-top:18px;line-height:1.55;
+    }
+    .multi-hint{
+      font-family:'Inter',sans-serif;font-size:13px;color:var(--sage-deep);
+      font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-bottom:16px;
+    }
+
+    .options{display:grid;gap:10px;margin:8px 0 22px}
+    .option{
+      display:flex;align-items:flex-start;gap:14px;
+      padding:18px 20px;
+      background:var(--paper);border:1.5px solid var(--line);border-radius:12px;
+      cursor:pointer;
+      transition:border-color .15s, background .15s, transform .08s;
+      font-size:16.5px;line-height:1.55;color:var(--ink-soft);
+    }
+    .option:hover{border-color:var(--sage);background:rgba(168,201,184,.06)}
+    .option:active{transform:scale(.998)}
+    .option input{position:absolute;opacity:0;pointer-events:none}
+    .option .indicator{
+      flex-shrink:0;width:22px;height:22px;margin-top:2px;
+      border:2px solid var(--ink-mute);background:#fff;
+      transition:all .15s;display:flex;align-items:center;justify-content:center;
+    }
+    .option[data-type="single"] .indicator{border-radius:50%}
+    .option[data-type="multi"] .indicator{border-radius:5px}
+    .option .indicator::after{content:"";opacity:0;transition:opacity .15s}
+    .option[data-type="single"] .indicator::after{
+      width:10px;height:10px;border-radius:50%;background:var(--sage-deep);
+    }
+    .option[data-type="multi"] .indicator::after{
+      width:12px;height:7px;
+      border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;
+      transform:rotate(-45deg) translate(1px,-1px);
+    }
+    .option.selected{
+      border-color:var(--sage-deep);background:rgba(168,201,184,.12);color:var(--ink);
+    }
+    .option.selected .indicator{border-color:var(--sage-deep)}
+    .option[data-type="multi"].selected .indicator{background:var(--sage-deep)}
+    .option.selected .indicator::after{opacity:1}
+    .option strong{color:var(--ink);font-weight:600}
+    .option-text{flex:1}
+
+    .actions{display:flex;flex-direction:column;align-items:stretch;gap:10px;margin-top:24px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      font-family:'Inter',sans-serif;font-weight:700;font-size:16px;
+      letter-spacing:.02em;text-transform:uppercase;text-decoration:none;
+      cursor:pointer;border:none;
+      padding:18px 28px;border-radius:12px;min-height:60px;
+      transition:transform .12s ease, box-shadow .15s ease, filter .15s ease, opacity .15s;
+      width:100%;
+    }
+    .btn-primary{
+      background:linear-gradient(180deg, #C9A463 0%, var(--warm) 60%, var(--warm-deep) 100%);
+      color:#fff;box-shadow:var(--shadow-cta);border:1px solid rgba(0,0,0,.08);
+    }
+    .btn-primary:hover:not(:disabled){
+      transform:translateY(-1px);filter:brightness(1.04);
+      box-shadow:0 6px 20px rgba(154,126,64,.34), 0 1px 2px rgba(40,60,45,.08);
+    }
+    .btn-primary:disabled{opacity:.45;cursor:not-allowed;filter:grayscale(.4)}
+    .btn .arrow{font-size:18px;transition:transform .2s}
+    .btn-primary:hover:not(:disabled) .arrow{transform:translateX(3px)}
+
+    .disclaimer-card{
+      background:var(--paper);border:1px solid var(--line);
+      border-radius:14px;padding:32px 30px;
+      box-shadow:var(--shadow);margin-bottom:24px;
+    }
+    .disclaimer-title{
+      font-family:'Inter',sans-serif;font-size:13px;font-weight:700;
+      letter-spacing:.18em;text-transform:uppercase;color:var(--sage-deep);margin-bottom:16px;
+    }
+    .disclaimer-text{font-size:16.5px;line-height:1.65;color:var(--ink-soft)}
+
+    .processing{text-align:center;padding:40px 0}
+    .spinner{
+      width:56px;height:56px;margin:0 auto 28px;
+      border:4px solid var(--cream-deep);border-top-color:var(--sage-deep);
+      border-radius:50%;animation:spin .9s linear infinite;
+    }
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .processing-text{
+      font-family:'Lora',serif;font-style:italic;font-size:19px;
+      color:var(--ink-soft);min-height:60px;transition:opacity .25s;
+    }
+    .processing-bar{
+      max-width:320px;margin:24px auto 0;height:6px;
+      background:var(--cream-deep);border-radius:6px;overflow:hidden;
+    }
+    .processing-fill{
+      height:100%;width:0%;
+      background:linear-gradient(90deg, var(--sage-deep), var(--sage));
+      transition:width .15s linear;
+    }
+
+    .result-tag{
+      font-family:'Inter',sans-serif;font-size:12px;font-weight:700;
+      letter-spacing:.2em;text-transform:uppercase;color:var(--sage-deep);
+      display:flex;align-items:center;gap:10px;margin-bottom:18px;
+    }
+    .result-tag .check{
+      width:22px;height:22px;border-radius:50%;
+      background:var(--sage-deep);color:#fff;
+      display:flex;align-items:center;justify-content:center;font-size:13px;
+    }
+    .profile-name{
+      font-family:'Lora',serif;font-weight:600;
+      font-size:clamp(28px, 4.6vw, 38px);line-height:1.18;
+      color:var(--ink);margin-bottom:24px;letter-spacing:-.012em;
+    }
+    .profile-name em{font-style:italic;color:var(--sage-darker)}
+    .result-card{
+      background:var(--paper);border:1px solid var(--line);
+      border-radius:14px;padding:30px 30px;
+      box-shadow:var(--shadow);margin-bottom:22px;
+    }
+    .result-card p{margin-bottom:16px;color:var(--ink-soft);font-size:17px;line-height:1.65}
+    .result-card p:last-child{margin-bottom:0}
+    .result-card strong{color:var(--ink);font-weight:600}
+    .pillars{display:grid;gap:14px;margin:18px 0}
+    .pillar{
+      display:grid;grid-template-columns:36px 1fr;gap:14px;align-items:start;
+      padding:14px 0;border-top:1px solid var(--line);
+    }
+    .pillar:first-child{border-top:0;padding-top:8px}
+    .pillar .pn{
+      font-family:'Inter',sans-serif;font-weight:700;font-size:13px;
+      color:#fff;background:var(--sage-deep);
+      width:30px;height:30px;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;margin-top:2px;
+    }
+    .pillar p{margin-bottom:0;font-size:16px}
+    .why-video{
+      background:var(--paper);border:1px solid var(--line);
+      border-left:3px solid var(--sage-deep);
+      border-radius:0 12px 12px 0;
+      padding:22px 26px;margin-bottom:22px;
+    }
+    .why-video h3{
+      font-family:'Inter',sans-serif;font-weight:700;font-size:15px;
+      color:var(--ink);margin-bottom:10px;
+    }
+    .why-video p{font-size:15.5px;color:var(--ink-soft);line-height:1.6;margin-bottom:10px}
+    .why-video ol{padding-left:22px}
+    .why-video ol li{
+      font-size:15.5px;color:var(--ink-soft);line-height:1.6;margin-bottom:6px;
+    }
+    .why-video ol li strong{color:var(--ink)}
+    .urgency{
+      background:rgba(184,152,88,.08);
+      border:1px solid rgba(184,152,88,.28);
+      border-left:3px solid var(--warm);
+      border-radius:10px;padding:18px 22px;margin-bottom:24px;
+      font-size:15.5px;line-height:1.6;color:var(--ink-soft);
+      font-family:'Inter',sans-serif;
+    }
+    .urgency strong{color:var(--ink);font-weight:600}
+    .closing-note{
+      font-family:'Inter',sans-serif;font-size:13.5px;line-height:1.65;
+      color:var(--ink-mute);text-align:center;margin-top:22px;padding:0 8px;
+    }
+    .closing-note .lead-line{
+      font-family:'Lora',serif;font-size:17px;color:var(--ink-soft);
+      font-style:italic;display:block;margin-bottom:10px;
+    }
+    .cta-sub{font-family:'Inter',sans-serif;font-size:13px;color:var(--ink-mute);text-align:center;margin-top:8px}
+
+    footer{
+      max-width:680px;margin:32px auto 0;
+      padding:24px 20px 32px;border-top:1px solid var(--line);
+      font-family:'Inter',sans-serif;font-size:11px;line-height:1.6;
+      color:var(--ink-mute);text-align:center;
+    }
+    footer a{color:var(--sage-darker);text-decoration:none}
+    footer a:hover{text-decoration:underline}
+
+    @media (max-width:520px){
+      .container{padding:32px 16px 48px}
+      .topbar-inner{padding:12px 16px 0}
+      .option{padding:16px 16px;font-size:16px}
+      .disclaimer-card{padding:26px 22px}
+      .result-card{padding:24px 22px}
+    }
+  </style>
+</head>
+<body>
+
+<noscript><iframe src="https://load.zurf.laappflex.shop/ns.html?id=GTM-TKK8VFJK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-row">
+      <span class="brand"><span class="brand-mark">A</span>AppFlex</span>
+      <span class="quiz-meta">Test del Ritual Matutino</span>
+    </div>
+  </div>
+  <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+</div>
+
+<main class="container">
+
+  <!-- TELA 1 — Pergunta 1 -->
+  <section class="screen active" data-screen="q1">
+    <div class="lead-in">Empecemos por tu mañana</div>
+    <h1 class="question">¿Cómo es típicamente la <em>primera media hora</em> de tu mañana?</h1>
+    <div class="options" data-q="q1" data-type="single">
+      <label class="option" data-type="single"><input type="radio" name="q1" value="cafe"><span class="indicator"></span><span class="option-text"><strong>Café o té</strong> apenas me levanto, sin desayunar todavía.</span></label>
+      <label class="option" data-type="single"><input type="radio" name="q1" value="completo"><span class="indicator"></span><span class="option-text"><strong>Desayuno completo</strong> en cuanto puedo &mdash; no aguanto sin comer.</span></label>
+      <label class="option" data-type="single"><input type="radio" name="q1" value="liviano"><span class="indicator"></span><span class="option-text"><strong>Algo liviano</strong> (fruta, tostada, yogur) y listo.</span></label>
+      <label class="option" data-type="single"><input type="radio" name="q1" value="medicacion"><span class="indicator"></span><span class="option-text">Tomo mi <strong>medicación primero</strong> y después desayuno.</span></label>
+      <label class="option" data-type="single"><input type="radio" name="q1" value="dificil"><span class="indicator"></span><span class="option-text">Honestamente, <strong>mi mañana es bastante difícil &mdash; me cuesta arrancar.</strong></span></label>
+    </div>
+    <p class="post-text">Cualquier respuesta es válida &mdash; el test se adapta a tu situación real.</p>
+    <div class="actions">
+      <button class="btn btn-primary" data-action="next" disabled>Continuar <span class="arrow">&rarr;</span></button>
+    </div>
+  </section>
+
+  <!-- TELA 2 — Pergunta 2 (cúrcuma) -->
+  <section class="screen" data-screen="q2">
+    <h1 class="question">¿Cuál es tu <em>relación actual</em> con la cúrcuma?</h1>
+    <div class="options" data-q="q2" data-type="single">
+      <label class="option" data-type="single"><input type="radio" name="q2" value="nunca"><span class="indicator"></span><span class="option-text"><strong>Nunca la usé</strong> &mdash; la conozco solo de oídas.</span></label>
+      <label class="option" data-type="single"><input type="radio" name="q2" value="aveces"><span class="indicator"></span><span class="option-text">La uso <strong>a veces en la cocina</strong>, pero sin método.</span></label>
+      <label class="option" data-type="single"><input type="radio" name="q2" value="capsulas"><span class="indicator"></span><span class="option-text"><strong>La tomé en cápsulas durante meses</strong>, pero no noté gran diferencia.</span></label>
+      <label class="option" data-type="single"><input type="radio" name="q2" value="viral"><span class="indicator"></span><span class="option-text"><strong>Probé el "hielo de cúrcuma"</strong> o alguna receta viral &mdash; la hice durante semanas y no noté cambios.</span></label>
+      <label class="option" data-type="single"><input type="radio" name="q2" value="seguido"><span class="indicator"></span><span class="option-text">La uso seguido en <strong>sopas, guisos o tés</strong> (estilo cocina tradicional).</span></label>
+      <label class="option" data-type="single"><input type="radio" name="q2" value="abuela"><span class="indicator"></span><span class="option-text">Mi familia la usaba cuando yo era chico/a &mdash; la tengo asociada a la <strong>cocina de la abuela</strong>.</span></label>
+    </div>
+    <p class="post-text">La mayoría de las personas que llegan acá ya escuchó hablar de la cúrcuma &mdash; pero pocas saben que <strong>se absorbe muy mal cuando le falta la combinación correcta</strong>.</p>
+    <div class="actions">
+      <button class="btn btn-primary" data-action="next" disabled>Continuar <span class="arrow">&rarr;</span></button>
+    </div>
+  </section>
+
+  <!-- TELA 3 — Pergunta 3 (sintomas) -->
+  <section class="screen" data-screen="q3">
+    <h1 class="question">¿Cuál de estas situaciones te resulta más <em>familiar últimamente?</em></h1>
+    <div class="multi-hint">Podés marcar más de una</div>
+    <div class="options" data-q="q3" data-type="multi">
+      <label class="option" data-type="multi"><input type="checkbox" name="q3" value="rigidez"><span class="indicator"></span><span class="option-text"><strong>Rigidez al levantarme por la mañana</strong> &mdash; tarda en irse.</span></label>
+      <label class="option" data-type="multi"><input type="checkbox" name="q3" value="multi"><span class="indicator"></span><span class="option-text"><strong>Dolor en varias articulaciones a la vez</strong> (rodillas, caderas, manos, espalda baja, hombros).</span></label>
+      <label class="option" data-type="multi"><input type="checkbox" name="q3" value="cansancio"><span class="indicator"></span><span class="option-text"><strong>Cansancio al final del día</strong> que antes no tenía.</span></label>
+      <label class="option" data-type="multi"><input type="checkbox" name="q3" value="hinchazon"><span class="indicator"></span><span class="option-text"><strong>Inflamación o hinchazón</strong> en manos, pies o tobillos.</span></label>
+      <label class="option" data-type="multi"><input type="checkbox" name="q3" value="hueso"><span class="indicator"></span><span class="option-text">Sensación de "<strong>hueso contra hueso</strong>" o crujido al moverme.</span></label>
+      <label class="option" data-type="multi"><input type="checkbox" name="q3" value="alerta"><span class="indicator"></span><span class="option-text"><strong>Estado de alerta casi constante por el dolor</strong> &mdash; me impide hacer cosas diarias.</span></label>
+      <label class="option" data-type="multi"><input type="checkbox" name="q3" value="prevenir" data-exclusive="true"><span class="indicator"></span><span class="option-text">Ninguna en particular &mdash; solo busco prevenir.</span></label>
+    </div>
+    <p class="post-text">Cuando el dolor aparece en varias articulaciones a la vez, casi siempre hay un proceso silencioso por detrás &mdash; uno de los más comunes en mayores de 60 y de los que casi nadie habla en la consulta.</p>
+    <div class="actions">
+      <button class="btn btn-primary" data-action="next" disabled>Continuar <span class="arrow">&rarr;</span></button>
+    </div>
+  </section>
+
+  <!-- TELA 4 — Pergunta 4 (aspiração) -->
+  <section class="screen" data-screen="q4">
+    <div class="lead-in">La pregunta clave</div>
+    <h1 class="question">Si pudieras incorporar <em>un solo ritual matutino simple</em>, ¿qué te gustaría que te ayudara a lograr?</h1>
+    <p class="pre-text">Pensá un momento antes de responder.</p>
+    <div class="options" data-q="q4" data-type="single">
+      <label class="option" data-type="single"><input type="radio" name="q4" value="sin_rigidez"><span class="indicator"></span><span class="option-text"><strong>Despertar sin rigidez</strong> &mdash; levantarme de la cama, de la silla o del baño sin pensarlo dos veces.</span></label>
+      <label class="option" data-type="single"><input type="radio" name="q4" value="energia"><span class="indicator"></span><span class="option-text"><strong>Tener más energía estable</strong> durante todo el día &mdash; sin colapsar a la tarde.</span></label>
+      <label class="option" data-type="single"><input type="radio" name="q4" value="natural"><span class="indicator"></span><span class="option-text"><strong>Dejar de depender de tantos analgésicos</strong> que ya no me hacen lo que me hacían.</span></label>
+      <label class="option" data-type="single"><input type="radio" name="q4" value="calma"><span class="indicator"></span><span class="option-text"><strong>Reducir esa "inflamación silenciosa"</strong> que sospecho que tengo, y que afecta varias articulaciones a la vez.</span></label>
+      <label class="option" data-type="single"><input type="radio" name="q4" value="activa"><span class="indicator"></span><span class="option-text"><strong>Volver a las actividades que disfrutaba antes</strong> &mdash; regar las plantas, salir a caminar, atender mis animales &mdash; sin pagar el precio al día siguiente.</span></label>
+      <label class="option" data-type="single"><input type="radio" name="q4" value="consulta"><span class="indicator"></span><span class="option-text"><strong>Llegar mejor preparado/a a la consulta médica</strong> &mdash; para conversar qué medicamentos seguir y cuáles revisar.</span></label>
+    </div>
+    <p class="post-text">Tu respuesta nos ayuda a personalizar la combinación que más se alinea con tu objetivo &mdash; y, si tomás medicación, a darte la información sobre interacciones que pocas consultas tienen tiempo de cubrir.</p>
+    <div class="actions">
+      <button class="btn btn-primary" data-action="next" disabled>Continuar <span class="arrow">&rarr;</span></button>
+    </div>
+  </section>
+
+  <!-- TELA 5 — Pergunta 5 (conhecimento prévio) -->
+  <section class="screen" data-screen="q5">
+    <h1 class="question">¿Sabías que <em>la cúrcuma sola casi no entra al cuerpo</em> &mdash; pero las cocinas del sur de Asia ya tenían la receta correcta hace miles de años para que sí entrara?</h1>
+    <div class="options" data-q="q5" data-type="single">
+      <label class="option" data-type="single"><input type="radio" name="q5" value="lo_sabia"><span class="indicator"></span><span class="option-text"><strong>Sí</strong>, lo sabía &mdash; uso pimienta y aceite con la cúrcuma.</span></label>
+      <label class="option" data-type="single"><input type="radio" name="q5" value="pimienta"><span class="indicator"></span><span class="option-text">Escuché algo sobre la <strong>pimienta</strong>, pero no estoy segura/o de la fórmula completa.</span></label>
+      <label class="option" data-type="single"><input type="radio" name="q5" value="no_sabia"><span class="indicator"></span><span class="option-text"><strong>No tenía idea</strong> &mdash; lo descubro ahora.</span></label>
+      <label class="option" data-type="single"><input type="radio" name="q5" value="explica"><span class="indicator"></span><span class="option-text"><strong>¿En serio?</strong> Eso explicaría por qué la cúrcuma que tomé no me hizo nada.</span></label>
+    </div>
+    <p class="post-text">La receta entera &mdash; cúrcuma + pimienta negra + grasa buena + jengibre fresco + cantidad correcta &mdash; ya estaba resuelta en la cocina hace miles de años. <strong>Casi todas las cápsulas comerciales y las recetas virales dejan afuera al menos uno de esos cinco ingredientes.</strong> Por eso fallan.</p>
+    <div class="actions">
+      <button class="btn btn-primary" data-action="next" disabled>Continuar <span class="arrow">&rarr;</span></button>
+    </div>
+  </section>
+
+  <!-- TELA 6 — Pergunta 6 (intenção) -->
+  <section class="screen" data-screen="q6">
+    <h1 class="question">Si un médico cirujano te ofreciera un <em>protocolo casero</em> &mdash; basado en una combinación específica de ingredientes ancestrales, hecha en casa con cosas que se compran en cualquier almacén &mdash; ¿estarías dispuesto/a a probarlo durante 14 días?</h1>
+    <div class="options" data-q="q6" data-type="single">
+      <label class="option" data-type="single"><input type="radio" name="q6" value="totalmente"><span class="indicator"></span><span class="option-text"><strong>Sí, totalmente</strong> &mdash; es exactamente lo que estoy buscando.</span></label>
+      <label class="option" data-type="single"><input type="radio" name="q6" value="probable"><span class="indicator"></span><span class="option-text"><strong>Probablemente sí</strong>, depende de qué se trate exactamente.</span></label>
+      <label class="option" data-type="single"><input type="radio" name="q6" value="talvez"><span class="indicator"></span><span class="option-text"><strong>Tal vez</strong> &mdash; quiero ver primero la información completa.</span></label>
+      <label class="option" data-type="single"><input type="radio" name="q6" value="medicacion"><span class="indicator"></span><span class="option-text"><strong>Solo si no interfiere con la medicación que ya tomo</strong> (anticoagulantes, presión, colesterol).</span></label>
+      <label class="option" data-type="single"><input type="radio" name="q6" value="ya_probe"><span class="indicator"></span><span class="option-text"><strong>Ya probé recetas similares antes y no me funcionaron</strong> &mdash; necesito ver la diferencia con lo que ya intenté.</span></label>
+    </div>
+    <p class="post-text">Cualquier respuesta te lleva al resultado completo. Y si tomás medicación, o si ya intentaste una receta de cúrcuma antes, <strong>la explicación que sigue cubre exactamente esas dudas</strong>.</p>
+    <div class="actions">
+      <button class="btn btn-primary" data-action="next" disabled>Ver mis resultados <span class="arrow">&rarr;</span></button>
+    </div>
+  </section>
+
+  <!-- TELA 7 — Disclaimer -->
+  <section class="screen" data-screen="disclaimer">
+    <div class="lead-in">Antes de mostrarte tu combinación</div>
+    <div class="disclaimer-card">
+      <div class="disclaimer-title">Aviso importante</div>
+      <p class="disclaimer-text">Este test tiene fines exclusivamente educativos. La cúrcuma, el jengibre y otros ingredientes mencionados son alimentos comunes; sin embargo, en dosis concentradas pueden interactuar con ciertas medicaciones (incluyendo <strong>anticoagulantes como warfarina o aspirina diaria, antihipertensivos y antidiabéticos orales</strong>). <strong>Consultá a tu médico antes de incorporar cualquier nuevo ingrediente a tu rutina diaria si tomás medicación regular.</strong> Los resultados individuales pueden variar.</p>
+    </div>
+    <div class="actions">
+      <button class="btn btn-primary" data-action="next">Entendido, ver mi resultado <span class="arrow">&rarr;</span></button>
+    </div>
+  </section>
+
+  <!-- TELA 8 — Processing -->
+  <section class="screen" data-screen="processing">
+    <div class="processing">
+      <div class="spinner"></div>
+      <div class="processing-text" id="processingText">Analizando tu rutina matutina&hellip;</div>
+      <div class="processing-bar"><div class="processing-fill" id="processingFill"></div></div>
+    </div>
+  </section>
+
+  <!-- TELA 9 — Result -->
+  <section class="screen" data-screen="result">
+    <div class="result-tag"><span class="check">&check;</span><span>Tu ritual matutino está listo</span></div>
+    <h1 class="profile-name" id="profileName">Ritual <em>"Mañanas Sin Rigidez"</em></h1>
+
+    <div class="result-card">
+      <p>Por tus respuestas, identificamos que <strong>el ritual matutino que mejor se alinea con tu situación</strong> incluye estas tres piezas:</p>
+
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pn">1</div>
+          <p><strong>Cúrcuma con la combinación correcta</strong> &mdash; porque la cúrcuma sola <strong>casi no entra al cuerpo</strong>. Una pizca de pimienta negra, un poco de grasa buena, jengibre fresco y la cantidad justa cambian todo. La mayoría de las cápsulas y las recetas virales <strong>dejan afuera al menos uno de estos ingredientes</strong>. Por eso no sentís nada.</p>
+        </div>
+        <div class="pillar">
+          <div class="pn">2</div>
+          <p><strong>La cantidad correcta para vos</strong> &mdash; porque depende de tu edad, tu peso, qué tan fuerte es la inflamación y cómo es tu rutina actual. Más cúrcuma no es mejor. Hay un punto justo, y se puede calcular.</p>
+        </div>
+        <div class="pillar">
+          <div class="pn">3</div>
+          <p><strong>Un protocolo simple, de pocos minutos al día</strong> &mdash; sin cápsulas caras, sin gastos cada mes, sin equipamientos. Pensado especialmente para personas que ya intentaron muchas cosas y no encontraron una que se pueda sostener.</p>
+        </div>
+      </div>
+
+      <p>Hemos preparado una explicación completa, presentada por el <strong>Dr. Ramírez Salazar</strong> &mdash; médico cirujano con formación en medicina deportiva, dedicado los últimos 32 meses al estudio de los compuestos antiinflamatorios naturales en la salud articular de adultos mayores.</p>
+    </div>
+
+    <div class="why-video">
+      <h3>¿Por qué un video y no solo la receta?</h3>
+      <p>Porque <strong>la cantidad correcta</strong>, <strong>la combinación exacta</strong> y <strong>los detalles que hacen la diferencia entre que funcione y no funcione</strong> no caben en un párrafo. El Dr. Salazar lo explica con calma &mdash; incluyendo las dos preguntas más importantes:</p>
+      <ol>
+        <li><strong>¿Es seguro para vos según tu medicación actual?</strong> (especialmente importante si tomás anticoagulantes, antihipertensivos o antidiabéticos)</li>
+        <li><strong>¿En qué se diferencia esto de las cápsulas o recetas virales que ya probaste?</strong></li>
+      </ol>
+    </div>
+
+    <div class="urgency">
+      <strong>&#9888; Importante:</strong> Por las restricciones recientes en redes sociales sobre salud natural, esta explicación puede dejar de estar disponible en cualquier momento. Si tenés un rato libre, conviene verla ahora.
+    </div>
+
+    <div class="actions">
+      <a href="#" class="btn btn-primary" id="ctaVsl">
+        <span>&#9654; Ver mi ritual explicado ahora</span>
+      </a>
+      <span class="cta-sub">Video corto. Sin tarjeta. Sin teléfono. Sin llamadas comerciales.</span>
+    </div>
+
+    <div class="closing-note">
+      <span class="lead-line">Tu ritual personalizado está esperándote del otro lado del botón.</span>
+      La explicación cubre la combinación exacta, las dosis ajustadas a tu perfil y las precauciones según tu medicación. El test no recopila datos sensibles. El video tampoco te va a pedir tarjeta ni teléfono para verlo.
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div><a href="/privacidad">Privacidad</a> &middot; <a href="/terminos">Términos</a> &middot; <a href="mailto:contacto@laappflex.shop">Contacto</a></div>
+  <div style="margin-top:8px">AppFlex &middot; &copy; 2026 &mdash; Todos los derechos reservados</div>
+</footer>
+
+<script>
+(function(){
+  var VSL_URL = 'https://laappflex.shop/v1';
+
+  var state = {
+    answers: {q1:null, q2:null, q3:[], q4:null, q5:null, q6:null},
+    screenOrder: ['q1','q2','q3','q4','q5','q6','disclaimer','processing','result'],
+    current: 0
+  };
+
+  var ritualMap = {
+    sin_rigidez: {name:'Mañanas Sin Rigidez',  slug:'sin_rigidez'},
+    energia:     {name:'Energía Sostenida',    slug:'energia'},
+    natural:     {name:'Camino Natural',       slug:'natural'},
+    calma:       {name:'Calma Interior',       slug:'calma'},
+    activa:      {name:'Vida Activa',          slug:'activa'},
+    consulta:    {name:'Conversación Médica',  slug:'consulta'}
+  };
+
+  function $(sel, root){return (root||document).querySelector(sel)}
+  function $$(sel, root){return Array.from((root||document).querySelectorAll(sel))}
+  function getScreen(name){return $('.screen[data-screen="'+name+'"]')}
+
+  function updateProgress(){
+    var pctSteps = state.screenOrder.length - 1;
+    var pct = Math.min(100, (state.current / pctSteps) * 100);
+    $('#progressBar').style.width = pct + '%';
+  }
+
+  function showScreen(idx){
+    state.current = idx;
+    var key = state.screenOrder[idx];
+    $$('.screen').forEach(function(s){s.classList.remove('active')});
+    getScreen(key).classList.add('active');
+    window.scrollTo({top:0, behavior:'smooth'});
+    updateProgress();
+    if (key === 'processing') runProcessing();
+    if (key === 'result') renderResult();
+  }
+
+  function nextScreen(){
+    if (state.current < state.screenOrder.length - 1) showScreen(state.current + 1);
+  }
+
+  $$('.options').forEach(function(group){
+    var qKey = group.getAttribute('data-q');
+    var type = group.getAttribute('data-type');
+    var btnNext = group.parentElement.querySelector('[data-action="next"]');
+
+    group.addEventListener('change', function(e){
+      var input = e.target;
+      var label = input.closest('.option');
+
+      if (type === 'single') {
+        $$('.option', group).forEach(function(o){o.classList.remove('selected')});
+        label.classList.add('selected');
+        state.answers[qKey] = input.value;
+        btnNext.disabled = false;
+      } else {
+        if (input.checked && input.dataset.exclusive === 'true') {
+          $$('input[type="checkbox"]', group).forEach(function(cb){
+            if (cb !== input) {cb.checked = false; cb.closest('.option').classList.remove('selected')}
+          });
+        } else if (input.checked) {
+          var excl = $('input[data-exclusive="true"]', group);
+          if (excl && excl.checked) {excl.checked = false; excl.closest('.option').classList.remove('selected')}
+        }
+        if (input.checked) label.classList.add('selected');
+        else label.classList.remove('selected');
+
+        var checked = $$('input[type="checkbox"]:checked', group).map(function(c){return c.value});
+        state.answers[qKey] = checked;
+        btnNext.disabled = checked.length === 0;
+      }
+    });
+  });
+
+  $$('[data-action="next"]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      if (btn.disabled) return;
+      nextScreen();
+    });
+  });
+
+  function runProcessing(){
+    var triedTurmeric = state.answers.q2 === 'capsulas' || state.answers.q2 === 'viral';
+    var seq = [
+      'Analizando tu rutina matutina&hellip;',
+      triedTurmeric
+        ? 'Considerando que ya intentaste cúrcuma sin resultado&hellip;'
+        : 'Cruzando con tu nivel de familiaridad con ingredientes ancestrales&hellip;',
+      'Identificando combinación más compatible con tu situación&hellip;',
+      'Verificando precauciones de interacción con medicación&hellip;',
+      'Listo. Tu ritual matutino está listo.'
+    ];
+
+    var textEl = $('#processingText');
+    var fillEl = $('#processingFill');
+    var stepDur = 700;
+    var total = stepDur * seq.length;
+
+    seq.forEach(function(line, i){
+      setTimeout(function(){
+        textEl.style.opacity = 0;
+        setTimeout(function(){
+          textEl.innerHTML = line;
+          textEl.style.opacity = 1;
+        }, 120);
+      }, i * stepDur);
+    });
+
+    var start = Date.now();
+    function tick(){
+      var pct = Math.min(100, ((Date.now() - start) / total) * 100);
+      fillEl.style.width = pct + '%';
+      if (pct < 100) requestAnimationFrame(tick);
+    }
+    tick();
+
+    setTimeout(function(){ showScreen(state.current + 1); }, total + 200);
+  }
+
+  function buildVslUrl(slug){
+    var p = new URLSearchParams(window.location.search);
+    var utmKeys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_id'];
+    var url = new URL(VSL_URL);
+    utmKeys.forEach(function(k){
+      if (p.has(k)) url.searchParams.set(k, p.get(k));
+    });
+    url.searchParams.set('ritual', slug);
+    return url.toString();
+  }
+
+  function renderResult(){
+    var ritual = ritualMap[state.answers.q4] || ritualMap.sin_rigidez;
+    $('#profileName').innerHTML = 'Ritual <em>"' + ritual.name + '"</em>';
+    var cta = $('#ctaVsl');
+    cta.setAttribute('href', buildVslUrl(ritual.slug));
+    cta.addEventListener('click', function(){
+      (window.dataLayer = window.dataLayer || []).push({event:'video'});
+    });
+  }
+
+  updateProgress();
+})();
+</script>
+
+</body>
+</html>

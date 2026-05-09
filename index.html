@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AppFlex &mdash; Salud articular después de los 60, sin promesas mágicas</title>
+  <meta name="description" content="AppFlex acompaña a personas mayores de 60 con dolor articular crónico. Información honesta, sin curas milagrosas. Lecturas y guías basadas en el trabajo del Dr. Ramírez Salazar.">
+
+  <link rel="canonical" href="https://laappflex.shop/">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AppFlex — Salud articular después de los 60">
+  <meta property="og:description" content="Información honesta sobre dolor articular crónico, sin curas milagrosas. Basado en el trabajo del Dr. Ramírez Salazar.">
+  <meta property="og:url" content="https://laappflex.shop/">
+  <meta property="og:locale" content="es">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+  <link rel="dns-prefetch" href="https://load.zurf.laappflex.shop">
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src="https://load.zurf.laappflex.shop/73gxeayutss.js?"+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','8z=GhdJMi0sSCw4OEwjPysuXgVORltIRwEWTh8VFAkRAxQWC1oGEQ4V');</script>
+  <!-- End Google Tag Manager -->
+
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+    :root{
+      --cream:#FBF7EE;
+      --cream-deep:#F2EBDB;
+      --paper:#FFFDF7;
+      --ink:#252E27;
+      --ink-soft:#4A5648;
+      --ink-mute:#82907F;
+      --line:#DDE5DA;
+      --sage:#A8C9B8;
+      --sage-soft:#C9DDD0;
+      --sage-deep:#6B9580;
+      --sage-darker:#3F5C4F;
+      --warm:#B89858;
+      --warm-deep:#9A7E40;
+      --shadow:0 1px 2px rgba(40,60,45,.05), 0 8px 28px rgba(40,60,45,.07);
+      --shadow-cta:0 4px 14px rgba(154,126,64,.28), 0 1px 2px rgba(40,60,45,.08);
+    }
+
+    html{scroll-behavior:smooth}
+    body{
+      background:var(--cream);
+      color:var(--ink);
+      font-family:'Lora', Georgia, serif;
+      font-size:18px;
+      line-height:1.7;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow-x:hidden;
+    }
+
+    section{scroll-margin-top:80px}
+
+    /* ==================== NAVBAR ==================== */
+    .nav{
+      position:sticky;top:0;z-index:50;
+      background:rgba(251,247,238,.94);
+      backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{
+      max-width:1120px;margin:0 auto;
+      padding:14px 24px;
+      display:flex;align-items:center;justify-content:space-between;gap:20px;
+      font-family:'Inter',sans-serif;
+    }
+    .nav-brand{
+      font-weight:700;font-size:15px;letter-spacing:.04em;
+      color:var(--sage-darker);text-decoration:none;
+      display:flex;align-items:center;gap:10px;text-transform:uppercase;
+    }
+    .nav-brand-mark{
+      width:26px;height:26px;border-radius:50%;background:var(--sage);
+      display:flex;align-items:center;justify-content:center;
+      color:#fff;font-weight:800;font-size:13px;
+    }
+    .nav-links{
+      display:flex;align-items:center;gap:8px;
+      list-style:none;
+    }
+    .nav-links a{
+      display:inline-block;
+      color:var(--ink-soft);text-decoration:none;
+      font-size:14.5px;font-weight:500;
+      padding:8px 14px;border-radius:8px;
+      transition:color .15s, background .15s;
+    }
+    .nav-links a:hover{
+      color:var(--sage-darker);
+      background:rgba(168,201,184,.12);
+    }
+    .nav-links .nav-cta{
+      background:var(--sage-deep);
+      color:#fff;font-weight:600;
+      padding:9px 18px;
+      margin-left:6px;
+    }
+    .nav-links .nav-cta:hover{
+      background:var(--sage-darker);
+      color:#fff;
+    }
+    .nav-toggle{
+      display:none;
+      background:none;border:none;cursor:pointer;
+      padding:8px;color:var(--sage-darker);
+    }
+    .nav-toggle svg{width:24px;height:24px;display:block}
+
+    @media (max-width:820px){
+      .nav-toggle{display:block}
+      .nav-links{
+        position:absolute;top:100%;left:0;right:0;
+        flex-direction:column;align-items:stretch;gap:0;
+        background:var(--paper);
+        border-bottom:1px solid var(--line);
+        padding:8px 16px 18px;
+        box-shadow:0 8px 24px rgba(40,60,45,.08);
+        transform:translateY(-12px);opacity:0;pointer-events:none;
+        transition:transform .2s, opacity .2s;
+      }
+      .nav-links.open{transform:translateY(0);opacity:1;pointer-events:auto}
+      .nav-links a{
+        padding:14px 12px;font-size:15.5px;
+        border-radius:8px;
+      }
+      .nav-links .nav-cta{
+        margin-top:8px;text-align:center;
+        padding:14px;
+      }
+    }
+
+    /* ==================== HERO ==================== */
+    .hero{
+      max-width:980px;margin:0 auto;
+      padding:84px 24px 64px;
+      text-align:left;
+    }
+    .eyebrow{
+      font-family:'Inter',sans-serif;font-size:12px;font-weight:600;
+      letter-spacing:.22em;text-transform:uppercase;color:var(--sage-deep);
+      margin-bottom:24px;display:flex;align-items:center;gap:12px;
+    }
+    .eyebrow::before{content:"";width:32px;height:1px;background:var(--sage-deep)}
+
+    h1.hero-title{
+      font-family:'Lora',serif;font-weight:600;
+      font-size:clamp(36px, 6.4vw, 62px);
+      line-height:1.08;letter-spacing:-.014em;
+      color:var(--ink);margin-bottom:24px;
+      max-width:880px;
+    }
+    h1.hero-title em{font-style:italic;color:var(--sage-darker);font-weight:500}
+
+    .hero-sub{
+      font-size:clamp(18px, 2.2vw, 22px);
+      line-height:1.55;color:var(--ink-soft);
+      max-width:720px;margin-bottom:36px;
+    }
+
+    .hero-actions{
+      display:flex;flex-wrap:wrap;gap:14px;align-items:center;
+      margin-bottom:28px;
+    }
+    .btn-ghost{
+      display:inline-flex;align-items:center;gap:10px;
+      font-family:'Inter',sans-serif;font-weight:600;font-size:15px;
+      color:var(--sage-darker);text-decoration:none;
+      padding:14px 22px;border-radius:10px;
+      border:1.5px solid var(--sage-deep);
+      background:transparent;
+      transition:background .15s, color .15s, transform .12s;
+    }
+    .btn-ghost:hover{
+      background:var(--sage-deep);color:#fff;
+      transform:translateY(-1px);
+    }
+    .btn-ghost .arrow{transition:transform .2s}
+    .btn-ghost:hover .arrow{transform:translateX(3px)}
+
+    .hero-meta{
+      display:flex;flex-wrap:wrap;gap:14px 28px;align-items:center;
+      font-family:'Inter',sans-serif;font-size:13px;color:var(--ink-mute);
+      padding-top:24px;border-top:1px solid var(--line);
+    }
+    .hero-meta strong{color:var(--ink-soft);font-weight:600}
+    .hero-meta .dot{width:4px;height:4px;border-radius:50%;background:var(--ink-mute)}
+
+    /* ==================== SECTION BASE ==================== */
+    .section{
+      max-width:1080px;margin:0 auto;
+      padding:72px 24px;
+    }
+    .section-eyebrow{
+      font-family:'Inter',sans-serif;font-size:12px;font-weight:700;
+      letter-spacing:.22em;text-transform:uppercase;color:var(--sage-deep);
+      margin-bottom:14px;
+    }
+    .section-title{
+      font-family:'Lora',serif;font-weight:600;
+      font-size:clamp(28px, 4.4vw, 42px);
+      line-height:1.16;letter-spacing:-.012em;
+      color:var(--ink);margin-bottom:18px;max-width:820px;
+    }
+    .section-title em{font-style:italic;color:var(--sage-darker);font-weight:500}
+    .section-lead{
+      font-size:19px;line-height:1.65;
+      color:var(--ink-soft);max-width:720px;margin-bottom:48px;
+    }
+
+    /* ==================== COMPROMISO PILLARS ==================== */
+    .pillars-section{
+      background:var(--paper);
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+    .pillars-grid{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:20px;
+    }
+    @media (max-width:760px){
+      .pillars-grid{grid-template-columns:1fr}
+    }
+    .pillar-card{
+      background:var(--cream);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:32px 32px 28px;
+      transition:transform .2s, box-shadow .2s, border-color .2s;
+    }
+    .pillar-card:hover{
+      transform:translateY(-3px);
+      box-shadow:var(--shadow);
+      border-color:var(--sage);
+    }
+    .pillar-icon{
+      width:48px;height:48px;border-radius:12px;
+      background:linear-gradient(160deg, var(--sage) 0%, var(--sage-deep) 100%);
+      color:#fff;
+      display:flex;align-items:center;justify-content:center;
+      font-size:24px;
+      margin-bottom:18px;
+    }
+    .pillar-title{
+      font-family:'Lora',serif;font-weight:600;
+      font-size:21px;line-height:1.25;
+      color:var(--ink);margin-bottom:10px;
+    }
+    .pillar-title em{font-style:italic;color:var(--sage-darker);font-weight:500}
+    .pillar-text{
+      font-size:16.5px;line-height:1.6;
+      color:var(--ink-soft);
+    }
+    .pillar-text strong{color:var(--ink);font-weight:600}
+
+    /* ==================== MANIFESTO ==================== */
+    .manifesto{
+      max-width:760px;margin:0 auto;
+      padding:0 24px;
+    }
+    .manifesto p{
+      font-size:20px;line-height:1.7;
+      color:var(--ink-soft);
+      margin-bottom:22px;
+    }
+    .manifesto p strong{color:var(--ink);font-weight:600}
+    .manifesto p:first-of-type::first-letter{
+      font-family:'Lora',serif;font-weight:600;font-size:3.4em;
+      float:left;line-height:.9;padding:6px 12px 0 0;color:var(--sage-darker);
+    }
+    .manifesto-quote{
+      margin:36px -10px;
+      padding:30px 30px;
+      border-left:3px solid var(--sage-deep);
+      background:linear-gradient(180deg, rgba(168,201,184,.18) 0%, transparent 100%);
+      font-family:'Lora',serif;
+      font-style:italic;
+      font-size:clamp(20px, 2.6vw, 24px);
+      line-height:1.45;
+      color:var(--ink);font-weight:500;
+    }
+    .manifesto-quote::before{
+      content:"";display:block;
+      width:28px;height:2px;background:var(--sage-deep);
+      margin-bottom:18px;
+    }
+
+    /* ==================== DOCTOR ==================== */
+    .doc-section{
+      background:var(--paper);
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+    .doc-card{
+      max-width:880px;margin:0 auto;
+      display:grid;
+      grid-template-columns:160px 1fr;
+      gap:36px;
+      align-items:center;
+    }
+    @media (max-width:620px){
+      .doc-card{grid-template-columns:1fr;text-align:left;gap:22px}
+      .doc-avatar{margin:0}
+    }
+    .doc-avatar{
+      width:160px;height:160px;border-radius:50%;
+      object-fit:cover;display:block;
+      border:4px solid var(--cream);
+      box-shadow:0 6px 20px rgba(40,60,45,.14);
+    }
+    .doc-tag{
+      font-family:'Inter',sans-serif;font-size:11.5px;font-weight:700;
+      letter-spacing:.22em;text-transform:uppercase;color:var(--sage-deep);
+      margin-bottom:10px;
+    }
+    .doc-name{
+      font-family:'Lora',serif;font-weight:600;
+      font-size:clamp(26px, 3.4vw, 32px);
+      color:var(--ink);margin-bottom:6px;
+    }
+    .doc-role{
+      font-family:'Inter',sans-serif;font-size:14.5px;font-weight:500;
+      color:var(--ink-soft);margin-bottom:16px;
+    }
+    .doc-bio{
+      font-size:17px;line-height:1.65;color:var(--ink-soft);
+    }
+    .doc-bio strong{color:var(--ink);font-weight:600}
+    .doc-credentials{
+      display:flex;flex-wrap:wrap;gap:10px;
+      margin-top:18px;
+    }
+    .doc-cred{
+      font-family:'Inter',sans-serif;font-size:12.5px;font-weight:600;
+      color:var(--sage-darker);
+      background:rgba(168,201,184,.18);
+      padding:6px 12px;border-radius:6px;
+      letter-spacing:.02em;
+    }
+
+    /* ==================== LO QUE HACEMOS / NO HACEMOS ==================== */
+    .promise-grid{
+      display:grid;grid-template-columns:1fr 1fr;gap:24px;
+    }
+    @media (max-width:760px){
+      .promise-grid{grid-template-columns:1fr}
+    }
+    .promise-col{
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:30px 30px 26px;
+      box-shadow:var(--shadow);
+    }
+    .promise-col.do{border-top:3px solid var(--sage-deep)}
+    .promise-col.dont{border-top:3px solid var(--warm)}
+    .promise-head{
+      font-family:'Inter',sans-serif;
+      font-size:11.5px;font-weight:700;
+      letter-spacing:.22em;text-transform:uppercase;
+      margin-bottom:14px;
+    }
+    .promise-col.do .promise-head{color:var(--sage-deep)}
+    .promise-col.dont .promise-head{color:var(--warm-deep)}
+    .promise-title{
+      font-family:'Lora',serif;font-weight:600;
+      font-size:22px;line-height:1.25;
+      color:var(--ink);margin-bottom:18px;
+    }
+    .promise-title em{font-style:italic;color:var(--sage-darker);font-weight:500}
+    .promise-list{
+      list-style:none;display:grid;gap:12px;
+    }
+    .promise-list li{
+      position:relative;padding-left:30px;
+      font-size:16.5px;line-height:1.55;
+      color:var(--ink-soft);
+    }
+    .promise-list li::before{
+      position:absolute;left:0;top:1px;
+      width:20px;height:20px;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      font-family:'Inter',sans-serif;font-weight:700;font-size:13px;
+    }
+    .promise-col.do .promise-list li::before{
+      content:"\2713";color:#fff;background:var(--sage-deep);
+    }
+    .promise-col.dont .promise-list li::before{
+      content:"\2715";color:#fff;background:var(--warm);
+    }
+    .promise-list strong{color:var(--ink);font-weight:600}
+
+    /* ==================== FAQ ==================== */
+    .faq-section{
+      max-width:780px;margin:0 auto;
+      padding:64px 24px;
+    }
+    .faq-list{display:grid;gap:8px;margin-top:24px}
+    .faq-item{
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:12px;
+      overflow:hidden;
+    }
+    .faq-item summary{
+      list-style:none;cursor:pointer;
+      padding:18px 22px;
+      font-family:'Inter',sans-serif;font-weight:600;font-size:16px;
+      color:var(--ink);
+      display:flex;align-items:flex-start;gap:14px;
+      transition:background .15s;
+    }
+    .faq-item summary:hover{background:rgba(168,201,184,.08)}
+    .faq-item summary::-webkit-details-marker{display:none}
+    .faq-item summary::after{
+      content:"+";margin-left:auto;flex-shrink:0;
+      font-size:22px;font-weight:400;
+      color:var(--sage-deep);line-height:1;transition:transform .2s;
+    }
+    .faq-item[open] summary::after{content:"\2013"}
+    .faq-body{
+      padding:0 22px 20px;
+      font-size:16px;line-height:1.65;color:var(--ink-soft);
+    }
+    .faq-body p{margin-bottom:10px}
+    .faq-body p:last-child{margin-bottom:0}
+    .faq-body a{color:var(--sage-darker);text-decoration:underline}
+
+    /* ==================== BLOG (NO FINAL) ==================== */
+    .blog-section{
+      background:var(--paper);
+      border-top:1px solid var(--line);
+    }
+    .blog-grid{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:22px;
+    }
+    @media (max-width:760px){
+      .blog-grid{grid-template-columns:1fr}
+    }
+    .blog-card{
+      background:var(--cream);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:30px 30px 26px;
+      box-shadow:var(--shadow);
+      transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      display:flex;flex-direction:column;
+      text-decoration:none;color:inherit;
+    }
+    .blog-card:hover{
+      transform:translateY(-3px);
+      box-shadow:0 4px 12px rgba(40,60,45,.06), 0 14px 36px rgba(40,60,45,.1);
+      border-color:var(--sage);
+    }
+    .blog-card.featured{
+      grid-column:1/-1;
+      background:linear-gradient(160deg, var(--cream) 0%, #ECF3EE 100%);
+    }
+    .blog-card.featured .blog-title{font-size:clamp(24px, 3.4vw, 32px)}
+    .blog-tag{
+      font-family:'Inter',sans-serif;font-size:11px;font-weight:700;
+      letter-spacing:.18em;text-transform:uppercase;
+      color:var(--sage-deep);margin-bottom:14px;
+      display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+    }
+    .blog-tag .pill{
+      background:rgba(168,201,184,.22);
+      color:var(--sage-darker);
+      padding:3px 9px;border-radius:4px;
+      font-size:10.5px;letter-spacing:.12em;
+    }
+    .blog-title{
+      font-family:'Lora',serif;font-weight:600;
+      font-size:22px;line-height:1.25;
+      letter-spacing:-.005em;
+      color:var(--ink);margin-bottom:12px;
+    }
+    .blog-title em{font-style:italic;color:var(--sage-darker);font-weight:500}
+    .blog-excerpt{
+      font-size:16px;line-height:1.6;
+      color:var(--ink-soft);margin-bottom:20px;
+      flex:1;
+    }
+    .blog-meta{
+      font-family:'Inter',sans-serif;font-size:13px;
+      color:var(--ink-mute);
+      display:flex;align-items:center;gap:8px;
+      margin-top:auto;
+    }
+    .blog-meta .arrow{
+      margin-left:auto;
+      color:var(--sage-deep);font-weight:600;
+      transition:transform .2s;
+    }
+    .blog-card:hover .arrow{transform:translateX(4px)}
+
+    /* ==================== FOOTER ==================== */
+    footer{
+      max-width:1120px;margin:0 auto;
+      padding:48px 24px 60px;
+      border-top:1px solid var(--line);
+      font-family:'Inter',sans-serif;
+      font-size:12px;line-height:1.7;
+      color:var(--ink-mute);
+    }
+    .footer-top{
+      display:flex;flex-wrap:wrap;justify-content:space-between;
+      gap:24px;margin-bottom:28px;
+    }
+    .footer-brand{
+      display:flex;align-items:center;gap:10px;
+      color:var(--sage-darker);font-weight:700;font-size:14px;
+      text-transform:uppercase;letter-spacing:.04em;
+    }
+    .footer-brand-mark{
+      width:24px;height:24px;border-radius:50%;background:var(--sage);
+      display:flex;align-items:center;justify-content:center;
+      color:#fff;font-weight:800;font-size:12px;
+    }
+    .footer-tagline{
+      font-family:'Lora',serif;font-style:italic;
+      color:var(--ink-soft);font-size:14px;
+      margin-top:6px;font-weight:400;
+      text-transform:none;letter-spacing:0;
+    }
+    .footer-links{
+      display:flex;flex-wrap:wrap;gap:6px 14px;
+      font-size:13px;
+    }
+    .footer-links a{
+      color:var(--sage-darker);text-decoration:none;
+      transition:color .15s;
+    }
+    .footer-links a:hover{
+      color:var(--sage-deep);text-decoration:underline;
+    }
+    .footer-links .sep{color:var(--ink-mute);opacity:.5}
+    .footer-copyright{
+      margin-bottom:16px;font-weight:600;color:var(--ink-soft);
+      padding-top:18px;border-top:1px solid var(--line);
+    }
+    .footer-disclaimer{
+      max-width:760px;text-align:left;font-size:11px;
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:10px;
+      padding:18px 20px;line-height:1.65;
+    }
+    .footer-disclaimer strong{color:var(--ink-soft)}
+
+    /* Mobile tweaks */
+    @media (max-width:520px){
+      .hero{padding:56px 20px 40px}
+      .section{padding:52px 20px}
+      .doc-card{gap:18px}
+      .pillar-card,.promise-col,.blog-card{padding:24px 22px}
+    }
+  </style>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://load.zurf.laappflex.shop/ns.html?id=GTM-TKK8VFJK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- ==================== NAVBAR ==================== -->
+<header class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/">
+      <span class="nav-brand-mark">A</span>AppFlex
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+        <line x1="4" y1="7" x2="20" y2="7"/>
+        <line x1="4" y1="12" x2="20" y2="12"/>
+        <line x1="4" y1="17" x2="20" y2="17"/>
+      </svg>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#compromiso">Compromiso</a></li>
+      <li><a href="#manifiesto">Manifiesto</a></li>
+      <li><a href="#dr">El Dr. Salazar</a></li>
+      <li><a href="#faq">Preguntas</a></li>
+      <li><a class="nav-cta" href="#blog">Leer el blog</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+  <div class="eyebrow">AppFlex &middot; salud articular para mayores de 60</div>
+  <h1 class="hero-title">Información honesta sobre el dolor articular &mdash; <em>la conversación que el sistema no tiene tiempo de tener.</em></h1>
+  <p class="hero-sub">No vendemos curas milagrosas. No prometemos eliminar enfermedades. Acompañamos a personas mayores de 60 con lecturas, guías y herramientas pensadas para complementar a tu médico de confianza, nunca para reemplazarlo.</p>
+  <div class="hero-actions">
+    <a class="btn-ghost" href="#compromiso">Conocé nuestro compromiso <span class="arrow">&rarr;</span></a>
+    <a class="btn-ghost" href="#blog" style="border-color:var(--ink-mute);color:var(--ink-soft)">Ir al blog <span class="arrow">&rarr;</span></a>
+  </div>
+  <div class="hero-meta">
+    <span><strong>Público:</strong> personas de 60 a 85 años</span>
+    <span class="dot"></span>
+    <span><strong>Idioma:</strong> español</span>
+    <span class="dot"></span>
+    <span><strong>Director clínico:</strong> Dr. Ramírez Salazar</span>
+  </div>
+</section>
+
+<!-- ==================== COMPROMISO ==================== -->
+<section class="pillars-section" id="compromiso">
+  <div class="section">
+    <div class="section-eyebrow">Nuestro compromiso</div>
+    <h2 class="section-title">Cuatro principios que <em>no negociamos</em>, pase lo que pase.</h2>
+    <p class="section-lead">Cuando una marca habla de "principios" y no los explica, suele ser porque no los tiene. Acá te decimos en concreto qué nos comprometemos a hacer &mdash; y por qué.</p>
+
+    <div class="pillars-grid">
+
+      <div class="pillar-card">
+        <div class="pillar-icon">&#9879;</div>
+        <h3 class="pillar-title">Honestidad <em>antes que persuasión</em></h3>
+        <p class="pillar-text">No prometemos curar artritis, artrosis ni ninguna enfermedad crónica. Lo que decimos está respaldado por estudios serios o se presenta como lo que es: <strong>experiencia y observación</strong>, no diagnóstico. Si algo no se sabe, lo decimos.</p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">&#128218;</div>
+        <h3 class="pillar-title">Evidencia <em>traducida con calma</em></h3>
+        <p class="pillar-text">Nuestro contenido cita investigaciones publicadas en revistas reconocidas (Manchester, Monell, Planta Medica, Osteoarthritis and Cartilage, entre otras) &mdash; pero traducidas a la mesa de tu cocina. <strong>Sin tecnicismos innecesarios.</strong> Sin "mecanismos" que nadie entiende.</p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">&#129489;&#8205;&#9877;&#65039;</div>
+        <h3 class="pillar-title">Complementamos al médico <em>&mdash; nunca lo reemplazamos</em></h3>
+        <p class="pillar-text">Si tomás medicación, eso lo conversás con tu médico de cabecera. Nuestro material te ayuda a llegar <strong>mejor preparado a la consulta</strong>: con mejores preguntas, con información clara, con vocabulario para pedir lo que necesitás. Nada más, nada menos.</p>
+      </div>
+
+      <div class="pillar-card">
+        <div class="pillar-icon">&#128274;</div>
+        <h3 class="pillar-title">Privacidad <em>real, no de fachada</em></h3>
+        <p class="pillar-text">No pedimos número de teléfono. No pedimos tarjeta para leer. No vendemos datos. <strong>No te vamos a llamar.</strong> Lo que dejes en el sitio queda en el sitio &mdash; y podés pedirnos eliminarlo cuando quieras escribiendo a privacidad@laappflex.shop.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== MANIFIESTO ==================== -->
+<section class="section" id="manifiesto" style="max-width:880px">
+  <div class="section-eyebrow">Por qué existimos</div>
+  <h2 class="section-title">Una consulta de quince minutos <em>no alcanza para una persona entera</em>.</h2>
+
+  <div class="manifesto">
+    <p>Hay una conversación que casi nunca sucede en el consultorio. La de tu cuerpo entero. La que empieza con la rigidez al despertar, sigue por el plato del almuerzo y termina con la lista de medicamentos que se fue sumando una receta por vez, sin que nadie la mirara entera.</p>
+
+    <p>Esa conversación no se evita por mala voluntad. Se evita porque el sistema le da a cada médico <strong>quince minutos por paciente</strong>. Y quince minutos no alcanzan para una vida entera de cuerpo, hábitos, dolores y miedos.</p>
+
+    <div class="manifesto-quote">
+      Lo que termina decidiendo cómo te sentís el lunes próximo no son esos quince minutos &mdash; es el resto del día. La caminata. El plato. La hora de dormir. La conversación que evitaste tener la semana pasada.
+    </div>
+
+    <p>AppFlex existe para ocupar ese espacio que el sistema no tiene tiempo de cubrir. <strong>No para reemplazar a tu médico.</strong> Para acompañarte en el resto del día &mdash; con información honesta, con lecturas que se entienden y con la calma de no estarte vendiendo nada urgente.</p>
+
+    <p>Nuestro material está pensado para que llegues mejor preparado a la consulta y vivas mejor entre una consulta y la siguiente. Si lo que escribimos te lleva a hacer una pregunta nueva a tu médico, ya cumplió su función.</p>
+  </div>
+</section>
+
+<!-- ==================== DR. SALAZAR ==================== -->
+<section class="doc-section" id="dr">
+  <div class="section">
+    <div class="doc-card">
+      <img class="doc-avatar" src="assets/img/dr-salazar.webp" alt="Dr. Ramírez Salazar" width="160" height="160" loading="lazy">
+      <div>
+        <div class="doc-tag">Director clínico</div>
+        <h2 class="doc-name">Dr. Ramírez Salazar</h2>
+        <div class="doc-role">Médico cirujano &middot; formación en medicina deportiva</div>
+        <p class="doc-bio">Pasó por una de las mejores universidades de Estados Unidos y trabajó con atletas profesionales &mdash; entre ellos, parte del cuerpo médico de un equipo de la NBA. Hace más de <strong>32 meses</strong> dedica su tiempo a estudiar el dolor articular crónico en personas mayores de 60.</p>
+        <p class="doc-bio" style="margin-top:14px">Su trabajo aborda lo que muchos colegas reconocen en privado pero rara vez tienen tiempo de presentar en la consulta de quince minutos: <strong>la inflamación silenciosa</strong>, las interacciones de varios medicamentos diarios y los hábitos cotidianos que pesan más que cualquier prescripción aislada.</p>
+        <div class="doc-credentials">
+          <span class="doc-cred">Medicina cirujana</span>
+          <span class="doc-cred">Medicina deportiva</span>
+          <span class="doc-cred">Ex equipo médico NBA</span>
+          <span class="doc-cred">+32 meses de investigación</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== LO QUE HACEMOS / NO HACEMOS ==================== -->
+<section class="section" id="diferenciacion">
+  <div class="section-eyebrow">Diferenciación</div>
+  <h2 class="section-title">Lo que <em>sí</em> hacemos &mdash; y lo que <em>nunca</em> vas a encontrar acá.</h2>
+  <p class="section-lead">En un mundo donde todos prometen "soluciones definitivas", nos parece importante poner en blanco las dos listas. Para que sepas en qué tipo de lugar estás.</p>
+
+  <div class="promise-grid">
+
+    <div class="promise-col do">
+      <div class="promise-head">Lo que sí hacemos</div>
+      <h3 class="promise-title">Acompañamos, <em>no curamos</em></h3>
+      <ul class="promise-list">
+        <li><strong>Lecturas honestas</strong> sobre el dolor articular después de los 60, escritas en español claro y citando las fuentes.</li>
+        <li><strong>Tests cortos y gratuitos</strong> que te ayudan a entender en qué punto estás &mdash; sin pedirte tarjeta ni teléfono.</li>
+        <li><strong>Información sobre interacciones</strong> entre ingredientes naturales y medicación común (anticoagulantes, antihipertensivos, antidiabéticos).</li>
+        <li><strong>Guías para conversar mejor con tu médico</strong>: qué preguntar, cómo pedir una revisión de medicamentos, qué señales son importantes mencionar.</li>
+        <li><strong>Soporte en español</strong>, sin tecnicismos. Si nos escribís a contacto@laappflex.shop, te responde una persona, no un robot.</li>
+      </ul>
+    </div>
+
+    <div class="promise-col dont">
+      <div class="promise-head">Lo que nunca</div>
+      <h3 class="promise-title">Lo que nunca <em>vas a encontrar acá</em></h3>
+      <ul class="promise-list">
+        <li><strong>Promesas de cura</strong> para artritis reumatoide, artrosis avanzada o cualquier enfermedad crónica.</li>
+        <li><strong>Indicaciones de abandonar</strong> tu medicación actual. Eso siempre se conversa con tu médico tratante &mdash; nunca por tu cuenta.</li>
+        <li><strong>Llamadas comerciales</strong> a tu teléfono. No te lo pedimos justamente para eso.</li>
+        <li><strong>Suscripciones engañosas</strong> ni cargos ocultos. Lo gratuito es gratuito; lo pago dice claramente que es pago.</li>
+        <li><strong>Lenguaje técnico</strong> que vos no podés verificar. Si usamos un término científico, lo explicamos en la frase siguiente.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==================== FAQ ==================== -->
+<section class="faq-section" id="faq">
+  <div class="section-eyebrow">Preguntas frecuentes</div>
+  <h2 class="section-title" style="font-size:clamp(26px, 3.6vw, 34px)">Lo que la gente nos pregunta <em>antes de empezar a leer</em></h2>
+
+  <div class="faq-list">
+
+    <details class="faq-item">
+      <summary>¿AppFlex está contra los médicos?</summary>
+      <div class="faq-body">
+        <p>No. Todo lo que vas a leer acá <strong>complementa</strong> a tu médico, no lo reemplaza. La idea es que llegues a la consulta con mejores preguntas y más información &mdash; no que evites ir.</p>
+        <p>Las críticas que aparecen son al sistema (a los quince minutos por paciente, a la formación limitada en dolor crónico), no a los profesionales. Muchos médicos serios reconocen en privado las mismas limitaciones.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>¿Tengo que dejar mis medicamentos?</summary>
+      <div class="faq-body">
+        <p><strong>No, en absoluto.</strong> Nada en este sitio sugiere abandonar medicación. Si estás tomando algo para presión, colesterol, anticoagulación, diabetes o cualquier otra condición, eso lo conversás con tu médico tratante &mdash; nunca por tu cuenta.</p>
+        <p>Lo que sí te ayudamos a entender: qué preguntas vale la pena llevar a la consulta para que tu médico revise la lista entera con vos.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>¿Por qué AppFlex es gratis para leer? ¿Cuál es el truco?</summary>
+      <div class="faq-body">
+        <p>No hay truco. Las lecturas y los tests son gratuitos porque creemos que la información honesta es lo primero. Más adelante, si querés, podés acceder a un programa más completo &mdash; eso sí tiene un valor &mdash; pero el contenido educativo del blog y los tests <strong>no se cobran y no requieren tarjeta</strong>.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Soy escéptico. ¿Esto es uno de esos sitios que les venden curas falsas a los mayores?</summary>
+      <div class="faq-body">
+        <p>El escepticismo nos parece sano. Nada acá se presenta como "cura milagrosa". Los textos hablan de <strong>complementos</strong> a una rutina &mdash; movimiento, alimentación, hidratación, ingredientes naturales con base científica &mdash; nunca como reemplazo de tratamiento médico.</p>
+        <p>Si más adelante en el camino se ofrece un producto, queda <strong>claramente diferenciado</strong> del contenido educativo. Y siempre con garantía y soporte.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Tengo más de 70 años y no soy bueno con la tecnología. ¿Voy a poder usar esto?</summary>
+      <div class="faq-body">
+        <p>Sí. Las páginas están pensadas para que se lean cómodas en cualquier celular o computadora, sin instalar nada. Los tests se hacen tocando opciones &mdash; no hay que escribir nada.</p>
+        <p>Si en algún momento necesitás ayuda, podés escribirnos a <a href="mailto:contacto@laappflex.shop">contacto@laappflex.shop</a> y te respondemos en español, sin tecnicismos.</p>
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>¿Cómo manejan mi información personal?</summary>
+      <div class="faq-body">
+        <p>Aplicamos prácticas estrictas: no vendemos datos, no compartimos con terceros para fines comerciales, y podés pedir la eliminación de tus registros escribiendo a <a href="mailto:privacidad@laappflex.shop">privacidad@laappflex.shop</a>.</p>
+        <p>Los detalles completos están en nuestra <a href="/privacidad">Política de Privacidad</a>.</p>
+      </div>
+    </details>
+
+  </div>
+</section>
+
+<!-- ==================== BLOG (NO FINAL) ==================== -->
+<section class="blog-section" id="blog">
+  <div class="section">
+    <div class="section-eyebrow">El blog</div>
+    <h2 class="section-title">Las cuatro lecturas que <em>todo adulto mayor</em> de 60 debería tener cerca.</h2>
+    <p class="section-lead">Cada una se lee en pocos minutos, en español claro, sin tecnicismos. Con la evidencia que hay y la honestidad de decir cuando no la hay.</p>
+
+    <div class="blog-grid">
+
+      <a class="blog-card featured" href="/guia">
+        <div class="blog-tag">
+          <span class="pill">Guía completa</span>
+          <span>Lectura honesta &middot; 14 minutos</span>
+        </div>
+        <h3 class="blog-title">Lo que tus articulaciones intentan decirte después de los 60 <em>(y nadie te explicó nunca)</em></h3>
+        <p class="blog-excerpt">Diez capítulos cortos &mdash; uno por día si querés &mdash; sobre la inflamación silenciosa, los cinco aliados de la mesa, el ritual de tres minutos al despertar, la cúrcuma que rinde poco sin pimienta, la regla de don Aníbal y la verdadera razón por la que cuidar las articulaciones después de los 60 nunca fue solo cuestión de cuerpo.</p>
+        <div class="blog-meta">
+          <span>Estudios citados: Manchester, Monell, Planta Medica</span>
+          <span class="arrow">&rarr;</span>
+        </div>
+      </a>
+
+      <a class="blog-card" href="/lo-que-no-cuentan">
+        <div class="blog-tag">
+          <span class="pill">Sistema médico</span>
+          <span>7 minutos</span>
+        </div>
+        <h3 class="blog-title">Una consulta de quince minutos <em>no alcanza para una persona entera</em></h3>
+        <p class="blog-excerpt">Por qué la lista de medicamentos crece sola con los años y nadie la revisa entera. Lo que muchos profesionales reconocen en privado &mdash; y por qué el dolor articular crónico casi nunca empieza en la articulación.</p>
+        <div class="blog-meta">
+          <span>Lectura editorial</span>
+          <span class="arrow">&rarr;</span>
+        </div>
+      </a>
+
+      <a class="blog-card" href="/movilidad-cotidiana">
+        <div class="blog-tag">
+          <span class="pill">Movilidad</span>
+          <span>6 minutos</span>
+        </div>
+        <h3 class="blog-title">Cuando levantarse de la silla cuesta cada año <em>un poquito más</em></h3>
+        <p class="blog-excerpt">La rigidez al despertar no es "la edad". Es información que el cuerpo te está dando &mdash; y se puede leer. Tres cosas que la gente activa de 60+ está descubriendo, sin gimnasio y sin pastillas.</p>
+        <div class="blog-meta">
+          <span>Lectura editorial</span>
+          <span class="arrow">&rarr;</span>
+        </div>
+      </a>
+
+      <a class="blog-card" href="/raiz-dorada">
+        <div class="blog-tag">
+          <span class="pill">Ritual matutino</span>
+          <span>6 minutos</span>
+        </div>
+        <h3 class="blog-title">La cúrcuma que tomaste y <em>no te hizo nada</em></h3>
+        <p class="blog-excerpt">Probablemente le faltaba la mitad de la receta. Lo que las cápsulas comerciales y las recetas virales casi siempre dejan afuera &mdash; y por qué las cocinas tradicionales de hace miles de años ya tenían la fórmula correcta.</p>
+        <div class="blog-meta">
+          <span>Lectura editorial</span>
+          <span class="arrow">&rarr;</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">
+        <span class="footer-brand-mark">A</span>AppFlex
+      </div>
+      <div class="footer-tagline">Salud articular después de los 60, sin promesas mágicas.</div>
+    </div>
+    <div class="footer-links">
+      <a href="#compromiso">Compromiso</a>
+      <span class="sep">&middot;</span>
+      <a href="#dr">El Dr. Salazar</a>
+      <span class="sep">&middot;</span>
+      <a href="#blog">Blog</a>
+      <span class="sep">&middot;</span>
+      <a href="/privacidad">Privacidad</a>
+      <span class="sep">&middot;</span>
+      <a href="/terminos">Términos</a>
+      <span class="sep">&middot;</span>
+      <a href="mailto:contacto@laappflex.shop">Contacto</a>
+    </div>
+  </div>
+  <div class="footer-copyright">AppFlex &middot; Copyright 2026 &mdash; Todos los derechos reservados</div>
+  <div class="footer-disclaimer">
+    <strong>Aviso importante:</strong> Este sitio tiene fines exclusivamente educativos e informativos. La información presentada no debe interpretarse como diagnóstico, prescripción médica ni reemplazo de la consulta con un profesional de la salud calificado. <strong>No se recomienda interrumpir, modificar o reemplazar tratamientos médicos en curso sin la supervisión del médico tratante.</strong> Si tomás medicación regular para presión, colesterol, anticoagulación, diabetes u otras condiciones, conversá con tu médico antes de incorporar cambios a tu rutina. Los testimonios presentados en otras páginas reflejan experiencias individuales y no representan resultados garantizados. Este sitio no forma parte del sitio web de Facebook, Instagram, WhatsApp ni de Meta Platforms, Inc. Las marcas FACEBOOK, INSTAGRAM y META son marcas comerciales de META PLATFORMS, INC. Las marcas GOOGLE y YOUTUBE son marcas comerciales de GOOGLE LLC.
+  </div>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  (function(){
+    var btn = document.getElementById('navToggle');
+    var menu = document.getElementById('navLinks');
+    if (!btn || !menu) return;
+    btn.addEventListener('click', function(){
+      var open = menu.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    menu.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        menu.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>

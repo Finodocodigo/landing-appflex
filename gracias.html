@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¡Compra confirmada! — AppFlex</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+
+  <link rel="dns-prefetch" href="https://connect.facebook.net">
+  <link rel="dns-prefetch" href="https://load.zurf.laappflex.shop">
+
+  <!-- Inter Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src="https://load.zurf.laappflex.shop/73gxeayutss.js?"+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','8z=GhdJMi0sSCw4OEwjPysuXgVORltIRwEWTh8VFAkRAxQWC1oGEQ4V');</script>
+
+  <style>
+    /* ============================================================
+       BASE — Mobile-first, 55+ legibility
+    ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:        #1B2A4A;
+      --green:       #1E8A4C;
+      --green-light: #E8F7EE;
+      --green-mid:   #D1F0DE;
+      --amber:       #E07B00;
+      --gray-bg:     #F5F6F8;
+      --gray-border: #DDE1E7;
+      --text:        #1A1A1A;
+      --text-soft:   #555;
+      --white:       #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', Arial, sans-serif;
+      font-size: 20px;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--gray-bg);
+      -webkit-text-size-adjust: 100%;
+    }
+
+    img { display: block; max-width: 100%; }
+
+    .container {
+      width: 100%;
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    section { padding: 44px 0; }
+
+    .section-label {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .section-title {
+      font-size: 28px;
+      font-weight: 900;
+      line-height: 1.25;
+      color: var(--navy);
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    /* ============================================================
+       HERO — confirmação emocional
+    ============================================================ */
+    .hero {
+      background: var(--green);
+      padding: 52px 0 56px;
+      text-align: center;
+    }
+
+    .hero__check {
+      font-size: 72px;
+      line-height: 1;
+      margin-bottom: 18px;
+      animation: pop 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+
+    @keyframes pop {
+      0%   { transform: scale(0.3); opacity: 0; }
+      100% { transform: scale(1);   opacity: 1; }
+    }
+
+    .hero__tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      color: var(--white);
+      font-size: 34px;
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .hero__sub {
+      color: rgba(255,255,255,0.88);
+      font-size: 19px;
+      line-height: 1.6;
+      max-width: 480px;
+      margin: 0 auto 28px;
+    }
+
+    .hero__order-box {
+      background: rgba(255,255,255,0.15);
+      border: 1.5px solid rgba(255,255,255,0.3);
+      border-radius: 14px;
+      padding: 16px 22px;
+      display: inline-block;
+      margin: 0 auto;
+    }
+
+    .hero__order-box p {
+      color: var(--white);
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .hero__order-box .order-id {
+      color: rgba(255,255,255,0.7);
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    /* ============================================================
+       MENSAGEM DO DR. SALAZAR
+    ============================================================ */
+    .doctor-message {
+      background: var(--white);
+    }
+
+    .doctor-card {
+      background: var(--navy);
+      border-radius: 20px;
+      padding: 32px 24px;
+      color: var(--white);
+    }
+
+    .doctor-card__header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .doctor-card__avatar {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.12);
+      flex-shrink: 0;
+      overflow: hidden;
+      border: 3px solid rgba(255,255,255,0.25);
+    }
+
+    .doctor-card__avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .doctor-card__name {
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .doctor-card__cred {
+      color: rgba(255,255,255,0.6);
+      font-size: 13px;
+      margin-top: 3px;
+      line-height: 1.4;
+    }
+
+    .doctor-card__message {
+      font-size: 19px;
+      font-weight: 500;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .doctor-card__message strong {
+      color: #FFCE54;
+      font-weight: 800;
+    }
+
+    .doctor-card__signature {
+      margin-top: 20px;
+      font-size: 15px;
+      color: rgba(255,255,255,0.55);
+      font-style: italic;
+    }
+
+    /* ============================================================
+       PRÓXIMOS PASSOS — instruções numeradas
+    ============================================================ */
+    .steps {
+      background: var(--gray-bg);
+    }
+
+    .steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      background: var(--white);
+      border-radius: 16px;
+      padding: 22px 20px;
+      border: 1.5px solid var(--gray-border);
+    }
+
+    .step--highlight {
+      border-color: var(--green);
+      background: var(--green-light);
+    }
+
+    .step__number {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: var(--white);
+      font-size: 20px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .step--highlight .step__number {
+      background: var(--green);
+    }
+
+    .step__content strong {
+      display: block;
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.3;
+      margin-bottom: 5px;
+    }
+
+    .step__content p {
+      font-size: 16px;
+      color: var(--text-soft);
+      line-height: 1.55;
+    }
+
+    .step__content .step-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+      background: var(--green);
+      color: var(--white);
+      font-size: 15px;
+      font-weight: 700;
+      padding: 10px 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+    }
+
+    /* ============================================================
+       INSTRUÇÃO DE EMAIL — destaque visual
+    ============================================================ -->*/
+    .email-section {
+      background: var(--white);
+    }
+
+    .email-box {
+      background: #EFF6FF;
+      border: 2px solid #3B82F6;
+      border-radius: 20px;
+      padding: 30px 24px;
+      text-align: center;
+    }
+
+    .email-icon {
+      font-size: 56px;
+      margin-bottom: 14px;
+    }
+
+    .email-box h3 {
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .email-box p {
+      font-size: 18px;
+      color: var(--text);
+      line-height: 1.65;
+      margin-bottom: 10px;
+    }
+
+    .email-box p strong {
+      color: #1D4ED8;
+    }
+
+    .email-alert {
+      background: #FFF3E0;
+      border: 1.5px solid #F59E0B;
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-top: 18px;
+      text-align: left;
+    }
+
+    .email-alert p {
+      font-size: 15px;
+      color: #92400E;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .email-alert p + p {
+      margin-top: 6px;
+      font-weight: 400;
+      color: #78350F;
+    }
+
+    /* ============================================================
+       REFORÇO DA DECISÃO — anti-arrependimento
+    ============================================================ */
+    .reinforcement {
+      background: var(--gray-bg);
+    }
+
+    .reinforce-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .reinforce-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: var(--white);
+      border-radius: 14px;
+      padding: 18px 20px;
+      border: 1.5px solid var(--gray-border);
+    }
+
+    .reinforce-card__icon {
+      font-size: 32px;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .reinforce-card strong {
+      display: block;
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+
+    .reinforce-card p {
+      font-size: 15px;
+      color: var(--text-soft);
+      line-height: 1.5;
+    }
+
+    /* ============================================================
+       TESTEMUNHO — validação por pares
+    ============================================================ */
+    .testimonial {
+      background: var(--navy);
+      padding: 48px 0;
+    }
+
+    .testimonial .section-label { color: #A8C8FF; }
+    .testimonial .section-title { color: var(--white); }
+
+    .testimonial-card {
+      background: rgba(255,255,255,0.07);
+      border: 1.5px solid rgba(255,255,255,0.15);
+      border-radius: 20px;
+      padding: 28px 24px;
+    }
+
+    .testimonial-stars {
+      font-size: 24px;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+    }
+
+    .testimonial-quote {
+      color: var(--white);
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    .testimonial-quote strong {
+      font-style: normal;
+      color: #FFCE54;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .testimonial-author__photo {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      flex-shrink: 0;
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.25);
+    }
+
+    .testimonial-author__photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .testimonial-author__name {
+      color: var(--white);
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .testimonial-author__detail {
+      color: rgba(255,255,255,0.55);
+      font-size: 14px;
+      margin-top: 2px;
+    }
+
+    /* ============================================================
+       GARANTIA — lembrete final
+    ============================================================ */
+    .guarantee {
+      background: var(--white);
+    }
+
+    .guarantee-box {
+      background: var(--green-light);
+      border: 2.5px solid var(--green);
+      border-radius: 20px;
+      padding: 30px 24px;
+      text-align: center;
+    }
+
+    .guarantee-badge { font-size: 56px; margin-bottom: 10px; }
+
+    .guarantee-box h3 {
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+
+    .guarantee-box p {
+      font-size: 17px;
+      color: var(--text);
+      line-height: 1.65;
+      margin-bottom: 10px;
+    }
+
+    .guarantee-box p strong { color: var(--green); }
+
+    .guarantee-signature {
+      font-size: 15px;
+      color: var(--text-soft);
+      font-style: italic;
+      margin-top: 6px;
+    }
+
+    /* ============================================================
+       FAQ NÃO RECEBI O EMAIL
+    ============================================================ */
+    .faq-support {
+      background: var(--gray-bg);
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .faq-item {
+      background: var(--white);
+      border: 1.5px solid var(--gray-border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 20px;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .faq-question span {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.35;
+      flex: 1;
+    }
+
+    .faq-chevron {
+      font-size: 22px;
+      color: var(--navy);
+      transition: transform 0.25s ease;
+      flex-shrink: 0;
+      font-style: normal;
+    }
+
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+
+    .faq-item.open .faq-answer { max-height: 400px; }
+
+    .faq-answer-inner {
+      padding: 0 20px 20px;
+      font-size: 16px;
+      color: var(--text-soft);
+      line-height: 1.65;
+      border-top: 1px solid var(--gray-border);
+      padding-top: 16px;
+    }
+
+    .faq-answer-inner a {
+      color: var(--green);
+      font-weight: 700;
+      text-decoration: underline;
+    }
+
+    /* ============================================================
+       FOOTER
+    ============================================================ */
+    footer {
+      background: var(--navy);
+      padding: 28px 20px;
+      text-align: center;
+    }
+
+    footer p {
+      color: rgba(255,255,255,0.4);
+      font-size: 12px;
+      line-height: 1.7;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    footer .footer-links {
+      margin-bottom: 10px;
+      font-size: 13px;
+    }
+
+    footer .footer-links a {
+      color: rgba(255,255,255,0.5);
+      margin: 0 8px;
+      text-decoration: underline;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+    @media (min-width: 540px) {
+      .hero h1       { font-size: 40px; }
+      .section-title { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- GTM noscript -->
+<noscript><iframe src="https://load.zurf.laappflex.shop/ns.html?id=GTM-TKK8VFJK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- UTMify -->
+<script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck data-utmify-prevent-subids data-utmify-ignore-iframe data-utmify-is-cartpanda async defer></script>
+
+
+<!-- ============================================================
+     HERO — CONFIRMAÇÃO
+============================================================ -->
+<section class="hero">
+  <div class="container">
+
+    <div class="hero__check">✅</div>
+
+    <div class="hero__tag">Pago confirmado</div>
+
+    <h1>¡Tomaste la mejor<br>decisión de tu vida!</h1>
+
+    <p class="hero__sub">
+      Tu acceso está listo. <strong style="color:#fff;">Haz clic en el botón de abajo y entra directo a la app — ahora mismo.</strong>
+    </p>
+
+    <a href="https://app.laappflex.shop/" class="hero__cta-btn" style="display:inline-flex;align-items:center;gap:10px;margin-top:8px;background:#fff;color:#1E8A4C;font-size:22px;font-weight:900;padding:20px 40px;border-radius:16px;text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,0.22);transition:transform 0.15s,box-shadow 0.15s;" onmouseover="this.style.transform='scale(1.03)';this.style.boxShadow='0 6px 28px rgba(0,0,0,0.28)'" onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(0,0,0,0.22)'">
+      🚀 Acceder a AppFlex ahora
+    </a>
+
+    <p style="color:rgba(255,255,255,0.75);font-size:15px;margin-top:14px;line-height:1.5;">
+      Este botón te lleva directo al app — no necesitas esperar ningún email.<br>
+      También recibirás un <strong style="color:#fff;">email de confirmación de compra</strong> en los próximos minutos.
+    </p>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     MENSAJE DEL DR. SALAZAR
+============================================================ -->
+<section class="doctor-message">
+  <div class="container">
+
+    <p class="section-label">Un mensaje personal</p>
+
+    <div class="doctor-card">
+      <div class="doctor-card__header">
+        <div class="doctor-card__avatar">
+          <img src="assets/img/dr-salazar.webp" alt="Dr. Ramírez Salazar">
+        </div>
+        <div>
+          <div class="doctor-card__name">Dr. Ramírez Salazar</div>
+          <div class="doctor-card__cred">Cirujano ortopédico · Harvard · Ex médico del Miami Heat</div>
+        </div>
+      </div>
+
+      <p class="doctor-card__message">
+        Quiero que sepas algo importante:<br><br>
+        <strong>Acabas de elegir tu salud.</strong><br><br>
+        La mayoría de las personas espera años — probando pastillas,
+        aguantando inyecciones, considerando cirugías — antes de buscar
+        una solución real.<br><br>
+        Tú no esperaste más. Y eso hace toda la diferencia.<br><br>
+        El protocolo que preparé para ti <strong>fue probado primero con mi
+        propio padre</strong>, que llevaba décadas con dolor articular severo.
+        Al segundo día ya se sentía menos hinchado. En una semana,
+        volvió a caminar.<br><br>
+        Ahora es tu turno.
+      </p>
+
+      <p class="doctor-card__signature">
+        Con orgullo,<br>
+        Dr. Ramírez Salazar
+      </p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     PRÓXIMOS PASOS
+============================================================ -->
+<section class="steps">
+  <div class="container">
+
+    <p class="section-label">¿Qué hago ahora?</p>
+    <h2 class="section-title">3 pasos simples para empezar</h2>
+
+    <div class="steps-list">
+
+      <div class="step step--highlight">
+        <div class="step__number">1</div>
+        <div class="step__content">
+          <strong>Haz clic en el botón verde de arriba</strong>
+          <p>
+            El botón <em>"🚀 Acceder a AppFlex ahora"</em> te lleva
+            <strong>directamente al app</strong> — sin esperar ningún email.
+          </p>
+          <p style="margin-top:8px; font-size:15px; color:#555;">
+            No necesitas descargar nada. Funciona directo
+            en el navegador de tu teléfono o computadora.
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step__number">2</div>
+        <div class="step__content">
+          <strong>Completa tu perfil de dolor (2 minutos)</strong>
+          <p>
+            La app te hace 5 preguntas simples:
+            dónde sientes el dolor, tu edad y tu peso.
+          </p>
+          <p style="margin-top:8px; font-size:15px; color:#555;">
+            Con eso, el sistema monta tu protocolo personalizado
+            y te muestra exactamente cómo hacer el ritual de 7 segundos.
+          </p>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step__number">3</div>
+        <div class="step__content">
+          <strong>Revisa tu email — llega en 5 a 10 minutos</strong>
+          <p>
+            Recibirás un email de <strong>confirmación de compra</strong> con el asunto:<br>
+            <em>"¡Bienvenido/a a AppFlex! Tu acceso está listo 🎉"</em>
+          </p>
+          <p style="margin-top:8px; font-size:15px; color:#555;">
+            Guárdalo como comprobante. Si no llega, revisa Spam o Promociones.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     INSTRUÇÃO DE EMAIL — destaque
+============================================================ -->
+<section class="email-section">
+  <div class="container">
+
+    <div class="email-box">
+
+      <div class="email-icon">📧</div>
+
+      <h3>Tu comprobante de compra<br>llega por email en 5–10 min</h3>
+
+      <p>
+        Remitente: <strong>equipo@laappflex.shop</strong><br>
+        Asunto: <strong>"Tu acceso a AppFlex está listo"</strong>
+      </p>
+
+      <p style="font-size:16px;color:#374151;margin-bottom:4px;">
+        ⚠️ <strong>El email no es necesario para entrar a la app</strong> — es solo tu comprobante.<br>
+        Si no llegó, busca en estas carpetas:
+      </p>
+
+      <div style="display:flex; flex-direction:column; gap:10px; margin-top:16px; text-align:left;">
+        <div style="display:flex; align-items:center; gap:10px; background:#fff; border-radius:10px; padding:12px 16px; border:1px solid #CBD5E1;">
+          <span style="font-size:22px;">📁</span>
+          <span style="font-size:16px; font-weight:700; color:#1B2A4A;">Carpeta Spam</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px; background:#fff; border-radius:10px; padding:12px 16px; border:1px solid #CBD5E1;">
+          <span style="font-size:22px;">📁</span>
+          <span style="font-size:16px; font-weight:700; color:#1B2A4A;">Carpeta Promociones</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px; background:#fff; border-radius:10px; padding:12px 16px; border:1px solid #CBD5E1;">
+          <span style="font-size:22px;">📁</span>
+          <span style="font-size:16px; font-weight:700; color:#1B2A4A;">Carpeta Notificaciones</span>
+        </div>
+      </div>
+
+      <div class="email-alert">
+        <p>💡 ¿Usas Gmail?</p>
+        <p>Busca "AppFlex" en la barra de búsqueda del correo. Aparece en segundos.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     REFORÇO DA DECISÃO
+============================================================ -->
+<section class="reinforcement">
+  <div class="container">
+
+    <p class="section-label">Recuerda por qué elegiste esto</p>
+    <h2 class="section-title">Acabas de dejar atrás:</h2>
+
+    <div class="reinforce-cards">
+
+      <div class="reinforce-card">
+        <div class="reinforce-card__icon">💊</div>
+        <div>
+          <strong>Pastillas que dañan tu cartílago</strong>
+          <p>Los AINEs aceleran la degeneración articular con el tiempo. Ya no los necesitas.</p>
+        </div>
+      </div>
+
+      <div class="reinforce-card">
+        <div class="reinforce-card__icon">💉</div>
+        <div>
+          <strong>Inyecciones dolorosas y caras</strong>
+          <p>Cortisona que debilita huesos y tendones. Eso quedó en el pasado.</p>
+        </div>
+      </div>
+
+      <div class="reinforce-card">
+        <div class="reinforce-card__icon">😔</div>
+        <div>
+          <strong>Días sin movimiento</strong>
+          <p>Las caminatas, los nietos, la vida activa — todo eso vuelve en los próximos 14 días.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     TESTEMUNHO
+============================================================ -->
+<section class="testimonial">
+  <div class="container">
+
+    <p class="section-label">Personas como tú</p>
+    <h2 class="section-title">Ya lo están viviendo</h2>
+
+    <div class="testimonial-card">
+
+      <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+
+      <p class="testimonial-quote">
+        "Pensé que era otro charlatán buscando mi dinero.
+        Decidí ver el video y fue <strong>la mejor cosa que hice.</strong>
+        No podía subir escaleras hace más de 2 años.
+        Después de 2 semanas con el protocolo,
+        <strong>ya experimenté una mejora enorme en mi calidad de vida.</strong>"
+      </p>
+
+      <div class="testimonial-author">
+        <div class="testimonial-author__photo">
+          <img src="assets/img/testimonio-carlos-m.webp" alt="Carlos M.">
+        </div>
+        <div>
+          <div class="testimonial-author__name">Carlos M.</div>
+          <div class="testimonial-author__detail">72 años · Texas, EE.UU.</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ============================================================
+     GARANTIA — lembrete tranquilizador
+============================================================ -->
+<section class="guarantee">
+  <div class="container">
+
+    <p class="section-label">Tu protección</p>
+    <h2 class="section-title">Recuerda: no hay riesgo.</h2>
+
+    <div class="guarantee-box">
+
+      <div class="guarantee-badge">🛡️</div>
+
+      <h3>Garantía total<br>de 30 días</h3>
+
+      <p>
+        Tienes <strong>30 días completos</strong> para probar el protocolo.
+        Si no sientes una mejora real en tu dolor articular,
+        te devolvemos <strong>el 100% de tu dinero</strong>.
+      </p>
+
+      <p>
+        <strong>Sin preguntas. Sin burocracia. Sin demoras.</strong>
+      </p>
+
+      <p class="guarantee-signature">
+        — Dr. Ramírez Salazar,<br>
+        cirujano ortopédico · Harvard · Miami Heat
+      </p>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     ACCESO DIRECTO — para quem o link expirou ou não chegou
+============================================================ -->
+<section style="background:#EFF6FF; padding:44px 0;">
+  <div class="container">
+    <div style="background:#fff;border:2px solid #3B82F6;border-radius:20px;padding:32px 24px;text-align:center;">
+      <div style="font-size:48px;margin-bottom:14px;">🔑</div>
+      <h3 style="font-size:24px;font-weight:900;color:#1B2A4A;line-height:1.25;margin-bottom:12px;">
+        ¿El email tardó más de 15 minutos?<br>Entra directo con tu correo
+      </h3>
+      <p style="font-size:18px;color:#374151;line-height:1.65;margin-bottom:20px;">
+        No necesitas esperar el email. Haz clic en el botón de abajo,
+        escribe el <strong>mismo correo que usaste al comprar</strong>
+        y entras directo — sin contraseña, sin complicaciones.
+      </p>
+      <a href="https://app.laappflex.shop/login" style="display:inline-flex;align-items:center;gap:10px;background:#1B2A4A;color:#fff;font-size:20px;font-weight:900;padding:18px 36px;border-radius:16px;text-decoration:none;">
+        ✅ Entrar con mi correo ahora
+      </a>
+      <p style="margin-top:16px;font-size:15px;color:#6B7280;">
+        Funciona en celular y computadora. No hace falta descargar nada.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FAQ SUPORTE
+============================================================ -->
+<section class="faq-support">
+  <div class="container">
+
+    <p class="section-label">¿Algún problema?</p>
+    <h2 class="section-title">Estamos aquí para ayudarte</h2>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>No recibí el email de acceso. ¿Qué hago?</span>
+          <i class="faq-chevron">⌄</i>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Primero revisa las carpetas de Spam, Promociones y Notificaciones.
+            Si usas Gmail, busca "AppFlex" en la barra de búsqueda.<br><br>
+            Si después de 15 minutos todavía no llega, escríbenos a
+            <a href="mailto:equipo@laappflex.shop">equipo@laappflex.shop</a>
+            con el asunto <strong>"No recibí mi acceso"</strong>
+            y te ayudamos de inmediato.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>¿Cómo accedo a la app? ¿Tengo que descargarla?</span>
+          <i class="faq-chevron">⌄</i>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            No necesitas descargar nada de una tienda de apps.
+            El acceso es por un link que llega en tu email.
+            Haz clic en ese link desde tu teléfono o computadora
+            y ya estás dentro. Funciona en cualquier dispositivo.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>¿Cuándo voy a empezar a sentir resultados?</span>
+          <i class="faq-chevron">⌄</i>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Muchas personas sienten menos rigidez en los primeros días.
+            La mejora significativa del dolor ocurre dentro de los primeros 14 días
+            de uso diario del protocolo.<br><br>
+            El secreto es la consistencia: los 7 segundos todos los días por la mañana.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          <span>¿Cómo solicito el reembolso si lo necesito?</span>
+          <i class="faq-chevron">⌄</i>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Escríbenos a <a href="mailto:equipo@laappflex.shop">equipo@laappflex.shop</a>
+            dentro de los 30 días con el asunto <strong>"Solicitud de reembolso"</strong>.
+            No pedimos explicaciones. El reembolso se procesa en hasta 5 días hábiles
+            directamente en tu método de pago.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer>
+  <div class="footer-links">
+    <a href="#">Términos de Uso</a>
+    <a href="#">Política de Privacidad</a>
+    <a href="mailto:equipo@laappflex.shop">Soporte</a>
+  </div>
+  <p>
+    Copyright 2026 – Todos los derechos reservados.<br>
+    Este sitio no forma parte del sitio web de Facebook o de Meta Platforms, Inc.
+    La información proporcionada en este programa es para fines educativos y no sustituye el asesoramiento médico profesional.
+    Los resultados pueden variar de persona a persona. Siempre consulte a su médico antes de comenzar cualquier programa.
+  </p>
+</footer>
+
+
+<!-- ============================================================
+     JS — FAQ accordion
+============================================================ -->
+<script>
+  document.querySelectorAll('.faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = this.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(el) {
+        el.classList.remove('open');
+        el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        this.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

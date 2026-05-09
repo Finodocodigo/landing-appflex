@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Privacidad — AppFlex</title>
+  <meta name="description" content="Cómo recopilamos, usamos y protegemos tu información personal en AppFlex. Información sobre cookies, tecnologías de seguimiento y tus derechos como titular de datos.">
+  <meta name="robots" content="index, follow">
+
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+    :root{
+      --cream:#FBF7EE;
+      --paper:#FFFDF7;
+      --ink:#252E27;
+      --ink-soft:#4A5648;
+      --ink-mute:#82907F;
+      --line:#DDE5DA;
+      --sage:#A8C9B8;
+      --sage-soft:#C9DDD0;
+      --sage-deep:#6B9580;
+      --sage-darker:#3F5C4F;
+      --shadow:0 1px 2px rgba(40,60,45,.05), 0 8px 28px rgba(40,60,45,.07);
+    }
+
+    html{scroll-behavior:smooth}
+    body{
+      background:var(--cream);
+      color:var(--ink);
+      font-family:'Lora', Georgia, serif;
+      font-size:18px;
+      line-height:1.75;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    .topbar{
+      position:sticky;top:0;z-index:50;
+      background:rgba(251,247,238,.94);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--line);
+      padding:14px 20px;
+      display:flex;align-items:center;justify-content:center;
+      font-family:'Inter',sans-serif;
+    }
+    .brand{
+      font-weight:700;font-size:14px;letter-spacing:.04em;
+      color:var(--sage-darker);text-decoration:none;
+      display:flex;align-items:center;gap:10px;
+      text-transform:uppercase;
+    }
+    .brand-mark{
+      width:24px;height:24px;border-radius:50%;
+      background:var(--sage);
+      display:flex;align-items:center;justify-content:center;
+      color:#fff;font-weight:800;font-size:13px;
+      font-family:'Inter',sans-serif;
+    }
+
+    .hero{
+      max-width:760px;margin:0 auto;
+      padding:56px 20px 36px;
+    }
+    .eyebrow{
+      font-family:'Inter',sans-serif;
+      font-size:12px;font-weight:600;
+      letter-spacing:.2em;text-transform:uppercase;
+      color:var(--sage-deep);
+      margin-bottom:22px;
+      display:flex;align-items:center;gap:12px;
+    }
+    .eyebrow::before{
+      content:"";width:32px;height:1px;background:var(--sage-deep);
+    }
+    h1{
+      font-family:'Lora',serif;
+      font-weight:600;
+      font-size:clamp(32px, 5vw, 44px);
+      line-height:1.2;
+      letter-spacing:-.012em;
+      color:var(--ink);
+      margin-bottom:18px;
+    }
+    .hero-meta{
+      font-family:'Inter',sans-serif;
+      font-size:13px;color:var(--ink-mute);
+      padding-top:18px;
+      border-top:1px solid var(--line);
+      margin-top:28px;
+    }
+    .hero-meta strong{color:var(--ink-soft);font-weight:600}
+
+    article{
+      max-width:760px;margin:0 auto;
+      padding:32px 20px 60px;
+    }
+    section{
+      margin-bottom:48px;
+      scroll-margin-top:80px;
+    }
+    h2{
+      font-family:'Lora',serif;
+      font-weight:600;
+      font-size:clamp(22px, 3vw, 28px);
+      line-height:1.25;
+      color:var(--ink);
+      margin-bottom:16px;
+      padding-bottom:12px;
+      border-bottom:1px solid var(--line);
+    }
+    h2 .num{
+      font-family:'Inter',sans-serif;
+      font-size:13px;font-weight:700;
+      color:var(--sage-deep);
+      letter-spacing:.12em;
+      display:block;
+      margin-bottom:6px;
+    }
+    h3{
+      font-family:'Inter',sans-serif;
+      font-weight:700;
+      font-size:16px;
+      color:var(--ink);
+      margin:24px 0 10px;
+    }
+    p{
+      margin-bottom:16px;
+      color:var(--ink-soft);
+    }
+    p strong{color:var(--ink);font-weight:600}
+    ul,ol{
+      margin:0 0 18px 0;
+      padding-left:0;
+      list-style:none;
+    }
+    li{
+      padding-left:22px;position:relative;
+      color:var(--ink-soft);
+      margin-bottom:8px;
+      line-height:1.65;
+    }
+    li::before{
+      content:"";position:absolute;left:2px;top:13px;
+      width:8px;height:2px;background:var(--sage-deep);
+    }
+    a{color:var(--sage-darker);text-decoration:underline;text-decoration-color:var(--sage)}
+    a:hover{text-decoration-color:var(--sage-deep)}
+
+    .toc-card{
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:22px 26px;
+      margin-bottom:40px;
+      box-shadow:var(--shadow);
+    }
+    .toc-card .toc-title{
+      font-family:'Inter',sans-serif;
+      font-size:11px;font-weight:700;
+      letter-spacing:.2em;text-transform:uppercase;
+      color:var(--sage-deep);
+      margin-bottom:14px;
+    }
+    .toc-card ol{display:grid;gap:6px;list-style:none;padding:0}
+    .toc-card li{padding-left:0}
+    .toc-card li::before{display:none}
+    .toc-card a{
+      font-family:'Inter',sans-serif;
+      font-size:14px;
+      color:var(--ink-soft);
+      text-decoration:none;
+      display:flex;gap:10px;align-items:baseline;
+    }
+    .toc-card a:hover{color:var(--sage-darker)}
+    .toc-card .n{
+      font-weight:600;color:var(--sage-deep);
+      min-width:22px;font-size:12px;
+    }
+
+    .info-card{
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:20px 24px;
+      margin:18px 0 20px;
+      box-shadow:var(--shadow);
+    }
+    .info-card h3{margin-top:0}
+    .info-card:last-child{margin-bottom:0}
+
+    .table-info{
+      width:100%;
+      border-collapse:collapse;
+      margin:14px 0 22px;
+      font-size:15px;
+      font-family:'Inter',sans-serif;
+    }
+    .table-info th, .table-info td{
+      padding:12px 14px;
+      text-align:left;
+      border-bottom:1px solid var(--line);
+      vertical-align:top;
+    }
+    .table-info th{
+      background:var(--sage-soft);
+      color:var(--sage-darker);
+      font-weight:700;
+      font-size:12px;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+    }
+    .table-info td{color:var(--ink-soft)}
+    .table-info tr:last-child td{border-bottom:none}
+
+    footer{
+      max-width:760px;margin:40px auto 0;
+      padding:32px 20px 60px;
+      border-top:1px solid var(--line);
+      font-family:'Inter',sans-serif;
+      font-size:12px;line-height:1.7;
+      color:var(--ink-mute);
+      text-align:center;
+    }
+    footer .footer-links{margin-bottom:14px;font-size:13px}
+    footer .footer-links a{
+      color:var(--sage-darker);
+      text-decoration:none;
+      margin:0 10px;
+    }
+    footer .footer-links a:hover{text-decoration:underline}
+    footer .copyright{margin-bottom:14px;font-weight:600;color:var(--ink-soft)}
+    footer .disclaimer{max-width:600px;margin:0 auto;text-align:left;font-size:11px}
+
+    @media (max-width:520px){
+      .hero{padding:42px 20px 28px}
+      article{padding:20px 20px 20px}
+      .table-info{font-size:14px}
+      .table-info th,.table-info td{padding:10px 10px}
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="/guia" class="brand"><span class="brand-mark">A</span>AppFlex</a>
+</div>
+
+<section class="hero">
+  <div class="eyebrow">Documento legal</div>
+  <h1>Política de Privacidad</h1>
+  <p style="font-size:18px;color:var(--ink-soft);max-width:620px">Esta política explica de forma clara qué información recopilamos cuando visitás nuestro sitio o adquirís nuestros productos, cómo la usamos, con quién la compartimos y qué derechos tenés sobre ella.</p>
+  <div class="hero-meta">
+    <strong>Última actualización:</strong> 6 de mayo de 2026 &middot; <strong>Vigencia:</strong> a partir de la fecha de publicación
+  </div>
+</section>
+
+<article>
+
+  <div class="toc-card">
+    <div class="toc-title">Índice</div>
+    <ol>
+      <li><a href="#s1"><span class="n">01</span><span>Quiénes somos</span></a></li>
+      <li><a href="#s2"><span class="n">02</span><span>Información que recopilamos</span></a></li>
+      <li><a href="#s3"><span class="n">03</span><span>Cómo usamos tu información</span></a></li>
+      <li><a href="#s4"><span class="n">04</span><span>Base legal del tratamiento</span></a></li>
+      <li><a href="#s5"><span class="n">05</span><span>Cookies y tecnologías de seguimiento</span></a></li>
+      <li><a href="#s6"><span class="n">06</span><span>Con quién compartimos información</span></a></li>
+      <li><a href="#s7"><span class="n">07</span><span>Transferencias internacionales</span></a></li>
+      <li><a href="#s8"><span class="n">08</span><span>Retención de los datos</span></a></li>
+      <li><a href="#s9"><span class="n">09</span><span>Seguridad de la información</span></a></li>
+      <li><a href="#s10"><span class="n">10</span><span>Tus derechos como titular de los datos</span></a></li>
+      <li><a href="#s11"><span class="n">11</span><span>Privacidad de menores de edad</span></a></li>
+      <li><a href="#s12"><span class="n">12</span><span>Enlaces a sitios de terceros</span></a></li>
+      <li><a href="#s13"><span class="n">13</span><span>Cambios a esta política</span></a></li>
+      <li><a href="#s14"><span class="n">14</span><span>Aviso sobre Meta y Google</span></a></li>
+      <li><a href="#s15"><span class="n">15</span><span>Cómo contactarnos</span></a></li>
+    </ol>
+  </div>
+
+  <section id="s1">
+    <h2><span class="num">01</span>Quiénes somos</h2>
+    <p>AppFlex (en adelante, "AppFlex", "nosotros" o "el Sitio") es una marca digital que opera el programa educativo sobre salud articular dirigido a adultos mayores hispanohablantes. El sitio web oficial se encuentra disponible en <a href="https://laappflex.shop">laappflex.shop</a> y los productos se comercializan a través de la plataforma Hotmart.</p>
+    <p>Para todos los efectos de esta política, AppFlex actúa como responsable del tratamiento de los datos personales recopilados a través del Sitio. Podés contactarnos por los siguientes canales:</p>
+    <div class="info-card">
+      <p><strong>Marca:</strong> AppFlex</p>
+      <p><strong>Sitio web oficial:</strong> <a href="https://laappflex.shop">laappflex.shop</a></p>
+      <p><strong>Email para asuntos de privacidad y datos:</strong> <a href="mailto:privacidad@laappflex.shop">privacidad@laappflex.shop</a></p>
+      <p style="margin-bottom:0"><strong>Email de soporte general:</strong> <a href="mailto:contacto@laappflex.shop">contacto@laappflex.shop</a></p>
+    </div>
+    <p>Esta política de privacidad se aplica a todas las personas que visitan, navegan, completan formularios o adquieren productos a través del Sitio.</p>
+  </section>
+
+  <section id="s2">
+    <h2><span class="num">02</span>Información que recopilamos</h2>
+    <p>Recopilamos información de tres maneras: la que vos nos das directamente, la que se recopila de manera automática cuando navegás por el Sitio, y la que recibimos de terceros con los que trabajamos.</p>
+
+    <h3>2.1 Información que nos proporcionás directamente</h3>
+    <ul>
+      <li><strong>Datos de identificación:</strong> nombre y apellido, dirección de email, número de teléfono (cuando aplica).</li>
+      <li><strong>Datos de la compra:</strong> los datos de pago (tarjeta, transferencia, etc.) son procesados directamente por Hotmart, nuestra plataforma de pagos. Nosotros recibimos únicamente la confirmación de la compra y los datos de contacto necesarios para entregarte el producto.</li>
+      <li><strong>Datos de soporte:</strong> cuando nos escribís por email o WhatsApp, recibimos el contenido de tu mensaje y la información que voluntariamente nos compartís.</li>
+      <li><strong>Datos voluntarios de salud:</strong> si decidís responder formularios o encuestas dentro del programa, podemos recibir información sensible relacionada con tu estado de salud articular. Esta información es voluntaria, se trata con confidencialidad reforzada y solo se utiliza para mejorar tu experiencia con el programa.</li>
+    </ul>
+
+    <h3>2.2 Información recopilada automáticamente</h3>
+    <ul>
+      <li><strong>Datos del dispositivo y navegador:</strong> dirección IP, tipo y versión del navegador, sistema operativo, tipo de dispositivo, resolución de pantalla, idioma.</li>
+      <li><strong>Datos de uso:</strong> páginas visitadas, tiempo en cada página, recorrido dentro del sitio, enlaces clicados, fuente de tráfico (qué anuncio o página te trajo).</li>
+      <li><strong>Datos de ubicación aproximada:</strong> país, región y ciudad estimados a partir de tu dirección IP. No accedemos a tu ubicación GPS.</li>
+      <li><strong>Datos de cookies y tecnologías similares:</strong> ver sección 5.</li>
+    </ul>
+
+    <h3>2.3 Información recibida de terceros</h3>
+    <ul>
+      <li><strong>Plataformas publicitarias:</strong> Meta (Facebook/Instagram) y Google nos comparten datos agregados sobre el rendimiento de nuestros anuncios, incluyendo eventos de conversión que puedan asociarse a tu interacción con el Sitio.</li>
+      <li><strong>Hotmart:</strong> recibimos información de la transacción cuando realizás una compra (no datos completos de tarjeta).</li>
+    </ul>
+  </section>
+
+  <section id="s3">
+    <h2><span class="num">03</span>Cómo usamos tu información</h2>
+    <p>Utilizamos los datos recopilados para los siguientes fines:</p>
+    <ul>
+      <li><strong>Procesar tu compra:</strong> entregarte el acceso al programa, gestionar pagos, emitir recibos y proveer soporte post-compra.</li>
+      <li><strong>Comunicarnos con vos:</strong> responder tus consultas, enviarte información operativa sobre el producto que adquiriste y notificaciones de cambios en este Sitio o en sus términos.</li>
+      <li><strong>Marketing y publicidad:</strong> enviarte (cuando corresponda y siempre que hayas dado tu consentimiento) comunicaciones sobre nuevos productos, ofertas o contenido educativo. Podés cancelar la suscripción a estas comunicaciones en cualquier momento desde el enlace al pie de cada email.</li>
+      <li><strong>Mejora del servicio:</strong> analizar de manera agregada cómo se usa el Sitio para entender qué contenido funciona mejor y mejorar la experiencia.</li>
+      <li><strong>Personalización publicitaria:</strong> mostrar publicidad relevante en plataformas como Meta y Google, incluyendo retargeting (mostrarte anuncios después de que visitaste el Sitio). Ver secciones 5 y 6.</li>
+      <li><strong>Cumplimiento legal:</strong> atender requerimientos de autoridades competentes y obligaciones fiscales o regulatorias.</li>
+      <li><strong>Seguridad:</strong> prevenir fraude, abuso del Sitio y proteger nuestros derechos y los de terceros.</li>
+    </ul>
+  </section>
+
+  <section id="s4">
+    <h2><span class="num">04</span>Base legal del tratamiento</h2>
+    <p>Tratamos tus datos con base en al menos uno de los siguientes fundamentos legales (según la legislación aplicable, incluyendo la LGPD de Brasil, el RGPD de la Unión Europea, y las leyes de protección de datos de Argentina, México, Colombia, España y demás países hispanohablantes):</p>
+    <ul>
+      <li><strong>Ejecución de un contrato:</strong> cuando los datos son necesarios para entregarte el producto que compraste.</li>
+      <li><strong>Consentimiento:</strong> cuando aceptás recibir comunicaciones de marketing o uso de cookies no esenciales.</li>
+      <li><strong>Interés legítimo:</strong> cuando necesitamos analizar el uso del Sitio para mejorarlo, prevenir fraude o asegurar el correcto funcionamiento del servicio.</li>
+      <li><strong>Cumplimiento de obligaciones legales:</strong> cuando una norma nos exige conservar o reportar determinada información.</li>
+    </ul>
+  </section>
+
+  <section id="s5">
+    <h2><span class="num">05</span>Cookies y tecnologías de seguimiento</h2>
+    <p>Utilizamos cookies y tecnologías similares (píxeles, etiquetas, identificadores de dispositivo, almacenamiento local) para diferentes fines. Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo cuando visitás un sitio web.</p>
+
+    <h3>5.1 Tipos de cookies que usamos</h3>
+    <table class="table-info">
+      <thead>
+        <tr>
+          <th>Tipo</th>
+          <th>Finalidad</th>
+          <th>Ejemplos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Esenciales</strong></td>
+          <td>Hacen posible la navegación y funciones básicas del Sitio. No pueden desactivarse.</td>
+          <td>Sesión, preferencias de idioma</td>
+        </tr>
+        <tr>
+          <td><strong>Analíticas</strong></td>
+          <td>Nos ayudan a entender de manera agregada cómo se usa el Sitio.</td>
+          <td>Google Analytics, Google Tag Manager</td>
+        </tr>
+        <tr>
+          <td><strong>De marketing</strong></td>
+          <td>Permiten mostrarte anuncios relevantes y medir su efectividad.</td>
+          <td>Meta Pixel (Facebook), Google Ads, retargeting</td>
+        </tr>
+        <tr>
+          <td><strong>De terceros</strong></td>
+          <td>Establecidas por servicios integrados al Sitio (reproductor de video, plataforma de pagos).</td>
+          <td>VTurb (player), Hotmart, ConverteAI</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>5.2 Píxeles publicitarios</h3>
+    <p>Utilizamos el <strong>Meta Pixel (Facebook)</strong> y la <strong>etiqueta de Google Ads / Google Tag Manager</strong> para medir conversiones y mostrar publicidad personalizada en estas plataformas. Esto significa que, cuando visitás nuestro Sitio, Meta y Google pueden recibir información sobre tu visita (como tu IP, páginas vistas y eventos de conversión) y combinarla con la información que ya tienen sobre vos a través de tus cuentas en sus servicios.</p>
+    <p>Al hacer esto, podemos:</p>
+    <ul>
+      <li>Mostrarte anuncios relacionados con productos de salud articular en Facebook, Instagram, YouTube y la red de búsqueda de Google.</li>
+      <li>Crear audiencias similares a nuestros visitantes para mostrar publicidad a personas con intereses parecidos.</li>
+      <li>Medir cuántas personas hicieron una compra después de ver un anuncio nuestro.</li>
+    </ul>
+
+    <h3>5.3 Cómo controlar las cookies</h3>
+    <p>Podés gestionar tus preferencias de cookies de las siguientes formas:</p>
+    <ul>
+      <li><strong>Configuración del navegador:</strong> la mayoría de los navegadores permiten bloquear o eliminar cookies. Tené en cuenta que bloquear cookies esenciales puede impedir el funcionamiento del Sitio.</li>
+      <li><strong>Anuncios de Meta:</strong> podés ajustar tus preferencias de publicidad en <a href="https://www.facebook.com/settings?tab=ads" target="_blank" rel="noopener">facebook.com/settings?tab=ads</a> o en la configuración de tu cuenta de Instagram.</li>
+      <li><strong>Anuncios de Google:</strong> podés ajustar tus preferencias en <a href="https://adssettings.google.com" target="_blank" rel="noopener">adssettings.google.com</a>.</li>
+      <li><strong>Anuncios personalizados a nivel general:</strong> podés visitar <a href="https://www.youronlinechoices.com" target="_blank" rel="noopener">youronlinechoices.com</a> (Europa), <a href="https://optout.aboutads.info" target="_blank" rel="noopener">optout.aboutads.info</a> (Estados Unidos) o el equivalente local.</li>
+    </ul>
+  </section>
+
+  <section id="s6">
+    <h2><span class="num">06</span>Con quién compartimos información</h2>
+    <p>No vendemos tu información personal. Compartimos datos solo con los proveedores y socios necesarios para operar el Sitio y entregar nuestros productos, bajo acuerdos de confidencialidad y tratamiento de datos:</p>
+
+    <table class="table-info">
+      <thead>
+        <tr>
+          <th>Tercero</th>
+          <th>Finalidad</th>
+          <th>Política de privacidad</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Hotmart</strong></td>
+          <td>Procesamiento de pagos, emisión de recibos y entrega del producto.</td>
+          <td><a href="https://www.hotmart.com/es/legal/politica-de-privacidad" target="_blank" rel="noopener">hotmart.com</a></td>
+        </tr>
+        <tr>
+          <td><strong>Meta Platforms (Facebook/Instagram)</strong></td>
+          <td>Publicidad, medición de campañas y audiencias personalizadas.</td>
+          <td><a href="https://www.facebook.com/privacy/policy" target="_blank" rel="noopener">facebook.com/privacy/policy</a></td>
+        </tr>
+        <tr>
+          <td><strong>Google LLC</strong></td>
+          <td>Análisis del uso del Sitio (Google Analytics) y publicidad (Google Ads).</td>
+          <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td>
+        </tr>
+        <tr>
+          <td><strong>VTurb / ConverteAI</strong></td>
+          <td>Reproducción de video y análisis de visualización.</td>
+          <td><a href="https://converteai.net/privacidade" target="_blank" rel="noopener">converteai.net</a></td>
+        </tr>
+        <tr>
+          <td><strong>Proveedores de email transaccional</strong></td>
+          <td>Envío de comunicaciones operativas (acceso, soporte) y de marketing.</td>
+          <td>Disponible a pedido por email</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Además, podemos compartir información cuando una autoridad competente lo requiera mediante orden judicial o administrativa, o cuando sea necesario para defender derechos legales propios o de terceros.</p>
+  </section>
+
+  <section id="s7">
+    <h2><span class="num">07</span>Transferencias internacionales</h2>
+    <p>Algunos de los proveedores que utilizamos (especialmente Meta, Google, Hotmart y VTurb) procesan datos en servidores ubicados fuera de tu país de residencia, principalmente en Estados Unidos, Brasil y la Unión Europea. Cuando tus datos son transferidos internacionalmente, nos aseguramos de que existan salvaguardas adecuadas, como cláusulas contractuales tipo aprobadas por autoridades de protección de datos.</p>
+  </section>
+
+  <section id="s8">
+    <h2><span class="num">08</span>Retención de los datos</h2>
+    <p>Conservamos tu información personal solo durante el tiempo necesario para cumplir los fines descritos en esta política y para satisfacer obligaciones legales, contables o fiscales. Como referencia general:</p>
+    <ul>
+      <li><strong>Datos de compra:</strong> el tiempo que exija la legislación fiscal aplicable (típicamente 5 a 10 años).</li>
+      <li><strong>Datos de marketing:</strong> hasta que retires tu consentimiento o por un máximo de 3 años desde la última interacción.</li>
+      <li><strong>Datos de navegación y cookies:</strong> ver las duraciones específicas en la sección 5; en general, entre 24 horas y 24 meses.</li>
+      <li><strong>Comunicaciones de soporte:</strong> hasta 2 años desde la última interacción, salvo que existan motivos legales para conservarlas más tiempo.</li>
+    </ul>
+    <p>Cuando ya no necesitamos tu información, la eliminamos o la anonimizamos de manera segura.</p>
+  </section>
+
+  <section id="s9">
+    <h2><span class="num">09</span>Seguridad de la información</h2>
+    <p>Aplicamos medidas técnicas y organizativas razonables para proteger tu información de accesos no autorizados, pérdida, alteración o divulgación indebida. Entre estas medidas se incluyen el cifrado de datos en tránsito (HTTPS), controles de acceso, actualizaciones regulares de seguridad y selección de proveedores que cumplen estándares reconocidos.</p>
+    <p>Sin embargo, ningún sistema de transmisión o almacenamiento es 100% seguro. Si llegáramos a detectar una vulneración que afecte tus datos, te lo notificaremos en los plazos que exija la legislación aplicable.</p>
+  </section>
+
+  <section id="s10">
+    <h2><span class="num">10</span>Tus derechos como titular de los datos</h2>
+    <p>De acuerdo con la legislación aplicable (LGPD, RGPD, leyes nacionales de protección de datos), tenés derecho a:</p>
+    <ul>
+      <li><strong>Acceso:</strong> solicitar una copia de los datos personales que tenemos sobre vos.</li>
+      <li><strong>Rectificación:</strong> pedir que corrijamos datos incorrectos o desactualizados.</li>
+      <li><strong>Eliminación ("derecho al olvido"):</strong> solicitar que eliminemos tus datos cuando ya no sean necesarios o cuando retires tu consentimiento.</li>
+      <li><strong>Oposición:</strong> oponerte al tratamiento de tus datos para determinadas finalidades, especialmente marketing directo.</li>
+      <li><strong>Limitación:</strong> pedir que restrinjamos el tratamiento de tus datos en ciertas circunstancias.</li>
+      <li><strong>Portabilidad:</strong> recibir tus datos en un formato estructurado y legible por máquina.</li>
+      <li><strong>Retiro del consentimiento:</strong> revocar en cualquier momento el consentimiento que hayas dado, sin que esto afecte la legalidad del tratamiento previo.</li>
+      <li><strong>No ser objeto de decisiones automatizadas:</strong> en los términos previstos por la legislación aplicable.</li>
+      <li><strong>Reclamar ante la autoridad de control:</strong> si considerás que estamos tratando tus datos de manera incorrecta, podés presentar una reclamación ante la autoridad de protección de datos de tu país.</li>
+    </ul>
+    <p>Para ejercer cualquiera de estos derechos, escribinos a <a href="mailto:privacidad@laappflex.shop">privacidad@laappflex.shop</a>. Responderemos dentro de los plazos previstos por la legislación aplicable (generalmente, hasta 15 días hábiles).</p>
+  </section>
+
+  <section id="s11">
+    <h2><span class="num">11</span>Privacidad de menores de edad</h2>
+    <p>El Sitio y los productos de AppFlex están dirigidos exclusivamente a personas mayores de 18 años. No recopilamos intencionalmente datos personales de menores de edad. Si tomamos conocimiento de que se han recopilado datos de un menor sin la autorización del responsable legal, los eliminaremos a la mayor brevedad posible.</p>
+  </section>
+
+  <section id="s12">
+    <h2><span class="num">12</span>Enlaces a sitios de terceros</h2>
+    <p>Nuestro Sitio puede contener enlaces a sitios web operados por terceros (por ejemplo, redes sociales, plataformas de pago). No somos responsables de las prácticas de privacidad de esos sitios. Te recomendamos leer las políticas de privacidad de cada sitio que visites.</p>
+  </section>
+
+  <section id="s13">
+    <h2><span class="num">13</span>Cambios a esta política</h2>
+    <p>Podemos actualizar esta política de privacidad ocasionalmente para reflejar cambios en nuestras prácticas, en la tecnología, en la legislación aplicable o por otros motivos operativos o legales. Cuando lo hagamos, actualizaremos la fecha de "Última actualización" al inicio del documento. Si los cambios son sustanciales, te lo notificaremos por email o mediante un aviso destacado en el Sitio antes de que entren en vigencia.</p>
+    <p>Te recomendamos revisar esta política periódicamente.</p>
+  </section>
+
+  <section id="s14">
+    <h2><span class="num">14</span>Aviso sobre Meta y Google</h2>
+    <p>Este sitio <strong>no forma parte</strong> del sitio web de Facebook, Instagram, WhatsApp ni de Meta Platforms, Inc. Tampoco está respaldado por Google LLC. Las marcas FACEBOOK, INSTAGRAM, WHATSAPP y META son marcas comerciales de META PLATFORMS, INC. Las marcas GOOGLE, YOUTUBE y GOOGLE ADS son marcas comerciales de GOOGLE LLC.</p>
+    <p>Cuando hacemos publicidad en estas plataformas, lo hacemos como anunciantes terceros, sujetos a sus respectivas políticas de publicidad. Cualquier reclamo sobre el contenido de los anuncios o sobre las prácticas de tratamiento de datos en esas plataformas debe dirigirse a las propias plataformas, sin perjuicio de las obligaciones que asumimos como responsables del tratamiento descrito en esta política.</p>
+  </section>
+
+  <section id="s15">
+    <h2><span class="num">15</span>Cómo contactarnos</h2>
+    <p>Si tenés preguntas, comentarios o quejas sobre esta política de privacidad, o si querés ejercer alguno de los derechos descritos en la sección 10, podés escribirnos a:</p>
+    <div class="info-card">
+      <p><strong>Asuntos de privacidad y datos:</strong> <a href="mailto:privacidad@laappflex.shop">privacidad@laappflex.shop</a></p>
+      <p><strong>Soporte general:</strong> <a href="mailto:contacto@laappflex.shop">contacto@laappflex.shop</a></p>
+      <p style="margin-bottom:0"><strong>Sitio web oficial:</strong> <a href="https://laappflex.shop">laappflex.shop</a></p>
+    </div>
+    <p>Procuramos responder todas las solicitudes dentro de los plazos previstos por la ley aplicable (en general, hasta 15 días hábiles desde la recepción de la solicitud). Si no recibís respuesta en un plazo razonable, tenés derecho a presentar una reclamación ante la autoridad de protección de datos competente de tu país.</p>
+  </section>
+
+</article>
+
+<footer>
+  <div class="footer-links">
+    <a href="/guia">Guía completa</a> &middot;
+    <a href="/privacidad">Política de privacidad</a> &middot;
+    <a href="/terminos">Términos de uso</a>
+  </div>
+  <div class="copyright">AppFlex &middot; Copyright 2026 &mdash; Todos los derechos reservados</div>
+  <div class="disclaimer">
+    Este sitio no forma parte del sitio web de Facebook ni de Meta Platforms, Inc. Tampoco está respaldado por Google LLC. La información proporcionada es de carácter educativo y no sustituye el asesoramiento médico profesional. Los resultados pueden variar de persona a persona.
+  </div>
+</footer>
+
+</body>
+</html>

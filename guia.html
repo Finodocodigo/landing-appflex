@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La guía silenciosa de las articulaciones después de los 60 — AppFlex</title>
+  <meta name="description" content="Lo que la ciencia recién entiende y lo que tu abuela ya sabía: una guía honesta sobre articulaciones, movilidad y presencia después de los 60.">
+
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+  <!-- DNS prefetch para GTM -->
+  <link rel="dns-prefetch" href="https://load.zurf.laappflex.shop">
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src="https://load.zurf.laappflex.shop/73gxeayutss.js?"+i;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','8z=GhdJMi0sSCw4OEwjPysuXgVORltIRwEWTh8VFAkRAxQWC1oGEQ4V');</script>
+  <!-- End Google Tag Manager -->
+
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+    :root{
+      /* Paleta alineada con la marca AppFlex (verde sálvia + tonos cálidos legibles) */
+      --cream:#FBF7EE;
+      --cream-deep:#F2EBDB;
+      --paper:#FFFDF7;
+      --ink:#252E27;
+      --ink-soft:#4A5648;
+      --ink-mute:#82907F;
+      --line:#DDE5DA;
+      --sage:#A8C9B8;
+      --sage-soft:#C9DDD0;
+      --sage-deep:#6B9580;
+      --sage-darker:#3F5C4F;
+      --warm:#B89858;
+      --shadow:0 1px 2px rgba(40,60,45,.05), 0 8px 28px rgba(40,60,45,.07);
+    }
+
+    html{scroll-behavior:smooth}
+    body{
+      background:var(--cream);
+      color:var(--ink);
+      font-family:'Lora', Georgia, serif;
+      font-size:19px;
+      line-height:1.78;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      overflow-x:hidden;
+    }
+
+    /* Reading progress bar */
+    .progress-track{
+      position:fixed;top:0;left:0;right:0;height:3px;
+      background:transparent;z-index:1000;
+    }
+    .progress-bar{
+      height:100%;width:0%;
+      background:linear-gradient(90deg,var(--sage-deep) 0%, var(--sage) 100%);
+      transition:width .15s ease-out;
+    }
+
+    /* Top bar — solo identidad, sin CTAs */
+    .topbar{
+      position:sticky;top:0;z-index:50;
+      background:rgba(251,247,238,.94);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--line);
+      padding:14px 20px;
+      display:flex;align-items:center;justify-content:center;
+      font-family:'Inter',sans-serif;
+    }
+    .brand{
+      font-weight:700;font-size:14px;letter-spacing:.04em;
+      color:var(--sage-darker);text-decoration:none;
+      display:flex;align-items:center;gap:10px;
+      text-transform:uppercase;
+    }
+    .brand-mark{
+      width:24px;height:24px;border-radius:50%;
+      background:var(--sage);
+      display:flex;align-items:center;justify-content:center;
+      color:#fff;font-weight:800;font-size:13px;
+      font-family:'Inter',sans-serif;
+      letter-spacing:0;
+    }
+
+    /* Hero */
+    .hero{
+      padding:64px 20px 44px;
+      max-width:760px;margin:0 auto;
+      text-align:left;
+    }
+    .eyebrow{
+      font-family:'Inter',sans-serif;
+      font-size:12px;font-weight:600;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+      color:var(--sage-deep);
+      margin-bottom:24px;
+      display:flex;align-items:center;gap:12px;
+    }
+    .eyebrow::before{
+      content:"";width:32px;height:1px;background:var(--sage-deep);
+    }
+    h1.hero-title{
+      font-family:'Lora',serif;
+      font-weight:600;
+      font-size:clamp(32px, 5.6vw, 52px);
+      line-height:1.18;
+      letter-spacing:-.012em;
+      color:var(--ink);
+      margin-bottom:24px;
+    }
+    h1.hero-title em{
+      font-style:italic;color:var(--sage-darker);font-weight:500;
+    }
+    .hero-sub{
+      font-size:clamp(18px, 2.2vw, 21px);
+      line-height:1.65;
+      color:var(--ink-soft);
+      max-width:620px;
+      margin-bottom:36px;
+    }
+    .hero-meta{
+      display:flex;flex-wrap:wrap;gap:18px 28px;align-items:center;
+      font-family:'Inter',sans-serif;
+      font-size:13px;color:var(--ink-mute);
+      padding-top:24px;
+      border-top:1px solid var(--line);
+    }
+    .hero-meta strong{color:var(--ink-soft);font-weight:600}
+    .hero-meta .dot{width:4px;height:4px;border-radius:50%;background:var(--ink-mute)}
+
+    /* TOC */
+    .toc{
+      max-width:760px;margin:24px auto 0;
+      padding:0 20px;
+    }
+    .toc-card{
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:26px 30px;
+      box-shadow:var(--shadow);
+    }
+    .toc-title{
+      font-family:'Inter',sans-serif;
+      font-size:11px;font-weight:700;
+      letter-spacing:.2em;text-transform:uppercase;
+      color:var(--sage-deep);
+      margin-bottom:18px;
+    }
+    .toc-list{list-style:none;display:grid;gap:9px}
+    .toc-list a{
+      display:flex;align-items:baseline;gap:14px;
+      text-decoration:none;color:var(--ink-soft);
+      font-size:16px;line-height:1.5;
+      padding:6px 0;
+      transition:color .15s;
+    }
+    .toc-list a:hover{color:var(--sage-darker)}
+    .toc-num{
+      font-family:'Inter',sans-serif;
+      font-size:12px;font-weight:600;
+      color:var(--sage-deep);
+      min-width:22px;
+    }
+
+    /* Article */
+    article{
+      max-width:680px;margin:0 auto;
+      padding:64px 20px 40px;
+    }
+    section.chapter{
+      margin-bottom:88px;
+      scroll-margin-top:80px;
+    }
+    .chapter-num{
+      font-family:'Inter',sans-serif;
+      font-size:12px;font-weight:700;
+      letter-spacing:.24em;
+      color:var(--sage-deep);
+      text-transform:uppercase;
+      margin-bottom:14px;
+      display:flex;align-items:center;gap:14px;
+    }
+    .chapter-num::after{
+      content:"";flex:1;height:1px;background:var(--line);
+    }
+    h2{
+      font-family:'Lora',serif;
+      font-weight:600;
+      font-size:clamp(26px, 4vw, 36px);
+      line-height:1.22;
+      letter-spacing:-.008em;
+      color:var(--ink);
+      margin-bottom:24px;
+    }
+    h2 em{font-style:italic;color:var(--sage-darker);font-weight:500}
+    h3{
+      font-family:'Inter',sans-serif;
+      font-weight:700;
+      font-size:18px;
+      letter-spacing:.005em;
+      color:var(--ink);
+      margin:34px 0 14px;
+    }
+    p{
+      margin-bottom:20px;
+      color:var(--ink-soft);
+    }
+    p strong{color:var(--ink);font-weight:600}
+    p em{font-style:italic}
+
+    /* Drop cap on first paragraph of each chapter */
+    .chapter > p:first-of-type::first-letter{
+      font-family:'Lora',serif;
+      font-weight:600;
+      font-size:3.4em;
+      float:left;
+      line-height:.9;
+      padding:6px 10px 0 0;
+      color:var(--sage-darker);
+    }
+
+    /* Pull quote */
+    .pullquote{
+      margin:42px -10px;
+      padding:32px 30px;
+      border-left:3px solid var(--sage-deep);
+      background:linear-gradient(180deg, rgba(168,201,184,.18) 0%, transparent 100%);
+      font-family:'Lora',serif;
+      font-style:italic;
+      font-size:clamp(20px, 2.6vw, 24px);
+      line-height:1.45;
+      color:var(--ink);
+      font-weight:500;
+    }
+    .pullquote::before{
+      content:"";display:block;
+      width:28px;height:2px;background:var(--sage-deep);
+      margin-bottom:18px;
+    }
+
+    /* Highlight box */
+    .highlight{
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:12px;
+      padding:24px 26px;
+      margin:32px 0;
+      box-shadow:var(--shadow);
+    }
+    .highlight-tag{
+      font-family:'Inter',sans-serif;
+      font-size:11px;font-weight:700;
+      letter-spacing:.2em;text-transform:uppercase;
+      color:var(--sage-darker);
+      margin-bottom:14px;
+      display:flex;align-items:center;gap:8px;
+    }
+    .highlight-tag::before{
+      content:"";width:6px;height:6px;border-radius:50%;
+      background:var(--sage-deep);
+    }
+    .highlight ul{
+      list-style:none;
+      display:grid;gap:10px;
+    }
+    .highlight li{
+      padding-left:24px;position:relative;
+      font-size:17px;line-height:1.6;
+      color:var(--ink-soft);
+    }
+    .highlight li::before{
+      content:"";position:absolute;left:0;top:11px;
+      width:10px;height:2px;background:var(--sage-deep);
+    }
+
+    /* Numbered list */
+    .num-list{
+      list-style:none;
+      display:grid;gap:22px;
+      margin:28px 0;
+    }
+    .num-list li{
+      display:grid;
+      grid-template-columns:42px 1fr;
+      gap:16px;
+      align-items:start;
+    }
+    .num-list .n{
+      font-family:'Inter',sans-serif;
+      font-weight:700;font-size:14px;
+      color:#fff;background:var(--sage-deep);
+      width:34px;height:34px;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .num-list .body strong{
+      display:block;
+      font-family:'Inter',sans-serif;
+      font-weight:600;font-size:17px;
+      color:var(--ink);
+      margin-bottom:4px;
+    }
+    .num-list .body{
+      color:var(--ink-soft);
+      font-size:17px;line-height:1.62;
+    }
+
+    /* Citation */
+    .cite{
+      font-family:'Inter',sans-serif;
+      font-size:13px;
+      color:var(--ink-mute);
+      font-style:italic;
+      padding:14px 18px;
+      border-left:2px solid var(--line);
+      margin:18px 0;
+      line-height:1.55;
+    }
+
+    /* Bullet list (clima) */
+    .plain-list{
+      list-style:none;
+      display:grid;gap:8px;
+      margin:16px 0 24px;
+    }
+    .plain-list li{
+      padding-left:22px;position:relative;
+      color:var(--ink-soft);
+      font-size:18px;line-height:1.62;
+    }
+    .plain-list li::before{
+      content:"";position:absolute;left:2px;top:14px;
+      width:8px;height:2px;background:var(--sage-deep);
+    }
+
+    /* Section divider */
+    .ornament{
+      display:flex;align-items:center;justify-content:center;
+      gap:10px;margin:60px 0;
+    }
+    .ornament span{
+      width:5px;height:5px;border-radius:50%;
+      background:var(--sage-soft);
+    }
+    .ornament span:nth-child(2){background:var(--sage-deep)}
+
+    /* Closing note (no CTA) */
+    .closing{
+      max-width:680px;margin:60px auto 0;
+      padding:0 20px;
+    }
+    .closing-card{
+      background:linear-gradient(160deg, #FFFDF7 0%, #ECF3EE 100%);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:44px 36px;
+      text-align:center;
+      box-shadow:var(--shadow);
+    }
+    .closing-mark{
+      width:48px;height:48px;border-radius:50%;
+      background:var(--sage);
+      display:flex;align-items:center;justify-content:center;
+      margin:0 auto 22px;
+      color:#fff;font-family:'Inter',sans-serif;
+      font-weight:800;font-size:22px;
+    }
+    .closing-text{
+      font-family:'Lora',serif;
+      font-size:clamp(18px, 2.2vw, 21px);
+      line-height:1.6;
+      color:var(--ink-soft);
+      max-width:520px;margin:0 auto;
+      font-style:italic;
+    }
+    .closing-attrib{
+      font-family:'Inter',sans-serif;
+      font-size:12px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--ink-mute);
+      margin-top:24px;
+    }
+
+    /* Footer */
+    footer{
+      max-width:760px;margin:80px auto 0;
+      padding:36px 20px 60px;
+      border-top:1px solid var(--line);
+      font-family:'Inter',sans-serif;
+      font-size:12px;line-height:1.7;
+      color:var(--ink-mute);
+      text-align:center;
+    }
+    footer .footer-links{
+      margin-bottom:16px;
+      font-size:13px;
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:6px 14px;
+    }
+    footer .footer-links a{
+      color:var(--sage-darker);
+      text-decoration:none;
+      transition:color .15s;
+    }
+    footer .footer-links a:hover{
+      color:var(--sage-deep);
+      text-decoration:underline;
+    }
+    footer .footer-links .sep{color:var(--ink-mute);opacity:.5}
+    footer .copyright{margin-bottom:14px;font-weight:600;color:var(--ink-soft)}
+    footer .disclaimer{max-width:580px;margin:0 auto;text-align:left;font-size:11px}
+
+    /* Mobile */
+    @media (max-width:520px){
+      .hero{padding:42px 20px 32px}
+      article{padding:44px 20px 20px}
+      .pullquote{margin:34px -8px;padding:26px 22px;font-size:19px}
+      .closing-card{padding:36px 24px}
+      .num-list li{grid-template-columns:34px 1fr;gap:12px}
+      .num-list .n{width:30px;height:30px;font-size:13px}
+      .chapter > p:first-of-type::first-letter{font-size:3em;padding:4px 8px 0 0}
+    }
+
+    @media print{
+      .topbar,.progress-track{display:none}
+      body{background:#fff}
+    }
+  </style>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://load.zurf.laappflex.shop/ns.html?id=GTM-TKK8VFJK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- Reading progress -->
+<div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+
+<!-- Top bar — solo identidad de marca, sin enlaces de venta -->
+<div class="topbar">
+  <span class="brand"><span class="brand-mark">A</span>AppFlex</span>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="eyebrow">Guía completa &middot; lectura honesta</div>
+  <h1 class="hero-title">Lo que tus articulaciones intentan decirte después de los 60 <em>(y nadie te explicó nunca)</em></h1>
+  <p class="hero-sub">Una guía sin promesas mágicas, sin pastillas y sin cirugías &mdash; sobre lo que la ciencia recién termina de entender y lo que tu abuela ya sabía hace décadas. Diez capítulos cortos, leíbles de a uno por día.</p>
+  <div class="hero-meta">
+    <span><strong>14 minutos</strong> de lectura</span>
+    <span class="dot"></span>
+    <span>10 capítulos</span>
+    <span class="dot"></span>
+    <span>Estudios citados: <strong>Manchester, Monell, Planta Medica</strong></span>
+  </div>
+</section>
+
+<!-- TOC -->
+<nav class="toc" aria-label="Índice">
+  <div class="toc-card">
+    <div class="toc-title">Lo que vas a encontrar</div>
+    <ul class="toc-list">
+      <li><a href="#cap-01"><span class="toc-num">01</span><span>La inflamación silenciosa: el enemigo que no duele al principio</span></a></li>
+      <li><a href="#cap-02"><span class="toc-num">02</span><span>Los cinco aliados de la mesa</span></a></li>
+      <li><a href="#cap-03"><span class="toc-num">03</span><span>El ritual de los tres minutos al despertar</span></a></li>
+      <li><a href="#cap-04"><span class="toc-num">04</span><span>Cúrcuma sin pimienta es agua tibia</span></a></li>
+      <li><a href="#cap-05"><span class="toc-num">05</span><span>Jengibre: dos mil años, una raíz, un té</span></a></li>
+      <li><a href="#cap-06"><span class="toc-num">06</span><span>El vaso de agua que casi nadie toma</span></a></li>
+      <li><a href="#cap-07"><span class="toc-num">07</span><span>Caminar como filosofía: la regla de don Aníbal</span></a></li>
+      <li><a href="#cap-08"><span class="toc-num">08</span><span>Cuando el clima sí duele de verdad</span></a></li>
+      <li><a href="#cap-09"><span class="toc-num">09</span><span>Lo que tu abuela sabía sin diplomas</span></a></li>
+      <li><a href="#cap-10"><span class="toc-num">10</span><span>La verdadera razón: estar adentro de la escena</span></a></li>
+    </ul>
+  </div>
+</nav>
+
+<article>
+
+  <!-- CAPÍTULO 1 -->
+  <section class="chapter" id="cap-01">
+    <div class="chapter-num">Capítulo 01</div>
+    <h2>La inflamación silenciosa: el enemigo que <em>no duele al principio</em></h2>
+
+    <p>El dolor articular casi nunca empieza en la articulación. Empieza adentro. En las células. En lo que comés, en cómo dormís, en lo que cargás emocionalmente. Cuando la rodilla cruje al levantarse o la cadera "tira" después de estar sentado un rato, ya hace meses &mdash;a veces años&mdash; que el cuerpo viene avisando.</p>
+
+    <p>La medicina llama a esto <strong>inflamación silenciosa</strong>. Es el desgaste lento del tejido cartilaginoso por una respuesta inflamatoria de bajo grado, sostenida en el tiempo. Y hay algo importante que pocos te dicen: a esa altura, los analgésicos solo apagan la alarma. No tocan el origen.</p>
+
+    <p>Por eso esta guía no empieza con remedios. Empieza con un mapa. Vas a leer diez capítulos cortos. Cada uno responde una pregunta que probablemente te hiciste alguna vez frente al espejo, mientras te masajeabas las manos o las rodillas y pensabas <em>"pero antes esto no era así".</em></p>
+
+    <div class="pullquote">
+      El dolor es la última señal del cuerpo. La primera fueron los crujidos que ignoraste &mdash; porque eran soportables, porque uno aprende a vivir con ellos.
+    </div>
+
+    <p>La buena noticia: el cuerpo a los 60, 70 u 80 años no está roto. Está pidiendo otro tipo de cuidado. Más simple, más cotidiano, más parecido al que llevaban tus abuelos sin saber el nombre técnico de nada. Esta guía intenta poner orden en ese cuidado &mdash; con la evidencia que hoy lo respalda.</p>
+
+    <p>Una sola advertencia antes de empezar: nada de lo que vas a leer reemplaza la opinión de tu profesional de confianza. Si tomás medicación o tenés un diagnóstico, hablalo con quien te trata. Esta guía es información, no prescripción.</p>
+  </section>
+
+  <div class="ornament"><span></span><span></span><span></span></div>
+
+  <!-- CAPÍTULO 2 -->
+  <section class="chapter" id="cap-02">
+    <div class="chapter-num">Capítulo 02</div>
+    <h2>Los cinco aliados de la mesa</h2>
+
+    <p>La inflamación silenciosa &mdash;ese desgaste lento del que hablábamos&mdash; pelea su batalla principal en un campo que muchas veces subestimamos: el plato de todos los días. Lo que entra por la boca tres veces al día durante treinta años pesa más que cualquier suplemento aislado.</p>
+
+    <p>No se trata de dietas estrictas, ni de eliminar todo lo que te gusta. Se trata de <strong>sumar</strong> &mdash;no sustituir&mdash; cinco alimentos que la mayoría de los estudios serios sobre articulaciones y envejecimiento mencionan una y otra vez:</p>
+
+    <ol class="num-list">
+      <li>
+        <span class="n">1</span>
+        <div class="body">
+          <strong>Pescado azul</strong>
+          Salmón, sardina, caballa, atún fresco. Los omega-3 que aportan son uno de los antiinflamatorios naturales más estudiados. Dos veces por semana ya hacen diferencia.
+        </div>
+      </li>
+      <li>
+        <span class="n">2</span>
+        <div class="body">
+          <strong>Aceite de oliva extra virgen</strong>
+          Tiene un compuesto llamado oleocantal. Investigaciones del Monell Chemical Senses Center mostraron que, en dosis pequeñas y sostenidas, su efecto antiinflamatorio se asemeja al del ibuprofeno. Una cucharada cruda al día, sobre la ensalada o el plato terminado.
+        </div>
+      </li>
+      <li>
+        <span class="n">3</span>
+        <div class="body">
+          <strong>Frutos rojos</strong>
+          Arándanos, frutillas, moras, frambuesas. Aportan antocianinas, que neutralizan radicales libres. Frescos o congelados sirven igual &mdash; lo importante es que sean parte habitual de la semana.
+        </div>
+      </li>
+      <li>
+        <span class="n">4</span>
+        <div class="body">
+          <strong>Hojas verdes oscuras</strong>
+          Espinaca, kale, acelga, rúcula. Magnesio, vitamina K, fibra. El magnesio es clave para el funcionamiento muscular alrededor de las articulaciones; muchos adultos mayores andan bajos sin saberlo.
+        </div>
+      </li>
+      <li>
+        <span class="n">5</span>
+        <div class="body">
+          <strong>Cúrcuma con pimienta negra</strong>
+          La estrella, pero con una condición que pocos respetan: nunca sola. La piperina de la pimienta multiplica su biodisponibilidad. Vamos a dedicarle un capítulo entero más adelante &mdash; merece la pena.
+        </div>
+      </li>
+    </ol>
+
+    <div class="highlight">
+      <div class="highlight-tag">Apuntá esto</div>
+      <ul>
+        <li>Suma, no sustituye. Estos alimentos no reemplazan tratamientos &mdash; los acompañan.</li>
+        <li>Lo cotidiano vence a lo perfecto. Mejor cinco veces por semana algo simple que una vez al mes algo elaborado.</li>
+        <li>Si tenés una condición específica (diabetes, anticoagulantes, reflujo), chequeá cantidades con tu profesional.</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="ornament"><span></span><span></span><span></span></div>
+
+  <!-- CAPÍTULO 3 -->
+  <section class="chapter" id="cap-03">
+    <div class="chapter-num">Capítulo 03</div>
+    <h2>El ritual de los tres minutos al despertar</h2>
+
+    <p>Las primeras horas del día marcan cómo se mueven las articulaciones el resto de la jornada. Si arrancás rígido, esa rigidez te acompaña hasta el almuerzo. Si arrancás suelto, el cuerpo trabaja a favor durante horas.</p>
+
+    <p>La diferencia entre una cosa y otra son <strong>tres gestos</strong> que no llevan ni tres minutos juntos:</p>
+
+    <h3>1. Antes de levantarte, mové tobillos y muñecas</h3>
+    <p>Acostado todavía, hacé círculos lentos con los tobillos &mdash; primero hacia un lado, después hacia el otro. Lo mismo con las muñecas. Un minuto en total. Suena trivial, pero la sinovia &mdash;ese líquido espeso que lubrica las articulaciones&mdash; se activa con el movimiento, no con la quietud. El cartílago empieza a "despertarse" antes de que vos lo hagas.</p>
+
+    <h3>2. Sentate al borde de la cama y respirá hondo cinco veces</h3>
+    <p>Antes de pararte. Cinco respiraciones profundas, expandiendo el abdomen. Esto baja la tensión muscular acumulada durante la noche y le avisa al sistema nervioso que el día empieza despacio. Las articulaciones rígidas no responden bien al apuro &mdash; y el apuro es hijo del estrés, no del reloj.</p>
+
+    <h3>3. Caminá unos pasos descalzo por la casa</h3>
+    <p>Diez, quince pasos. Solo el tiempo de ir hasta la cocina o el baño. Ese contacto directo del pie con el piso ayuda a "despertar" rodillas, tobillos y caderas. Activa pequeños músculos que las pantuflas anulan.</p>
+
+    <p>Tres gestos. Tres minutos. Cero costo. Sostenido en el tiempo, es de las cosas más subestimadas del cuidado articular.</p>
+
+    <div class="pullquote">
+      Lo que hacés en los primeros tres minutos del día, las articulaciones lo agradecen durante las próximas dieciséis horas.
+    </div>
+  </section>
+
+  <div class="ornament"><span></span><span></span><span></span></div>
+
+  <!-- CAPÍTULO 4 -->
+  <section class="chapter" id="cap-04">
+    <div class="chapter-num">Capítulo 04</div>
+    <h2>Cúrcuma sin pimienta <em>es agua tibia</em></h2>
+
+    <p>Mucha gente toma cúrcuma todos los días y no nota diferencia. Se frustra. La deja. Concluye que "no funciona". Y el problema casi siempre es el mismo: la curcumina &mdash;el compuesto activo de la cúrcuma&mdash; tiene una biodisponibilidad bajísima cuando se consume sola. El cuerpo prácticamente no la absorbe.</p>
+
+    <p>Investigaciones publicadas en la revista <em>Planta Medica</em> mostraron algo que cambia todo: la <strong>piperina</strong>, presente en la pimienta negra, puede aumentar de forma muy significativa la absorción de la curcumina. No un poco. Significativamente.</p>
+
+    <div class="cite">
+      Esto explica por qué las cocinas tradicionales de la India llevan miles de años combinando cúrcuma con pimienta negra y un poco de grasa &mdash; ghee, leche tibia, aceite. No es ritual estético: es bioquímica observada antes de tener nombre.
+    </div>
+
+    <p>La fórmula casera funciona así:</p>
+
+    <div class="highlight">
+      <div class="highlight-tag">El "té dorado" simple</div>
+      <ul>
+        <li>Una taza de leche tibia (de vaca, vegetal, da igual) o agua caliente.</li>
+        <li>Media cucharadita de cúrcuma en polvo (o una rodaja de raíz fresca rallada).</li>
+        <li>Una pizca pequeña de pimienta negra recién molida.</li>
+        <li>Una cucharadita de aceite de coco, oliva o un poco de ghee &mdash; la grasa ayuda a la absorción.</li>
+        <li>Opcional: jengibre, miel, canela, una rodaja de limón.</li>
+      </ul>
+    </div>
+
+    <p>Una taza al día, idealmente con el estómago no del todo vacío. Si tomás anticoagulantes, hipoglucemiantes o tenés cálculos de la vesícula, conviene revisarlo antes con tu profesional &mdash; la cúrcuma en cantidad puede potenciar algunos medicamentos.</p>
+
+    <p>El error más común no es la dosis. Es no acompañarla con pimienta. Tres centavos de pimienta cambian la ecuación entera.</p>
+  </section>
+
+  <div class="ornament"><span></span><span></span><span></span></div>
+
+  <!-- CAPÍTULO 5 -->
+  <section class="chapter" id="cap-05">
+    <div class="chapter-num">Capítulo 05</div>
+    <h2>Jengibre: dos mil años, una raíz, un té</h2>
+
+    <p>Hace más de dos mil años, en China e India, el jengibre se usaba contra la rigidez del cuerpo. No por moda &mdash; por observación pasada de generación en generación. Quien lo tomaba notaba que el cuerpo se movía mejor. Punto. Sin estudios doble ciego, sin revistas científicas. Solo memoria.</p>
+
+    <p>Hoy, esa memoria empezó a tener nombre técnico. Estudios publicados en revistas como <em>Osteoarthritis and Cartilage</em> sugieren que sus compuestos activos &mdash;principalmente <strong>gingerol</strong> y <strong>shogaol</strong>&mdash; pueden reducir marcadores de inflamación articular. La evidencia no es definitiva, pero es consistente. Y abierta.</p>
+
+    <p>La forma más simple, y la que más gente reporta que ayuda:</p>
+
+    <div class="highlight">
+      <div class="highlight-tag">Té de jengibre matinal</div>
+      <ul>
+        <li>Una rodaja generosa de raíz fresca de jengibre (o media cucharadita seca).</li>
+        <li>Una taza de agua caliente, no hirviendo.</li>
+        <li>Reposar 5 a 7 minutos.</li>
+        <li>Una rodaja de limón al final.</li>
+        <li>Sin azúcar, idealmente.</li>
+      </ul>
+    </div>
+
+    <p>Una taza al despertar, antes del desayuno. La calidez activa la circulación periférica &mdash; manos y pies que muchas veces amanecen entumecidos.</p>
+
+    <p>Una nota importante: el jengibre tiene efecto anticoagulante leve. Si ya tomás medicación anticoagulante (como warfarina) o estás por una cirugía, conviene chequearlo con tu médico antes de hacerlo rutina.</p>
+
+    <div class="pullquote">
+      Lo que las abuelas hacían sin saber el nombre químico de los compuestos, la ciencia recién ahora termina de explicar. Y a veces ni siquiera explica del todo &mdash; solo confirma que algo pasaba.
+    </div>
+  </section>
+
+  <div class="ornament"><span></span><span></span><span></span></div>
+
+  <!-- CAPÍTULO 6 -->
+  <section class="chapter" id="cap-06">
+    <div class="chapter-num">Capítulo 06</div>
+    <h2>El vaso de agua que <em>casi nadie</em> toma</h2>
+
+    <p>Antes del café. Antes del mate. Antes de revisar el celular. Antes incluso de saludar al primero que se cruza en la cocina: <strong>un vaso de agua tibia</strong>.</p>
+
+    <p>Suena anticlimático. Suena demasiado simple para ser importante. Y sin embargo, este es uno de los gestos más subestimados del cuidado articular después de los 60.</p>
+
+    <p>Un dato que pone la cosa en perspectiva: el cartílago articular es <strong>70 a 80% agua</strong>. La sinovia, ese lubricante natural de las articulaciones, también. Después de siete u ocho horas sin tomar nada de líquido durante la noche, el cuerpo amanece literalmente seco. Los crujidos al levantarse, esos que muchos atribuyen al "desgaste" sin más, tienen mucho que ver con esto.</p>
+
+    <p>No es solución única. No reemplaza nada. Pero es de las cosas más simples y baratas que existen. Un vaso al despertar, otro a media mañana, otro antes del almuerzo &mdash; sin contar el café o el mate, que son diuréticos suaves.</p>
+
+    <div class="cite">
+      Si tomás medicación que regula líquidos (diuréticos para presión, por ejemplo) o tu profesional te indicó una cantidad específica, respetala. La idea no es tomar más por las dudas, es no tomar menos por descuido.
+    </div>
+
+    <p>La pregunta que vale la pena hacerse cada mañana es muy concreta: <em>¿de acá al almuerzo, voy a tomar al menos tres vasos de agua &mdash;sin contar otras bebidas&mdash;?</em></p>
+
+    <p>Si la respuesta es no, ya sabés por dónde empezar.</p>
+  </section>
+
+  <div class="ornament"><span></span><span></span><span></span></div>
+
+  <!-- CAPÍTULO 7 -->
+  <section class="chapter" id="cap-07">
+    <div class="chapter-num">Capítulo 07</div>
+    <h2>Caminar como filosofía: la regla de don Aníbal</h2>
+
+    <p>Mi vecino don Aníbal tiene 72 años. Sale todas las mañanas con su taza de mate. Hace tres cuadras hasta la plaza, da una vuelta entera, vuelve. No corre. No "entrena". Camina. Llueve, hace frío, está nublado &mdash; cualquier excusa que vos te pondrías, él la descarta sin discutir.</p>
+
+    <p>Le pregunté un día por qué. Sin pensar mucho me dijo: <em>"porque si paro, no vuelvo a empezar".</em></p>
+
+    <p>Ahí está. En siete palabras, lo que la mayoría de los manuales de gerontología tardan capítulos enteros en explicar.</p>
+
+    <h3>Qué pasa cuando caminás 30 minutos por día</h3>
+    <p>La caminata diaria activa la sinovia (de nuevo ella, la lubricante natural de las articulaciones). Mejora la circulación periférica, lo que oxigena mejor los tejidos cercanos. Y, sobre todo, mantiene la <strong>masa muscular</strong> que sostiene rodillas y caderas. Esa masa muscular es la que decide, en gran parte, cuánto castigan los años a tus articulaciones.</p>
+
+    <p>No promete nada. No es un milagro. Pero la rutina silenciosa hace lo que ningún suplemento aislado consigue: <em>sostener en el tiempo</em>.</p>
+
+    <div class="highlight">
+      <div class="highlight-tag">La caminata mínima viable</div>
+      <ul>
+        <li>30 minutos seguidos. No tienen que ser intensos &mdash; tienen que ser sostenidos.</li>
+        <li>Mejor por la mañana, pero la mejor caminata es la que efectivamente hacés.</li>
+        <li>Calzado cómodo, no necesariamente deportivo.</li>
+        <li>Sin objetivos de distancia ni velocidad &mdash; solo presencia y constancia.</li>
+        <li>Si tenés una condición previa, conviene hablarlo con tu profesional antes de cambiar la rutina.</li>
+      </ul>
+    </div>
+
+    <p>Si por algún motivo no podés salir &mdash;clima muy adverso, gripe, lo que sea&mdash; caminá adentro. Por el living, por el pasillo, por el patio. La regla de don Aníbal se aplica especialmente esos días: <em>si parás, no volvés a empezar</em>.</p>
+  </section>
+
+  <div class="ornament"><span></span><span></span><span></span></div>
+
+  <!-- CAPÍTULO 8 -->
+  <section class="chapter" id="cap-08">
+    <div class="chapter-num">Capítulo 08</div>
+    <h2>Cuando el clima <em>sí duele de verdad</em></h2>
+
+    <p>Lo escuchaste mil veces. Y muchas veces alguien te dijo, con tono medio condescendiente, que era "solo sensación tuya". <em>"Es psicológico, mamá."</em> O peor: que estabas sugestionada por lo que decían los abuelos.</p>
+
+    <p>Los abuelos tenían razón.</p>
+
+    <p>Investigadores de la Universidad de Manchester llevaron adelante un estudio masivo &mdash;<strong>"Cloudy with a Chance of Pain", publicado en 2019</strong>&mdash; con miles de participantes que reportaban diariamente su nivel de dolor durante meses. Cruzaron esos datos con información meteorológica precisa. El resultado: encontraron una <strong>asociación estadísticamente significativa</strong> entre días con baja presión atmosférica, alta humedad y aumento del dolor articular reportado.</p>
+
+    <div class="cite">
+      No era invento. No era sugestión. Era percepción real, de un cuerpo que registra cambios sutiles del ambiente que la mente consciente apenas nota.
+    </div>
+
+    <h3>Por qué pasa</h3>
+    <p>Cuando baja la presión atmosférica, los tejidos blandos alrededor de la articulación &mdash;ligamentos, tendones, cápsula sinovial&mdash; tienden a expandirse muy levemente. Esa expansión presiona terminales nerviosas que ya estaban sensibilizadas por inflamación previa. Resultado: dolor que parece "salido de la nada".</p>
+
+    <p>El frío, por su parte, aumenta la rigidez del líquido sinovial &mdash; literalmente, lo vuelve un poco más viscoso. Por eso las articulaciones se sienten más "trabadas" en invierno.</p>
+
+    <p>No es daño nuevo. Es respuesta del cuerpo al ambiente.</p>
+
+    <h3>Qué muchos reportan que ayuda</h3>
+    <ul class="plain-list">
+      <li>Mantener las articulaciones tibias al despertar &mdash; medias gruesas, manga larga, una bufanda corta para el cuello.</li>
+      <li>Moverse suave antes de cargar peso o salir al frío.</li>
+      <li>Hidratarse bien, también en invierno (sí, especialmente en invierno).</li>
+      <li>Una bolsa de agua tibia (no caliente) sobre la zona durante 10-15 minutos.</li>
+    </ul>
+
+    <p>La próxima vez que sientas eso y alguien te diga que es invento tuyo, ya sabés qué responder. La ciencia te respalda &mdash; aunque no termine la conversación.</p>
+  </section>
+
+  <div class="ornament"><span></span><span></span><span></span></div>
+
+  <!-- CAPÍTULO 9 -->
+  <section class="chapter" id="cap-09">
+    <div class="chapter-num">Capítulo 09</div>
+    <h2>Lo que tu abuela sabía <em>sin diplomas</em></h2>
+
+    <p>Antes de los suplementos, antes de las farmacias modernas, antes de la palabra "antiinflamatorio", había un cajón con frascos de hierbas y una tetera siempre tibia.</p>
+
+    <p>La abuela &mdash;la tuya, la mía, casi cualquier abuela de hace ochenta años&mdash; no usaba la palabra científica de las cosas. Pero el jengibre con limón aparecía cuando alguien se quejaba de las rodillas. La cúrcuma estaba en el guiso del domingo. La caminata después de comer era ley. El descanso después del almuerzo, también.</p>
+
+    <p>Nada de eso era ciencia formal. Era <strong>observación pasada de generación en generación</strong> &mdash; un tipo de conocimiento que se acumula en la práctica, no en los libros. Funcionaba sin saber por qué, hasta que alguien le puso nombre.</p>
+
+    <div class="pullquote">
+      La abuela no leía revistas científicas. Pero llevaba ochenta años de su propio estudio observacional, sin grupo de control y sin financiación &mdash; y los resultados estaban en las rodillas que todavía la sostenían.
+    </div>
+
+    <p>Hoy, mucho de eso aparece confirmado en estudios sobre alimentación y inflamación silenciosa. La ciencia no inventó estos hábitos: les puso nombre técnico. Y con nombre técnico, los hábitos se vuelven discutibles, mensurables, replicables.</p>
+
+    <p>Pero hay algo que a veces se pierde en el camino: la <strong>autoridad de la práctica sostenida</strong>. La diferencia entre saber algo y haberlo hecho diez mil veces. La abuela no tenía diploma. Tenía repetición. Tenía paciencia. Tenía una mirada larga sobre los cuerpos que envejecían a su alrededor.</p>
+
+    <p>Esta guía, en el fondo, intenta volver a esa mirada larga &mdash; con la herramienta extra que ella no tenía: la confirmación científica de varios de sus gestos.</p>
+  </section>
+
+  <div class="ornament"><span></span><span></span><span></span></div>
+
+  <!-- CAPÍTULO 10 -->
+  <section class="chapter" id="cap-10">
+    <div class="chapter-num">Capítulo 10</div>
+    <h2>La verdadera razón: <em>estar adentro de la escena</em></h2>
+
+    <p>Llegamos al último capítulo. Y este es, por lejos, el más importante.</p>
+
+    <p>Mi padre solía decir que los años no se sienten en los huesos hasta que llega un nieto. Cuando nació el primero, él se sentaba en el patio a mirarlo jugar &mdash; pero no podía agacharse a recoger la pelota. No podía levantarse rápido de la silla. Le dolía la rodilla. Y le dolía algo más adentro, algo que en ese momento no supo nombrar: <strong>sentirse afuera de la escena</strong>.</p>
+
+    <p>Hoy lo entiendo. La movilidad no es solo cuerpo. Es presencia. Es poder agacharte a la altura de un nieto, levantar la pelota y devolverla. Es plantar una semilla con él en una maceta. Es subir las escaleras de una visita sin pensar en el corazón. Es pasear por la plaza sin medir cuántos bancos hay por si necesitás sentarte.</p>
+
+    <p>Por eso cuidar las articulaciones, cuando uno pasa los 60, nunca fue solo cuestión de cuerpo. Es cuestión de <strong>qué tipo de presencia querés ser</strong> para los que vienen detrás.</p>
+
+    <div class="pullquote">
+      Los nietos no recuerdan los regalos. Recuerdan las manos. La que les enseñó a poner una semilla. La que sostuvo la pelota antes de devolverla. La que los levantó sin esfuerzo, una y otra vez, en esos años en que pesar diez kilos era una hazaña pequeña.
+    </div>
+
+    <p>No hay edad para empezar. Y no hay rutina mágica &mdash; solo movimiento, alimentación, descanso e hidratación, sostenidos en el tiempo. Los diez capítulos que acabás de leer son ese mapa.</p>
+
+    <p>Si llegaste hasta acá, ya sabés más de lo que la mayoría de la gente que se queja del dolor articular sabrá nunca. Lo que sigue ahora &mdash;y esta es la parte difícil&mdash; depende solo de vos y de la constancia silenciosa de los próximos meses.</p>
+
+    <p>Empezá por uno. El que te resulte más fácil. El de mañana.</p>
+  </section>
+
+</article>
+
+<!-- Cierre — sin venta, solo gratitud y respiración final -->
+<section class="closing">
+  <div class="closing-card">
+    <div class="closing-mark">A</div>
+    <p class="closing-text">"Los años no se sienten en los huesos hasta que llega un nieto. Y entonces, lo que parecía detalle se vuelve el centro de todo."</p>
+    <div class="closing-attrib">Gracias por leer hasta acá</div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-links">
+    <a href="/privacidad">Política de Privacidad</a>
+    <span class="sep">&middot;</span>
+    <a href="/terminos">Términos de Uso</a>
+    <span class="sep">&middot;</span>
+    <a href="mailto:contacto@laappflex.shop">Contacto</a>
+  </div>
+  <div class="copyright">AppFlex &middot; Copyright 2026 &mdash; Todos los derechos reservados</div>
+  <div class="disclaimer">
+    Este sitio no forma parte del sitio web de Facebook, Instagram, WhatsApp ni de Meta Platforms, Inc. Tampoco está respaldado por Google LLC. Las marcas FACEBOOK, INSTAGRAM y META son marcas comerciales de META PLATFORMS, INC. Las marcas GOOGLE y YOUTUBE son marcas comerciales de GOOGLE LLC. La información proporcionada en esta guía es de carácter educativo y no sustituye el asesoramiento médico profesional. Los resultados pueden variar de persona a persona. Siempre consulte a su médico antes de comenzar cualquier programa de ejercicios o cambio en su estilo de vida, especialmente si tiene una condición preexistente o toma medicación.
+  </div>
+</footer>
+
+<script>
+  // Reading progress bar — único elemento dinámico, sin propósito comercial
+  (function(){
+    var bar = document.getElementById('progressBar');
+    var ticking = false;
+    function update(){
+      var doc = document.documentElement;
+      var scrollTop = window.scrollY || doc.scrollTop;
+      var scrollHeight = doc.scrollHeight - doc.clientHeight;
+      var pct = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+      bar.style.width = pct + '%';
+      ticking = false;
+    }
+    window.addEventListener('scroll', function(){
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    }, {passive:true});
+    update();
+  })();
+</script>
+
+</body>
+</html>

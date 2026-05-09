@@ -1,0 +1,28 @@
+# macOS / Windows
+.DS_Store
+Thumbs.db
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs e temporários
+*.log
+*.tmp
+
+# Ambiente local — nunca commitar
+.env
+.env.local
+.env.*.local
+
+# Build / dependências (não usamos hoje, mas reserva)
+node_modules/
+dist/
+.cache/
+.wrangler/
+
+# Notas de trabalho — não versionar nem expor no Cloudflare Pages
+content.md
