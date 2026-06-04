@@ -1,0 +1,24 @@
+# Cloudflare Pages — Redirects & rewrites
+# Docs: https://developers.cloudflare.com/pages/configuration/redirects/
+#
+# Cloudflare Pages serves /terms automatically from terms.html (clean URLs
+# are built in for files matching the path). Entries below cover URL
+# variations a reader might guess by hand.
+
+# Protected landings — force the .html form to the clean URL so they always
+# pass through the protection Function (never served as a raw static file).
+/breath-report.html   /breath-report   301
+/nerve-report.html    /nerve-report    301
+
+# Privacy aliases
+/privacy        /privacy-policy        301
+/privacidade    /privacy-policy        301
+
+# Terms aliases
+/terms-of-use   /terms                 301
+/tos            /terms                 301
+
+# Common 404 typo redirects (kept short — Pages already handles 404.html)
+/home           /                      301
+/index          /                      301
+/index.html     /                      301

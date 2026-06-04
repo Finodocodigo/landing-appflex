@@ -17,10 +17,12 @@ Thumbs.db
 .env
 .env.local
 .env.*.local
+.dev.vars
 
-# Build / dependências (não usamos hoje, mas reserva)
+# Build / dependências
 node_modules/
 dist/
+build/
 .cache/
 .wrangler/
 

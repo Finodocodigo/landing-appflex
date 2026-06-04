@@ -1,117 +1,82 @@
-# AppFlex — Landing Pages
+# The Vital Years — laappflex.shop (act08/pag01)
 
-Conjunto de páginas estáticas para o funil direct response do produto **AppFlex** (saúde articular para adulto mayor hispanohablante, vendido na Hotmart).
+Cloudflare Pages project for the Facebook page **Giulia Batista**. The old
+**AppFlex** (Spanish joint-health, Hotmart) funnel was discontinued; the page +
+domain + shell were repurposed to run **two unrelated BuyGoods supplement
+offers** in English for a US audience, on the same domain, mirroring the working
+tracking stack of `clients/act05/pag01`.
 
-Domínio de produção: **[laappflex.shop](https://laappflex.shop)**
+Production domain: **[laappflex.shop](https://laappflex.shop)**
 
-## Estrutura
+## The two products
 
-```
-landing-page/
-├── index.html                  # Home institucional + blog (esta é a página raiz)
-├── v1.html                     # VSL principal (rota: /v1)
-├── laappalivio.html            # VSL alternativa (variação A/B)
-├── movimientos-esenciales.html # VSL alternativa
-├── recuperacion-nocturna.html  # VSL alternativa
-│
-├── guia.html                   # Lectura ensaísta longa — "10 capítulos"
-├── lo-que-no-cuentan.html      # Artigo: sistema médico → CTA test-pensamiento
-├── movilidad-cotidiana.html    # Artigo: rigidez → CTA test-movilidad
-├── raiz-dorada.html            # Artigo: cúrcuma → CTA test-ritual
-│
-├── test-pensamiento.html       # Quiz 1 (90 s) — vai para v1
-├── test-movilidad.html         # Quiz 2 (90 s) — vai para v1
-├── test-ritual.html            # Quiz 3 (90 s) — vai para v1
-│
-├── bridge.html                 # Bridge pré-checkout (injeta UTMs no Hotmart)
-├── split.html                  # Split A/B redirect 50/50
-├── gracias.html                # Página pós-compra
-│
-├── privacidad.html             # Política de privacidade
-├── terminos.html               # Termos de uso
-│
-├── assets/                     # Favicons + imagens (Dr. Salazar, testimonios)
-├── _headers                    # Regras Cloudflare Pages (cache + security)
-└── .gitignore
-```
+| Product | Theme | Landing (cloaked) | Cloak Function |
+|---|---|---|---|
+| **BreathEase X** (+ CardioEase X) | Lungs / COPD | `/breath-report` | `functions/breath-report.js` |
+| **Nervaline** | Neuropathy | `/nerve-report` | `functions/nerve-report.js` |
 
-## Funil
+Source VSLs (in the client folder): `roteiro-vsl-lungs.md`, `roteiro-vsl-neuropatia.md`.
+Avatars: `avatar-lungs.md`, `avatar-neuropatia.md`. Page voice: `giulia-voice.md`.
+
+## Structure
 
 ```
-ad/orgânico
-  └─ artigo (lo-que-no-cuentan / movilidad-cotidiana / raiz-dorada)
-        └─ teste correspondente (test-pensamiento / test-movilidad / test-ritual)
-              └─ v1.html (VSL com VTurb player)
-                    └─ checkout Hotmart (via bridge.html para enriquecer UTMs)
-                          └─ gracias.html
+website/
+├── wrangler.jsonc            # Pages config (name act08-pag01-site, D1 act08-pag01-db, build output ./public)
+├── README.md
+├── TRACKING-SETUP.md         # step-by-step go-live (D1, secrets, 2 pixels, BuyGoods)
+├── config/products.js        # codename allowlist + per-product pixel map (META_PIXEL_BY_CODENAME)
+├── migrations/               # D1 schema 0001..0019 (sessions, checkout_sessions, event_log, purchase_log, ...)
+├── functions/                # Cloudflare Pages Functions (edge)
+│   ├── _middleware.js        # capture session, fbp/fbc/gclid/UTMs, 400-day cookies → D1 sessions
+│   ├── _bots.js              # crawler classification (BLOCK=Google/AdsBot/SEO/AI → 403; META → index)
+│   ├── _pixels.js            # per-product pixel resolution BY LANDING SLUG (shared)
+│   ├── breath-report.js      # cloak for /breath-report
+│   ├── nerve-report.js       # cloak for /nerve-report
+│   ├── tracker.js            # POST /tracker (browser conversions → Meta CAPI + GA4, per-product pixel by slug)
+│   ├── checkout-session.js   # POST /checkout-session (attribution snapshot by subid → D1)
+│   ├── p/checkout.js         # GET /p/checkout (server InitiateCheckout pixel, per-product by slug)
+│   ├── admin/replay.js       # replay missed Meta purchases (respects allowlist)
+│   └── webhook/
+│       ├── _core.js          # platform-agnostic processPurchase + resolveMetaPixel (Purchase pixel BY CODENAME)
+│       ├── _utils.js         # guardSlug
+│       ├── _refund_core.js   # refund handling
+│       └── buygoods/[slug].js# BuyGoods postback adapter (one endpoint, both products)
+└── public/                   # static (Pages build output)
+    ├── index.html            # institutional white page (English, product-free, indexable) — Giulia Batista
+    ├── breath-report.html    # BreathEase landing placeholder (pixel + attribution wired; advertorial TBD)
+    ├── nerve-report.html     # Nervaline landing placeholder
+    ├── privacy-policy.html / terms.html / 404.html
+    ├── robots.txt / sitemap.xml / _headers / _redirects
+    ├── assets/               # favicons + (css/, images/ reserved)
+    └── js/                   # checkout-tracker.js, protect.js (used by the advertorial fill)
 ```
 
-`index.html` é a home institucional/blog — entrada orgânica/SEO. Os artigos podem entrar diretamente via tráfego pago.
+## How it works (tracking)
 
-## URLs limpas (sem .html)
+Mirrors `act05/pag01`: BuyGoods + Meta CAPI + Cloudflare D1, with a User-Agent
+cloak on the two landings (Meta crawlers → the white index; Google/AdsBot → 403;
+real visitors → the landing). The `subid` is the golden thread: generated on the
+landing, persisted to `checkout_sessions`, threaded into the BuyGoods checkout,
+and returned by the postback so the Purchase joins it in D1.
 
-Cloudflare Pages resolve automaticamente:
+**Two products, two Meta pixels** (client decision): one pixel per product. The
+`Purchase` (webhook) is routed by `{PRODUCT_CODENAME}` prefix; PageView /
+InitiateCheckout are routed by landing slug. See `TRACKING-SETUP.md` for the env
+vars and the placeholders to fill before go-live.
 
-- `laappflex.shop/test-pensamiento` → serve `test-pensamiento.html`
-- `laappflex.shop/privacidad` → serve `privacidad.html`
-- `laappflex.shop/v1` → serve `v1.html`
+## Conventions
 
-**Não é preciso `_redirects`** — todos os links internos já usam URLs sem `.html`.
+The institutional `index.html` is the verifiable brand face for Meta/Google: it
+**never** mentions a product, supplement, VSL, the VSL personas, or a checkout.
+All selling lives on the cloaked `/breath-report` and `/nerve-report` landings.
+Medical disclaimer on every page. Fonts via `fonts.bunny.net` (GDPR-friendly).
 
-## Deploy via Cloudflare Pages (passo a passo)
+## Deploy
 
-Pré-requisitos: conta GitHub e conta Cloudflare com domínio `laappflex.shop`.
-
-### 1. Subir para o GitHub
-
-```bash
-cd /workspaces/cliente-appflex/direct/appflex/landing-page
-git init
-git add .
-git commit -m "Initial commit — landing pages AppFlex"
-gh repo create Finodocodigo/landing-appflex --public --source=. --push
-```
-
-### 2. Conectar ao Cloudflare Pages
-
-1. Acesse [dash.cloudflare.com → Workers & Pages → Create → Pages → Connect to Git](https://dash.cloudflare.com).
-2. Selecione o repo `Finodocodigo/landing-appflex`.
-3. Configurações de build:
-   - **Framework preset**: None
-   - **Build command**: *(vazio)*
-   - **Build output directory**: `/` (raiz do repo)
-   - **Root directory**: *(vazio)*
-4. Clique em "Save and Deploy".
-
-### 3. Configurar domínio custom
-
-Em **Pages → seu projeto → Custom domains**:
-
-- Adicionar `laappflex.shop` (root) e `www.laappflex.shop`.
-
-> **Atenção:** o subdomínio `app.laappflex.shop` (PWA Next.js no Vercel) deve continuar apontando para o Vercel via DNS — só o root e `www` vão para o Cloudflare Pages.
-
-### 4. Deploy contínuo
-
-Cada `git push origin main` dispara novo deploy automático.
-
-## Stack / observações técnicas
-
-- HTML estático puro — sem build step, sem framework.
-- CSS inline em cada página (paleta sage/cream + Inter + Lora).
-- **GTM**: container `GTM-TKK8VFJK` carregado via `load.zurf.laappflex.shop` (CNAME stealth).
-- **VTurb**: SmartPlayer Web Component em `v1.html` e variantes — IDs de player são distintos por variação.
-- **UTMify**: captura UTMs e injeta nos links de saída da VSL.
-- **Hotmart**: checkout final em `pay.hotmart.com/V104915667K?off=wodtzxg2`.
-- **Tracking**: `xcod` (UUID gerado client-side) + `sck` (montado a partir das UTMs) propagados em todos os links → bridge → checkout.
-
-## Notas de copy
-
-Idioma: **Espanhol** (ES) — voseo (vos/tenés) consistente em todos os textos. Linguagem simples (≈ 3ª série / B1) — público-alvo é adulto mayor de 60-80 anos hispano-hablante com pouca familiaridade tecnológica.
-
-Persona/voz: tom ensaísta-conversacional, sem hype, sem promessas de cura. Autoridade do **Dr. Ramírez Salazar** (médico cirujano, formação em medicina deportiva).
-
-## Pendências conhecidas
-
-- **Inconsistência garantia**: `bridge.html` menciona "Garantía de 30 días", mas `terminos.html §08` diz "7 días corridos". Harmonizar antes do go-live.
-- Trocar avatar genérico do Dr. Salazar (`<div class="doc-avatar">RS</div>` no `index.html`) por foto real (`assets/img/dr-salazar.webp`) quando aprovado.
+This `website/` is a clone of `Finodocodigo/landing-appflex`. The old AppFlex
+site deployed flat (build output = root); this layout uses `public/`, so the
+Pages project's **Build output directory must be set to `public`** (or a fresh
+`act08-pag01-site` project created). Then `wrangler pages deploy public
+--project-name=act08-pag01-site`. Full steps in `TRACKING-SETUP.md`. Do not
+push/deploy without explicit authorization.

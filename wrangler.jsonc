@@ -1,0 +1,36 @@
+/**
+ * Cloudflare Pages configuration for laappflex.shop (act08/pag01)
+ *
+ * `public/` is served as static assets (no build step). The exceptions are the
+ * two protected landings /breath-report and /nerve-report: `functions/` holds a
+ * Pages Function per slug (crawler/AdsBot block + Meta cloak). Wrangler compiles
+ * `functions/` automatically on deploy; everything else stays a plain static
+ * asset with the strict CSP from `public/_headers`.
+ *
+ * Deploy via Git integration:
+ *   Dashboard → Workers & Pages → Create → Connect to Git
+ *   Build command:   (leave empty)
+ *   Build output:    public
+ *
+ * Or deploy from CLI (after `wrangler login`):
+ *   npx wrangler pages deploy public --project-name=act08-pag01-site
+ *
+ * D1 (tracking + Meta CAPI): the binding below lets `wrangler d1 migrations
+ * apply` and `wrangler pages dev` find the database locally. The PRODUCTION
+ * binding is set in the dashboard (Pages project → Settings → Bindings → D1,
+ * name MUST be `DB`); git integration ignores this file for prod bindings.
+ * Fill in `database_id` after `wrangler d1 create act08-pag01-db`.
+ */
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "act08-pag01-site",
+  "compatibility_date": "2026-05-14",
+  "pages_build_output_dir": "./public",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "act08-pag01-db",
+      "database_id": "159dda3b-01ae-4527-b15a-7c079fd80e2c"
+    }
+  ]
+}
