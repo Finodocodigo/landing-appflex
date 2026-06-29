@@ -8,6 +8,8 @@
 # Protected landings — force the .html form to the clean URL so they always
 # pass through the protection Function (never served as a raw static file).
 /breath-report.html   /breath-report   301
+/breath-report-b.html /breath-report-b 301
+/breath-report-c.html /breath-report-c 301
 /nerve-report.html    /nerve-report    301
 
 # Privacy aliases
