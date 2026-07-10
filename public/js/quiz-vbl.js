@@ -264,10 +264,9 @@ unlockButton.addEventListener('click', function () {
     e.style.display = 'block';
   });
 
-  // Faz o scroll suave até o elemento com id "firstPackage"
-  $('html, body').animate({
-    scrollTop: $('#scrolldown').offset().top
-  }, 1000);
+  // Scroll suave até a oferta (scrollIntoView nativo — a página não carrega jQuery)
+  const target = document.getElementById('scrolldown');
+  if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
 });
 
 
