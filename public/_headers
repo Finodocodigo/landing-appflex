@@ -24,6 +24,13 @@
 /images/*
   Cache-Control: public, max-age=31536000, immutable
 
+# JS sem hash no nome: cache de 1 dia (immutable aqui quebraria updates de
+# quiz-vbl/bootstrap pra quem já visitou). Atenção: regras que casam o mesmo
+# path são SOMADAS pelo Pages (headers repetidos viram lista) — por isso a
+# regra do checkout-tracker.js abaixo faz "! Cache-Control" antes de redefinir.
+/js/*
+  Cache-Control: public, max-age=86400
+
 # -----------------------------------------------------------------------
 # HTML — short cache so updates ship fast
 # -----------------------------------------------------------------------
@@ -34,5 +41,6 @@
 # Checkout tracker snippet — embedded cross-origin on the BuyGoods checkout
 # -----------------------------------------------------------------------
 /js/checkout-tracker.js
+  ! Cache-Control
   Access-Control-Allow-Origin: *
   Cache-Control: public, max-age=300, must-revalidate

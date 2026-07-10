@@ -75,6 +75,16 @@ export async function onRequest(ctx) {
   headers.set("content-security-policy", SLUG_CSP);
   headers.set("x-robots-tag", NOINDEX);
 
+  // Early Hints / Link header: o browser inicia o fetch do CSS e o handshake
+  // com o CDN do player assim que os headers chegam, antes de parsear o HTML.
+  // O hash no nome do CSS acompanha o href em breath-report*.html.
+  headers.set(
+    "link",
+    '</css/breath.cc860b73.min.css>; rel=preload; as=style, ' +
+    '<https://scripts.converteai.net>; rel=preconnect, ' +
+    '<https://cdn.converteai.net>; rel=preconnect'
+  );
+
   // Inject the Meta pixel ID from env (set in Cloudflare → not committed to git).
   // Static HTML can't read env vars, so the cloak swaps the placeholder at the
   // edge. If the env var is unset, the page still serves (pixel just inert).
