@@ -80,7 +80,7 @@ export async function onRequest(ctx) {
   // O hash no nome do CSS acompanha o href em breath-report*.html.
   headers.set(
     "link",
-    '</css/breath.cc860b73.min.css>; rel=preload; as=style, ' +
+    '</css/breath.d8780436.min.css>; rel=preload; as=style, ' +
     '<https://scripts.converteai.net>; rel=preconnect, ' +
     '<https://cdn.converteai.net>; rel=preconnect'
   );
