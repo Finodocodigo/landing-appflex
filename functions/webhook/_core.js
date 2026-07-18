@@ -128,6 +128,20 @@ export async function processPurchase({ parsed, env, context }) {
     }
   }
 
+  // event_source_url is REQUIRED by Meta for Purchase attribution/optimization —
+  // an event without it is accepted but unusable (Events Manager flags it). It
+  // normally comes from the matched checkout_sessions row, but a postback whose
+  // subid didn't match a session (BuyGoods sending its own subid, a dropped DTC
+  // hop) leaves it empty. Fall back to a configured landing URL, else the
+  // webhook's own origin — always a valid https URL on the pixel's domain, so
+  // the event stays usable (matched via em/fn/ph even without fbc/fbp).
+  if (!checkoutData.event_source_url) {
+    let origin = '';
+    try { origin = new URL(context.request.url).origin; } catch (_) { /* keep '' */ }
+    const fallbackUrl = env.DEFAULT_EVENT_SOURCE_URL || origin;
+    if (fallbackUrl) checkoutData = { ...checkoutData, event_source_url: fallbackUrl };
+  }
+
   // Meta-only filter: this affiliate's single BuyGoods postback fires for every
   // product they promote, but only allowlisted codenames may reach the pixel.
   const metaAllowed = isMetaAllowed(parsed.platform, parsed.productCodename);
