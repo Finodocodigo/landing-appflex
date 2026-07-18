@@ -471,8 +471,9 @@ async function handlePurchaseLog({ parsed, eventId, eventTime, resultMap, env })
         encharge_status_code, encharge_response_ok, encharge_response_body,
         manychat_status_code, manychat_response_ok, manychat_response_body,
         revenue_type,
-        created_at
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        created_at,
+        ad_id
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `).bind(
       subid || '', eventId, eventTime,
       email, name, phone,
@@ -500,7 +501,10 @@ async function handlePurchaseLog({ parsed, eventId, eventTime, resultMap, env })
       encharge.statusCode || 0, encharge.responseOk || 0, encharge.responseBody || '',
       manychat.statusCode || 0, manychat.responseOk || 0, manychat.responseBody || '',
       revenueType,
-      createdAt
+      createdAt,
+      // Meta ad_id parsed off the landing URL (…?ad_id=<digits>&…&utm_id=<same>).
+      // First-class column so the dashboard joins spend↔sale by ad_id (per-ad ROAS).
+      (String(checkoutData.event_source_url || '').match(/[?&](?:ad_id|utm_id)=(\d{6,})/) || [])[1] || null
     ).run();
 
     purchaseId = result.meta?.last_row_id ?? null;
