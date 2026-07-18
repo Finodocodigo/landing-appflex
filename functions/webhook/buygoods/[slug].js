@@ -9,9 +9,14 @@
 //   - BuyGoods fires a server-to-server postback as a GET with query params,
 //     not a JSON POST. We read everything from the URL search params.
 //   - BuyGoods's available macros: {SUBID}..{SUBID5}, {ORDERID},
-//     {COMMISSION_AMOUNT}, {EMAILHASH} (SHA256 of the buyer email), {CONV_TYPE}
+//     {COMMISSION_AMOUNT}, {EMAILHASH} (SHA256 of the buyer email), {NAME} and
+//     {PHONE} (both SHA256, on the richer postback location), {CONV_TYPE}
 //     ("frontend" | "upsell"), {PRODUCT_CODENAME} (the product's code). There is
-//     NO buyer name/phone and NO order-total macro — only the commission.
+//     NO order-total macro — only the commission.
+//   - {NAME}/{PHONE} are pre-hashed and go straight to Meta user_data.fn/ph,
+//     raising match quality on top of {EMAILHASH} + fbp/fbc/IP/UA. Register the
+//     postback WITH these macros (see the URL below); when absent they fall
+//     through harmlessly.
 //   - {PRODUCT_CODENAME} is what we filter on: this affiliate's single postback
 //     URL fires for EVERY product they promote, but only OUR products (act08 runs
 //     two: BreathEase X / lungs and Nervaline / neuropathy) should reach the Meta
@@ -33,12 +38,15 @@
 //
 // Postback URL to register in the BuyGoods dashboard (real BuyGoods macros):
 //   https://laappflex.shop/webhook/buygoods/<slug>?subid={SUBID}&subid2={SUBID2}
-//     &subid3={SUBID3}&orderid={ORDERID}&emailhash={EMAILHASH}
-//     &convtype={CONV_TYPE}&commission={COMMISSION_AMOUNT}&product={PRODUCT_CODENAME}
+//     &subid3={SUBID3}&orderid={ORDERID}&emailhash={EMAILHASH}&name={NAME}
+//     &phone={PHONE}&convtype={CONV_TYPE}&commission={COMMISSION_AMOUNT}
+//     &product={PRODUCT_CODENAME}
 //
 // Identifier mapping:
 //   subid            <- subid       (the UUID the landing threaded into the order link)
 //   emailHash        <- emailhash   ({EMAILHASH} → Meta user_data.em, no re-hash)
+//   nameHash         <- name        ({NAME} → Meta user_data.fn, no re-hash)
+//   phoneHash        <- phone       ({PHONE} → Meta user_data.ph, no re-hash)
 //   value            <- subid2 (tier price) | commission (fallback)
 //   transactionId    <- orderid
 //   productId        <- subid3 (tier label) ; productName <- convtype (frontend/upsell)
@@ -78,6 +86,18 @@ export async function onRequestGet(context) {
     const emailHashRaw = (qs.get('emailhash') || '').trim().toLowerCase();
     const emailHash = /^[a-f0-9]{64}$/.test(emailHashRaw) ? emailHashRaw : '';
 
+    // {NAME} and {PHONE} arrive pre-hashed (SHA256) from BuyGoods too — the
+    // richer postback location exposes them on top of {EMAILHASH}. Pass verbatim
+    // to Meta (name → fn, phone → ph). Validate the 64-hex shape so a stray macro
+    // ({NAME} left literal, or empty) never poisons user_data. Every valid one
+    // lifts the Meta match quality; absent ones just fall through.
+    const asHash = (raw) => {
+      const h = (raw || '').trim().toLowerCase();
+      return /^[a-f0-9]{64}$/.test(h) ? h : '';
+    };
+    const nameHash = asHash(qs.get('name'));
+    const phoneHash = asHash(qs.get('phone'));
+
     // Value: no order-total macro exists on BuyGoods, so subid2 (the tier price
     // the landing forwarded) is the estimate; commission is the last resort.
     // The buyer re-picks the package on the DTC page, so subid2 only survives
@@ -111,7 +131,9 @@ export async function onRequestGet(context) {
       email: '',
       emailHash,          // pre-hashed (SHA256) email from BuyGoods → Meta em
       name: '',
+      nameHash,           // pre-hashed (SHA256) buyer name → Meta fn
       phone: '',
+      phoneHash,          // pre-hashed (SHA256) phone → Meta ph
       value,
       currency: CURRENCY,
       transactionId,

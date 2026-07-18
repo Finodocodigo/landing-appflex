@@ -19,8 +19,11 @@
 //     platform:      'eduzz' | 'hotmart' | 'kiwify' | string,
 //     subid:           string,   // unique identifier threaded from page visit
 //     email:         string,
+//     emailHash:     string,   // optional; SHA256 of email, pre-hashed (BuyGoods)
 //     name:          string,
+//     nameHash:      string,   // optional; SHA256 of buyer name, pre-hashed → Meta fn
 //     phone:         string,
+//     phoneHash:     string,   // optional; SHA256 of phone, pre-hashed → Meta ph
 //     value:         number,
 //     currency:      string,   // ISO code, e.g. 'BRL', 'USD'
 //     transactionId:   string,
@@ -130,7 +133,17 @@ export async function processPurchase({ parsed, env, context }) {
   const metaAllowed = isMetaAllowed(parsed.platform, parsed.productCodename);
 
   const enriched = { ...parsed, productConfig, checkoutData, metaAllowed };
-  const eventId = crypto.randomUUID();
+  // Deterministic event_id per order. Meta (and GA4) dedup events by
+  // event_name + event_id, so if the SAME order is delivered more than once —
+  // BuyGoods retries, or both postback endpoints (/buygoods and /buygoods-probe)
+  // firing near-simultaneously during the webhook cutover — the extra Purchase
+  // events collapse into ONE conversion at Meta instead of double-counting. The
+  // purchase_log dedup (a SELECT before insert) can't cover the concurrent case
+  // because the row is written later in waitUntil, so this is the real guard.
+  // Falls back to a random id only when the platform gave us no transaction id.
+  const eventId = parsed.transactionId
+    ? `${parsed.platform || 'purchase'}-${parsed.transactionId}`
+    : crypto.randomUUID();
   const eventTime = Math.floor(Date.now() / 1000);
 
   // Fan out to handlers. Each wraps its own errors so one failing handler
@@ -184,15 +197,20 @@ export async function processPurchase({ parsed, env, context }) {
 // HANDLER: Tracking — Meta CAPI + GA4 + Google Ads (needs checkoutData)
 // -----------------------------------------------------------------------------
 async function handleTracking({ parsed, eventId, eventTime, env }) {
-  const { email, emailHash, name, phone, value, currency, transactionId, productId, productName, items, checkoutData, productConfig, metaAllowed, platform, productCodename } = parsed;
+  const { email, emailHash, name, nameHash, phone, phoneHash, value, currency, transactionId, productId, productName, items, checkoutData, productConfig, metaAllowed, platform, productCodename } = parsed;
 
-  // Email may arrive already SHA256-hashed (e.g. BuyGoods {EMAILHASH}); use it
-  // verbatim. Otherwise hash the raw email per Meta's normalization.
+  // em / fn / ln / ph may arrive already SHA256-hashed (e.g. the BuyGoods
+  // postback ships {EMAILHASH}/{NAME}/{PHONE} pre-hashed) — use verbatim. When
+  // only raw values exist, normalize per Meta's spec and hash here.
+  //   - nameHash is a single hash of the buyer name; there is no way to split it
+  //     into first/last, so it goes to `fn` only (ln stays empty). Sending it is
+  //     safe: Meta matches each field independently and never penalizes a
+  //     non-matching one.
   const hashedEm = emailHash ? emailHash : await sha256(email);
   const nameParts = splitName(name);
-  const hashedFn = await sha256(normalizeName(nameParts.fn));
-  const hashedLn = await sha256(normalizeName(nameParts.ln));
-  const hashedPh = await sha256(normalizePhone(phone, env.DEFAULT_COUNTRY_CODE));
+  const hashedFn = nameHash ? nameHash : await sha256(normalizeName(nameParts.fn));
+  const hashedLn = nameHash ? '' : await sha256(normalizeName(nameParts.ln));
+  const hashedPh = phoneHash ? phoneHash : await sha256(normalizePhone(phone, env.DEFAULT_COUNTRY_CODE));
   const hashedExternalId = await sha256(checkoutData.external_id || '');
 
   // Build a single item list both Meta and GA4 consume. Adapters should
