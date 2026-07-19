@@ -135,6 +135,11 @@ export async function onRequestPost(context) {
       eventNameLower === 'initiatecheckout' &&
       ((hasGoogleClick && !hasMetaClick) || (!fbp && !fbc && !externalId));
 
+    // --- Dash-only events (e.g. PitchView) ---
+    // First-party funnel metrics for the central dashboard: logged to
+    // event_log only, never fanned out to Meta CAPI / GA4.
+    const dashOnly = body.dash_only === true || body.dash_only === 1;
+
     // --- Per-product pixel routing (act08 = 2 produtos / 2 pixels) ---
     // Browser-originated events carry no {PRODUCT_CODENAME}; resolve the pixel
     // from the landing slug in event_source_url. Falls back to the generic env.
@@ -147,7 +152,7 @@ export async function onRequestPost(context) {
     // GA4 fires are suppressed. Without this gate, every link-unfurl
     // crawl (WhatsApp preview, Slackbot, facebookexternalhit, etc.)
     // would burn a Meta CAPI event and pollute the Pixel.
-    const results = isBot ? [] : await Promise.allSettled([
+    const results = (isBot || dashOnly) ? [] : await Promise.allSettled([
       suppressMetaForSource
         ? Promise.resolve({ skipped: hasGoogleClick ? 'google-sourced checkout (gclid, no meta click)' : 'no meta identity', payload: null, response: null })
         : sendToMeta({ body, clientIp, userAgent, fbp, fbc, hashedEm, hashedFn, hashedLn, hashedPh, hashedExternalId, sessionData, pixelId, accessToken, env }),
@@ -217,8 +222,8 @@ export async function onRequestPost(context) {
               pixelWasBlocked, fbpSource, fbcSource, fbclidSource,
               gaCookiePresent, gaClientIdFallback, fbpSource === 'middleware_http' ? 1 : 0,
               isBot ? 1 : 0, botReason, body.consent_status || 'unknown',
-              (isBot || suppressMetaForSource) ? 0 : 1, metaStatusCode, metaResponseOk, metaResponseBody, metaPayloadSent ?? null,
-              isBot ? 0 : 1, ga4StatusCode, ga4ResponseOk, ga4ResponseBody, ga4PayloadSent ?? null,
+              (isBot || suppressMetaForSource || dashOnly) ? 0 : 1, metaStatusCode, metaResponseOk, metaResponseBody, metaPayloadSent ?? null,
+              (isBot || dashOnly) ? 0 : 1, ga4StatusCode, ga4ResponseOk, ga4ResponseBody, ga4PayloadSent ?? null,
               hashedEm ? 1 : 0, hashedPh ? 1 : 0, (hashedFn || hashedLn) ? 1 : 0,
               rawEmail
             ).run();

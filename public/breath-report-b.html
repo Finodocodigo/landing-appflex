@@ -1961,6 +1961,56 @@
 				setTimeout(go, 700);
 			});
 		}
+
+		// Pitch-view action (central dashboard). The vturb player reveals the
+		// hidden sections (displayHiddenElements -> .esconder) at the pitch
+		// timestamp; the moment they become visible, this visitor "saw the
+		// pitch". Polling the element's visibility works no matter how the
+		// player un-hides it, including the persist:true restore on reload.
+		// localStorage guard = one PitchView per browser; the deterministic
+		// event_id collapses any residual duplicates server-side. dash_only
+		// keeps it out of Meta CAPI / GA4 (see functions/tracker.js).
+		var PITCH_KEY = 'krob_pitch_' + PRODUCT;
+		var pitchEl = document.querySelector('.esconder');
+		var pitchSeen = false;
+		try { pitchSeen = !!localStorage.getItem(PITCH_KEY); } catch (_) {}
+		if (pitchEl && !pitchSeen) {
+			var pitchTimer = setInterval(function () {
+				if (!pitchEl.getClientRects().length) return;
+				// Re-check the guard on every tick: another tab may have fired
+				// while this one was waiting (each tab has its own subid, so a
+				// stale read here would double-count the visitor).
+				try { if (localStorage.getItem(PITCH_KEY)) { clearInterval(pitchTimer); return; } } catch (_) {}
+				var pitchPayload = JSON.stringify({
+					event_name: 'PitchView',
+					event_id: 'pitch-' + subid,
+					event_time: Math.floor(Date.now() / 1000),
+					event_source_url: window.location.href,
+					dash_only: true,
+					user_data: {},
+				});
+				// Send first, stamp the guard only on success — old browsers
+				// without sendBeacon (or Chrome <60, which throws on JSON Blobs)
+				// fall back to fetch; a failed attempt retries on the next tick
+				// instead of permanently marking the pitch as reported.
+				var pitchSent = false;
+				try {
+					if (navigator.sendBeacon) {
+						pitchSent = navigator.sendBeacon('/tracker', new Blob([pitchPayload], { type: 'application/json' }));
+					}
+				} catch (_) {}
+				if (!pitchSent && window.fetch) {
+					try {
+						fetch('/tracker', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: pitchPayload, keepalive: true });
+						pitchSent = true;
+					} catch (_) {}
+				}
+				if (pitchSent) {
+					clearInterval(pitchTimer);
+					try { localStorage.setItem(PITCH_KEY, '1'); } catch (_) {}
+				}
+			}, 2000);
+		}
 	})();
 	</script>
 
