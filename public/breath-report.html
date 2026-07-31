@@ -2,7 +2,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="robots" content="noindex, nofollow, noarchive">
-		<meta name="referrer" content="strict-origin-when-cross-origin">
+		<meta name="referrer" content="same-origin">
 
 		<!-- Meta Pixel — BreathEase X (ID público; o token CAPI fica como secret no Cloudflare).
 		     Trocar __REPLACE_META_PIXEL_ID_BREATH__ pelo ID numérico do pixel do BreathEase.
@@ -36,12 +36,20 @@
 		<link rel="preconnect" href="https://scripts.converteai.net">
 		<link rel="preconnect" href="https://cdn.converteai.net">
 		<link rel="preconnect" href="https://connect.facebook.net">
+		<!-- O beacon do PageView vai pra www.facebook.com, dominio distinto de
+		     connect.facebook.net: sem esse preconnect o /tr paga DNS+TCP+TLS do zero. -->
+		<link rel="preconnect" href="https://www.facebook.com">
 
 		<!-- VTurb / ConverteAI player — performance hints -->
 		<script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
 		<link rel="preload" href="https://scripts.converteai.net/8d56718e-3c1a-4e19-9795-680b1183be30/players/6a3efbf82f7698b129fdb210/v4/player.js" as="script" fetchpriority="high">
+		<!-- Preload do runtime do player (~960 KB / 257 KB br). Ele é descoberto pelo
+		     preload scanner ANTES do fbevents.js e por isso adianta o primeiro frame
+		     do VSL às custas de ~800 ms no disparo do PageView. Decisão de negócio
+		     (31/07): o VSL é o motor de conversão e vem primeiro. Não remover sem
+		     rediscutir esse trade-off. -->
 		<link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
-		<link rel="preload" href="https://cdn.converteai.net/8d56718e-3c1a-4e19-9795-680b1183be30/6a3efae208d228be1615e013/main.m3u8" as="fetch">
+		<link rel="preload" href="https://cdn.converteai.net/8d56718e-3c1a-4e19-9795-680b1183be30/6a3efae208d228be1615e013/main.m3u8" as="fetch" crossorigin>
 		<link rel="dns-prefetch" href="https://images.converteai.net">
 		<link rel="dns-prefetch" href="https://license.vturb.com">
 		<!-- END VTurb performance hints -->

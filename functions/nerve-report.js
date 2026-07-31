@@ -25,12 +25,12 @@
 import { BLOCK, META, NOINDEX } from "./_bots.js";
 
 // CSP relaxed for THIS landing only — the vturb/ConverteAI player, the
-// Tailwind CDN, and the Meta pixel need eval/inline plus their vendor
-// origins. The institutional pages keep the strict CSP from public/_headers
-// (this function never runs on them).
+// Meta pixel need eval/inline plus their vendor origins. The institutional
+// pages keep the strict CSP from public/_headers (this function never runs
+// on them). Tailwind saiu da allowlist: a página não carrega Tailwind.
 const SLUG_CSP = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com https://scripts.converteai.net https://*.converteai.net https://*.vturb.net https://*.vturb.com https://connect.facebook.net",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://scripts.converteai.net https://*.converteai.net https://*.vturb.net https://*.vturb.com https://connect.facebook.net",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' data: https://fonts.gstatic.com",
   "img-src 'self' data: blob: https://images.converteai.net https://*.converteai.net https://*.vturb.net https://*.vturb.com https://www.facebook.com",
