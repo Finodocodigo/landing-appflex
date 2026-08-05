@@ -14,6 +14,13 @@
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <link rel="canonical" href="https://laappflex.shop/">
 
+  <!-- Facebook Business Manager domain verification. Meta reads this from the
+       root URL only, so it lives here and NOWHERE else — never on the protected
+       VSL landings (/breath-report*, /nerve-report), whose slugs stay out of
+       anything Meta crawls. Keep it inside the head element and static:
+       verification fails if it moves out or is injected by JavaScript. -->
+  <meta name="facebook-domain-verification" content="thtm2hzo9w7jee0jsgb8dk8xr8ev1m">
+
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://laappflex.shop/">
   <meta property="og:title" content="The Vital Years — Letters on aging well">
