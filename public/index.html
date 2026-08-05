@@ -93,6 +93,10 @@
     .brand .kicker { font-family: var(--label); font-weight:500; font-size:.66rem; letter-spacing:.22em; text-transform:uppercase; color:var(--ink-mute); margin-top:4px; }
     .dateline { font-family: var(--label); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-mute); text-align:right; }
     .dateline strong { display:block; color:var(--ink-soft); font-weight:600; }
+    .mast-nav { font-family:var(--label); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; text-align:right; margin-bottom:8px; }
+    .mast-nav a { color:var(--ink-soft); text-decoration:none; margin-left:20px; }
+    .mast-nav a:hover, .mast-nav a[aria-current="page"] { color:var(--clay-dk); }
+    .mast-nav a[aria-current="page"] { border-bottom:1.5px solid var(--clay); padding-bottom:3px; }
 
     /* ---------- Hero ---------- */
     .hero .wrap { padding: 64px 0 30px; }
@@ -209,9 +213,15 @@
           <span class="kicker">Letters on aging well &middot; by Giulia Batista</span>
         </span>
       </a>
-      <div class="dateline">
-        A reader-supported journal
-        <strong>Independence &middot; Breath &middot; Steady Feet</strong>
+      <div>
+        <nav class="mast-nav" aria-label="Primary">
+          <a href="/" aria-current="page">The Journal</a>
+          <a href="/shop">The Cupboard</a>
+        </nav>
+        <div class="dateline">
+          A reader-supported journal
+          <strong>Independence &middot; Breath &middot; Steady Feet</strong>
+        </div>
       </div>
     </div>
   </header>
@@ -370,6 +380,8 @@
       <div class="colophon">
         <span>&copy; 2026 The Vital Years &middot; Giulia Batista. Written with care in the United States.</span>
         <nav aria-label="Footer">
+          <a href="/shop">The Cupboard</a>
+          <a href="/shop/shipping-returns">Shipping &amp; Returns</a>
           <a href="/privacy-policy">Privacy</a>
           <a href="/terms">Terms</a>
           <a href="mailto:giulia@laappflex.shop">Contact</a>

@@ -1,0 +1,288 @@
+{
+  "_readme": [
+    "Source of truth for The Cupboard (act08/pag01). `python tools/build_shop.py`",
+    "renders public/shop/*.html AND tools/out/facebook-catalog.tsv from this file,",
+    "so the price on the page can never drift from the price in the Meta catalog —",
+    "which is exactly what Meta's crawler audits before approving an item.",
+    "",
+    "EVERY spec, price and shipping figure below is a PLACEHOLDER written to build",
+    "the page. Replace each one with the real value from the sourced unit before",
+    "flipping `status` to `live`. Publishing an unverified spec is a misrepresentation",
+    "under Meta's Advertising Standards, not just a typo."
+  ],
+
+  "status": "draft",
+  "brand": "The Vital Years",
+  "site": "https://laappflex.shop",
+  "currency": "USD",
+  "contact_email": "giulia@laappflex.shop",
+  "returns_days": 30,
+  "free_shipping_over": "45.00",
+
+  "products": [
+    {
+      "id": "TVY-AP-001",
+      "slug": "quiet-room-air-purifier",
+      "name": "The Quiet Room Air Purifier",
+      "shelf_no": "01",
+      "category_label": "Clean air at home",
+      "google_product_category": "Home & Garden > Household Appliances > Climate Control Appliances > Air Purifiers",
+      "price": "294.00",
+      "availability": "in stock",
+      "condition": "new",
+      "checkout_url": null,
+      "deck": "A three-stage HEPA purifier sized for one bedroom, quiet enough to leave running all night.",
+      "short": "Three stages of filtration for a single room, with a sleep mode you have to lean in to hear.",
+      "description": "Three-stage air purifier for rooms up to 380 square feet. A washable mesh pre-filter catches hair and lint, an H13 HEPA layer is rated to capture 99.97% of airborne particles down to 0.3 microns, and an activated carbon layer absorbs cooking and pet odours. Four fan speeds, a 24 dB sleep mode, a timer and a filter-life indicator. 120V, 38W, UL listed. One-year warranty.",
+      "images": [
+        "/images/shop/air-purifier-01-ph.jpg",
+        "/images/shop/air-purifier-02-ph.jpg"
+      ],
+      "alt": [
+        "The Quiet Room Air Purifier, a cylindrical unit with a matte white top half, woven oatmeal fabric lower half and a brushed brass control dial",
+        "The Quiet Room Air Purifier standing on a pale oak floor beside a linen armchair in a sunlit bedroom corner"
+      ],
+      "note": [
+        "There is a moment in the late afternoon when the sun comes through the window at just the right angle, and you can see everything floating in the air of your own living room. Dust from the rug. Lint from the laundry. Whatever came in on the breeze when you opened the door for the mail.",
+        "You cannot scrub the air the way you scrub a countertop. That is the whole reason a machine like this exists: it pulls the room through three layers of filter, over and over, so that what is floating has somewhere to land other than your furniture.",
+        "I asked for two things when I went looking. That it be honest about what it filters, with a real H13 rating and not a vague promise. And that it be quiet enough to leave on overnight without anyone noticing it is there."
+      ],
+      "specs": [
+        ["Coverage", "Rooms up to 380 sq ft"],
+        ["Filtration", "Washable pre-filter, H13 HEPA, activated carbon"],
+        ["Particle rating", "99.97% of particles down to 0.3 microns"],
+        ["Fan speeds", "Four, plus a 24 dB sleep mode"],
+        ["Timer", "2 / 4 / 8 hours"],
+        ["Filter life", "Indicator light, roughly 6 months of daily use"],
+        ["Power", "120V, 38W, UL listed"],
+        ["Dimensions", "8.3 in diameter x 13.4 in high"],
+        ["Weight", "7.9 lb"],
+        ["Warranty", "One year"]
+      ],
+      "in_box": [
+        "One Quiet Room Air Purifier",
+        "One three-stage filter, already fitted",
+        "Six-foot power cord",
+        "A plain-English setup card, printed large"
+      ],
+      "faq": [
+        ["How often does the filter need changing?", "About every six months with daily use. The indicator light on the dial tells you before you have to think about it, and the replacement two-pack is on the shelf here."],
+        ["Is it loud?", "On sleep mode it runs at about 24 decibels, which is quieter than most refrigerators. On the highest speed you will hear it, the way you hear a fan."],
+        ["Can I leave it on all night?", "Yes. It is built for continuous running, and the timer is there if you would rather it stop on its own."]
+      ],
+      "variants": null
+    },
+
+    {
+      "id": "TVY-AF-002",
+      "slug": "replacement-filter-two-pack",
+      "name": "Replacement Filter, Two-Pack",
+      "shelf_no": "02",
+      "category_label": "Clean air at home",
+      "google_product_category": "Home & Garden > Household Appliance Accessories > Air Purifier Accessories",
+      "price": "294.00",
+      "availability": "in stock",
+      "condition": "new",
+      "checkout_url": null,
+      "deck": "A year of filtration for The Quiet Room, in one box, so you are never caught short.",
+      "short": "Two genuine three-stage filters. About a year of daily running for The Quiet Room.",
+      "description": "Two genuine replacement filters for The Quiet Room Air Purifier. Each combines a pleated H13 HEPA layer rated to 99.97% of particles down to 0.3 microns with an activated carbon outer layer for odours. Sealed individually to keep the carbon fresh until you need it. Roughly six months of daily use per filter. Tool-free installation. Not compatible with other purifier models.",
+      "images": [
+        "/images/shop/filter-01-ph.jpg",
+        "/images/shop/filter-02-ph.jpg"
+      ],
+      "alt": [
+        "Two cylindrical replacement filters with pleated white HEPA paper and a charcoal grey activated carbon outer layer, standing side by side",
+        "A single pleated HEPA and carbon filter lying on a pale oak table beside a folded linen cloth and a small screwdriver"
+      ],
+      "note": [
+        "A filter is only doing its job while it still has room to hold things. After about six months of daily running it is full, and a full filter is just an expensive piece of paper the fan has to push against.",
+        "So I keep a spare in the cupboard. Not because anyone needs to be sold twice, but because the day the light comes on is never a convenient day to go looking.",
+        "These are sealed one at a time. The carbon layer is the part that goes stale in open air, and there is no sense paying for something that quietly stopped working while it sat on a shelf."
+      ],
+      "specs": [
+        ["Fits", "The Quiet Room Air Purifier (TVY-AP-001) only"],
+        ["Quantity", "Two filters"],
+        ["Layers", "Pleated H13 HEPA with activated carbon outer wrap"],
+        ["Particle rating", "99.97% of particles down to 0.3 microns"],
+        ["Expected life", "About 6 months each with daily use"],
+        ["Packaging", "Sealed individually"],
+        ["Installation", "Tool-free, twist and lift"],
+        ["Dimensions", "7.1 in diameter x 8.7 in high, each"]
+      ],
+      "in_box": [
+        "Two sealed three-stage filters",
+        "A card showing the twist-and-lift change, step by step"
+      ],
+      "faq": [
+        ["Will these fit another brand of purifier?", "No. They are cut for The Quiet Room and nothing else. Fitting a filter that does not seal properly lets air bypass it entirely."],
+        ["How do I know when to change it?", "The indicator light on the purifier dial. If you would rather not wait for it, six months of daily running is the honest interval."],
+        ["Do I need tools?", "No. The base twists off by hand, the old filter lifts out, the new one drops in."]
+      ],
+      "variants": null
+    },
+
+    {
+      "id": "TVY-HU-003",
+      "slug": "nightfall-humidifier",
+      "name": "The Nightfall Humidifier",
+      "shelf_no": "03",
+      "category_label": "Comfort at home",
+      "google_product_category": "Home & Garden > Household Appliances > Climate Control Appliances > Humidifiers",
+      "price": "294.00",
+      "availability": "in stock",
+      "condition": "new",
+      "checkout_url": null,
+      "deck": "A four-litre cool-mist humidifier that runs from bedtime until well after breakfast.",
+      "short": "Four litres of cool mist, thirty hours of runtime, and a tank that fits under a bathroom tap.",
+      "description": "Ultrasonic cool-mist humidifier with a four-litre tank and up to 30 hours of runtime on the lowest setting. Adjustable mist dial, 360-degree nozzle, automatic shut-off when the tank empties, and a top-fill opening wide enough for a hand to reach inside for cleaning. Runs at about 28 dB. No heating element and no hot water. 120V, 24W. One-year warranty.",
+      "images": [
+        "/images/shop/humidifier-01-ph.jpg",
+        "/images/shop/humidifier-02-ph.jpg"
+      ],
+      "alt": [
+        "The Nightfall Humidifier, a tall ribbed ceramic-white unit with a pale wood base ring and a fine plume of cool mist rising from the top",
+        "The Nightfall Humidifier on a walnut nightstand, mist catching low lamplight, with linen bedding and a book beside it"
+      ],
+      "note": [
+        "Winter air indoors is dry in a way we stop noticing. The heat comes on in October and by January the house is drier than most desert afternoons, and nobody ever thinks to check.",
+        "What I wanted was simple and turned out to be surprisingly hard to find. A tank big enough to last the whole night, so it is not a chore. An opening wide enough to actually get a hand inside and wash, because a humidifier you cannot clean properly is not worth owning. And cool mist, so there is no hot water sitting on a nightstand.",
+        "It shuts itself off when the tank runs dry. That was not negotiable for me."
+      ],
+      "specs": [
+        ["Tank", "4 litres, top-fill"],
+        ["Runtime", "Up to 30 hours on the lowest setting"],
+        ["Mist", "Ultrasonic, cool, no heating element"],
+        ["Control", "Continuous dial, low to high"],
+        ["Nozzle", "360-degree rotating"],
+        ["Safety", "Automatic shut-off when the tank empties"],
+        ["Noise", "About 28 dB"],
+        ["Cleaning", "Wide top opening, dishwasher-safe base tray"],
+        ["Power", "120V, 24W"],
+        ["Dimensions", "7.5 in diameter x 11.8 in high"],
+        ["Warranty", "One year"]
+      ],
+      "in_box": [
+        "One Nightfall Humidifier",
+        "Cleaning brush for the nozzle",
+        "Five-foot power cord",
+        "A care card with the weekly rinse routine"
+      ],
+      "faq": [
+        ["Does the water get hot?", "No. This is a cool-mist unit with no heating element, so nothing on the nightstand is ever hot to the touch."],
+        ["How often should it be cleaned?", "Rinse the tank every day you refill it and give the base a proper wash once a week. Standing water is the enemy of any humidifier."],
+        ["Can I use tap water?", "You can. If your water is very hard you may see white dust settle nearby, and distilled water stops that."]
+      ],
+      "variants": null
+    },
+
+    {
+      "id": "TVY-SL-004",
+      "slug": "sure-step-slippers",
+      "name": "The Sure Step Slipper",
+      "shelf_no": "04",
+      "category_label": "Steady on your feet",
+      "google_product_category": "Apparel & Accessories > Shoes",
+      "price": "294.00",
+      "availability": "in stock",
+      "condition": "new",
+      "checkout_url": null,
+      "deck": "An indoor slipper with a real rubber outsole, a memory-foam bed and a strap that opens all the way.",
+      "short": "Rubber grip outsole, memory-foam bed, and a strap that opens wide enough to get into easily.",
+      "description": "Closed-back indoor slipper in heathered wool-look fabric with a brushed faux-shearling lining. Thick charcoal rubber outsole with a moulded grip tread, not a soft fabric sole. Memory-foam footbed over a cushioned midsole. Adjustable hook-and-loop strap opens fully across the instep for an easy step-in and a wider fit. Unisex sizing, S to XL. Machine washable on cold, air dry. Colour: Oatmeal.",
+      "images": [
+        "/images/shop/slippers-01-ph.jpg",
+        "/images/shop/slippers-02-ph.jpg"
+      ],
+      "alt": [
+        "A pair of Sure Step Slippers in heathered oatmeal fabric with cream shearling lining, an adjustable strap and a thick charcoal rubber outsole",
+        "A Sure Step Slipper tipped up to show its charcoal rubber outsole and deep circular grip tread, on a pale oak floor beside its pair"
+      ],
+      "note": [
+        "Most house slippers have a sole made of the same soft stuff as the rest of them. On a rug that is fine. On a kitchen floor that has just been mopped, it is a bar of soap.",
+        "So the first thing I looked at, before the lining or the colour or anything else, was the bottom. This one has a proper moulded rubber outsole with a tread you can feel with your thumb, the kind you would find on a walking shoe.",
+        "The second thing was the strap. It opens all the way flat, which means you can get into it without bending down and fighting with it, and close it as loose or as snug as the day calls for."
+      ],
+      "specs": [
+        ["Outsole", "Moulded rubber with circular grip tread"],
+        ["Footbed", "Memory foam over a cushioned midsole"],
+        ["Upper", "Heathered wool-look fabric"],
+        ["Lining", "Brushed faux shearling"],
+        ["Closure", "Adjustable hook-and-loop strap, opens fully flat"],
+        ["Back", "Closed heel"],
+        ["Sizing", "Unisex S to XL, see the size note below"],
+        ["Colour", "Oatmeal"],
+        ["Care", "Machine wash cold, air dry, do not tumble"]
+      ],
+      "in_box": [
+        "One pair of Sure Step Slippers",
+        "A printed size and care card"
+      ],
+      "faq": [
+        ["How do the sizes run?", "Unisex, and roughly a half size generous to leave room for a thicker sock. S fits US women's 6 to 7, M fits 8 to 9, L fits 10 to 11 or US men's 8 to 9, XL fits US men's 10 to 12."],
+        ["Can they be worn outside?", "The outsole will handle the porch and the mailbox. They are built as indoor slippers, so anything longer will wear the tread down quickly."],
+        ["Will the strap open wide enough?", "It opens completely flat across the instep, so the slipper goes on without forcing the foot through a fixed opening."]
+      ],
+      "variants": {
+        "attribute": "Size",
+        "item_group_id": "TVY-SL-004",
+        "options": [
+          { "id": "TVY-SL-004-S",  "value": "S",  "label": "S · US women's 6–7" },
+          { "id": "TVY-SL-004-M",  "value": "M",  "label": "M · US women's 8–9" },
+          { "id": "TVY-SL-004-L",  "value": "L",  "label": "L · women's 10–11 / men's 8–9" },
+          { "id": "TVY-SL-004-XL", "value": "XL", "label": "XL · US men's 10–12" }
+        ]
+      }
+    },
+
+    {
+      "id": "TVY-NL-005",
+      "slug": "hallway-light-four-pack",
+      "name": "The Hallway Light, Four-Pack",
+      "shelf_no": "05",
+      "category_label": "Steady on your feet",
+      "google_product_category": "Home & Garden > Lighting > Night Lights",
+      "price": "294.00",
+      "availability": "in stock",
+      "condition": "new",
+      "checkout_url": null,
+      "deck": "Four plug-in lights that wake up when you walk past and go back to sleep on their own.",
+      "short": "Warm amber, motion-triggered, and dark all day so they are not glowing at breakfast.",
+      "description": "Set of four plug-in motion-sensor night lights. A passive infrared sensor covers about 10 feet and a 120-degree arc, switching the light on for 30 seconds after motion and then off again. A dusk sensor keeps them dark during daylight. Warm amber LED at roughly 2700K, about 15 lumens, low enough not to dazzle at night. No batteries, no wiring, no switch to find. 120V, under 0.5W each. UL listed.",
+      "images": [
+        "/images/shop/nightlight-01-ph.jpg",
+        "/images/shop/nightlight-02-ph.jpg"
+      ],
+      "alt": [
+        "Four small plug-in motion-sensor night lights in a row, with rounded warm-white housings and a frosted amber-glowing front panel",
+        "A Hallway Light plugged into a low wall outlet at night, casting a soft warm pool of light across a pale oak floor at the foot of a staircase"
+      ],
+      "note": [
+        "Nobody wants to flick on a ceiling light at three in the morning. It wakes up the whole house and it takes your eyes ten minutes to forgive you.",
+        "These sit low in the outlet and do nothing at all until someone walks past. Then a small warm pool of light, enough to show you the edge of the step and the doorway, and thirty seconds later it is dark again.",
+        "Amber rather than white, on purpose. White light at that hour is a slap. Amber is the colour of a hallway lamp left on downstairs, and it is much kinder to eyes that have been closed."
+      ],
+      "specs": [
+        ["Quantity", "Four lights"],
+        ["Sensor", "Passive infrared, about 10 ft range, 120-degree arc"],
+        ["On-time", "30 seconds after the last motion"],
+        ["Daylight", "Dusk sensor keeps them off in daylight"],
+        ["Colour", "Warm amber, about 2700K"],
+        ["Brightness", "About 15 lumens"],
+        ["Power", "120V, under 0.5W each, UL listed"],
+        ["Plug", "Two-prong, does not block the second outlet"],
+        ["Batteries", "None required"]
+      ],
+      "in_box": [
+        "Four Hallway Lights",
+        "A card on where to place them: hallway, bathroom door, top and bottom of the stairs"
+      ],
+      "faq": [
+        ["Do they stay on all night?", "No. They light for thirty seconds after they sense movement, then switch off. That is what keeps them from becoming part of the wallpaper."],
+        ["Will they run in daylight?", "No. A dusk sensor keeps them off while the room is lit, so nothing is wasted during the day."],
+        ["Do they cover the whole outlet?", "No. The housing sits on the lower socket and leaves the upper one free."]
+      ],
+      "variants": null
+    }
+  ]
+}
