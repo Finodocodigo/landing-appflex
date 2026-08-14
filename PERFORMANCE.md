@@ -19,7 +19,8 @@ cada uma validada em preview antes de produção.
 | A3 | **Smart Tiered Cache** ligado na zona | ✅ **ligado** |
 | A4 | Auditoria de page rules / cache rules | ✅ **nada sobrescrevendo** (0 page rules, 0 cache rules) |
 | A5 | **Browser Cache TTL** → *Respect Existing Headers* | ✅ **corrigido** (achado durante a validação — ver §3) |
-| A2 | Migration `0023_perf_indexes.sql` (índices D1) | ⛔ **bloqueada** — token sem `D1:Edit` |
+| A2 | Migration `0023_perf_indexes.sql` (índices D1) | ✅ **aplicada** (via API, **não** via wrangler — ver §3) |
+| A6 | `d1_migrations` re-sincronizada (0021/0022/0023) | ✅ **armadilha desarmada** — ver §3 |
 
 Nenhum teste de integridade falhou. A bateria de validação está em §4 e pode ser
 repetida a qualquer momento.
@@ -211,37 +212,53 @@ medido antes/depois:
 Nenhum asset de performance perdeu cache: os únicos afetados são os que o
 `_headers` queria com TTL curto de propósito.
 
-### A2 · Índices de D1 — ⛔ bloqueada por permissão
-
-Migration pronta em
-[`migrations/0023_perf_indexes.sql`](migrations/0023_perf_indexes.sql), **não
-aplicada**: o token único da raiz não tem `Account → D1 → Edit` (a API responde
-`7403 / Authentication error`).
+### A2 · Índices de D1 — ✅ aplicada
 
 Quatro queries **da central-dash** respondiam por **112,7M rows read em 14 dias**
-por fazerem SCAN onde faltava índice. Confirmado com `EXPLAIN QUERY PLAN`:
+por fazerem SCAN onde faltava índice. O índice
+`idx_sync_log_platform_run_at(platform, run_at)` que já existia **não servia**
+para nenhuma delas: as três de `sync_log` filtram/ordenam sem `platform`, e
+índice composto só é aproveitado a partir do prefixo.
 
-| Query | rows/14d | rows por execução | Plano atual |
+Efeito medido, mesma query antes e depois:
+
+| Query | rows/exec antes | depois | Plano depois |
 |---|---|---|---|
-| `sync_log ORDER BY run_at DESC LIMIT` | 28,5M | 4.629 | `SCAN` + `TEMP B-TREE` |
-| `MAX(run_at) FROM sync_log WHERE status='ok'` | 17,2M | 2.306 | `SCAN` |
-| `COUNT(*) sync_log WHERE status='error'` | 14,4M | 2.328 | `SCAN` |
-| `event_log WHERE event_name=? AND timestamp BETWEEN` | 52,6M | ~4.400 | usa índice de `event_name`, filtra `timestamp` linha a linha |
+| `sync_log ORDER BY run_at DESC LIMIT` | 4.629 | **5** | `SCAN USING INDEX idx_sync_log_run_at` |
+| `MAX(run_at) WHERE status='ok'` | 2.306 | **1** | `SEARCH USING COVERING INDEX` |
+| `COUNT(*) WHERE status='error' AND run_at>=?` | 2.328 | **2** | `SEARCH USING COVERING INDEX` |
+| `event_log WHERE event_name=? AND timestamp BETWEEN` | ~4.400 | **1.569** | `SEARCH USING INDEX idx_event_log_name_ts (event_name=? AND timestamp>? AND <?)` |
+| `sessions` por janela + `utm_campaign` | 66.446 (**68ms**) | **1** (**0,18ms**) | `SEARCH USING COVERING INDEX` |
 
-O índice `idx_sync_log_platform_run_at(platform, run_at)` existente **não serve**
-para nenhuma: as três filtram sem `platform`, e composto só é aproveitado pelo
-prefixo.
+O índice em `sessions` levou 2,7s para construir e escreveu 316.498 rows (0,6%
+da cota mensal de escrita, uma vez só).
 
-Não é urgente em custo (3,2% da cota), mas **piora sozinho**: `sync_log` cresce
-~120 linhas/dia e o custo dessas queries sobe junto.
+### A6 · ⚠️ `d1_migrations` estava dessincronizada — armadilha desarmada
 
-Depois de adicionar `D1:Edit` ao token:
+**Não aplicar migrations neste banco com `wrangler d1 migrations apply` sem antes
+conferir o estado.** Ao preparar a A2, a tabela `d1_migrations` registrava a
+última migration como **0020**, mas o schema real já continha tudo de 0021 e 0022
+(todas as colunas e índices presentes) — foram aplicadas à mão, sem registro.
 
-```bash
-cd clients/act08/pag01/website
-set -a; . /workspaces/gringa-post/.env; set +a
-npx wrangler d1 migrations apply act08-pag01-db --remote
+Se o wrangler tivesse rodado, ele reexecutaria a `0021_ad_spend_ad_level.sql`,
+que contém:
+
+```sql
+DELETE FROM ad_spend;
 ```
+
+Isso apagaria as **22.524 linhas de gasto de anúncio** que alimentam CPA/ROAS na
+central-dash. (Os `ALTER TABLE` no topo do arquivo provavelmente abortariam a
+migration antes do `DELETE`, mas isso é sorte de ordenação, não garantia.)
+
+**O que foi feito:** os índices da 0023 foram aplicados **um a um via API D1**
+(todos `CREATE INDEX IF NOT EXISTS`, idempotentes), e depois `0021`, `0022` e
+`0023` foram registradas em `d1_migrations` para refletir a realidade do schema.
+`ad_spend` conferido antes e depois: **22.524 linhas, intacto**.
+
+Os demais bancos foram auditados e estão **em sincronia** (act04 22/22,
+act05 18/18, goodneighborjournal 23/23, act06 23/23) — o desalinhamento era
+isolado no act08.
 
 ---
 
@@ -337,8 +354,7 @@ set -a; . /workspaces/gringa-post/.env; set +a
 
 Escopo verificado: zone settings / rulesets / page rules / analytics / bot
 management (todas as zonas), Cloudflare Pages, Workers Scripts, Account
-Analytics. **Falta `Account → D1 → Edit`** — sem ele, A2 e qualquer
-`wrangler d1` continuam bloqueados.
+Analytics e **D1 (Edit)**.
 
 ⚠️ Os três tokens antigos foram removidos do disco, mas **continuam válidos no
 Cloudflare até serem revogados** em My Profile → API Tokens.
